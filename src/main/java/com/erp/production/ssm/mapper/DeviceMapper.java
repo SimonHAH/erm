@@ -7,6 +7,10 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface DeviceMapper {
+
+
+
+    // 逆向工程生成的mapper接口
     long countByExample(DeviceExample example);
 
     int deleteByExample(DeviceExample example);
