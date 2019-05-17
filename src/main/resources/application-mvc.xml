@@ -23,6 +23,11 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <mvc:default-servlet-handler/>
+    <!-- 资源映射 -->
+    <mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
+    <mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
+    <mvc:resources location="/WEB-INF/image/" mapping="/image/**"/>
 
 </beans>
 
