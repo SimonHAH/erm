@@ -1,6 +1,6 @@
 package com.erp.production.ssm.mapper;
 
-import com.erp.production.ssm.bean.Order;
+import com.erp.production.ssm.bean.plan.Order;
 
 public interface OrderMapper {
     int deleteByPrimaryKey(String orderId);

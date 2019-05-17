@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.erp.production.ssm.mapper.WorkMapper">
-  <resultMap id="BaseResultMap" type="com.erp.production.ssm.bean.Work">
+  <resultMap id="BaseResultMap" type="com.erp.production.ssm.bean.plan.Work">
     <id column="work_id" jdbcType="VARCHAR" property="workId" />
     <result column="process_number" jdbcType="VARCHAR" property="processNumber" />
     <result column="product_id" jdbcType="VARCHAR" property="productId" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List">
     work_id, process_number, product_id, process_id, device_id, rating
   </sql>
-  <select id="selectByExample" parameterType="com.erp.production.ssm.bean.WorkExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.erp.production.ssm.bean.plan.WorkExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -94,13 +94,13 @@
     delete from work
     where work_id = #{workId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.erp.production.ssm.bean.WorkExample">
+  <delete id="deleteByExample" parameterType="com.erp.production.ssm.bean.plan.WorkExample">
     delete from work
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.erp.production.ssm.bean.Work">
+  <insert id="insert" parameterType="com.erp.production.ssm.bean.plan.Work">
     insert into work (work_id, process_number, product_id, 
       process_id, device_id, rating
       )
@@ -108,7 +108,7 @@
       #{processId,jdbcType=VARCHAR}, #{deviceId,jdbcType=VARCHAR}, #{rating,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.erp.production.ssm.bean.Work">
+  <insert id="insertSelective" parameterType="com.erp.production.ssm.bean.plan.Work">
     insert into work
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="workId != null">
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.erp.production.ssm.bean.WorkExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.erp.production.ssm.bean.plan.WorkExample" resultType="java.lang.Long">
     select count(*) from work
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -195,7 +195,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.erp.production.ssm.bean.Work">
+  <update id="updateByPrimaryKeySelective" parameterType="com.erp.production.ssm.bean.plan.Work">
     update work
     <set>
       <if test="processNumber != null">
@@ -216,7 +216,7 @@
     </set>
     where work_id = #{workId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.erp.production.ssm.bean.Work">
+  <update id="updateByPrimaryKey" parameterType="com.erp.production.ssm.bean.plan.Work">
     update work
     set process_number = #{processNumber,jdbcType=VARCHAR},
       product_id = #{productId,jdbcType=VARCHAR},
