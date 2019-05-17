@@ -1,5 +1,12 @@
 package com.cskaoyan.erp.mytest;
 
-public class TestDemo1 {
 
+import org.junit.Test;
+
+
+public class TestDemo1 {
+    @Test
+    public void myTest1() {
+        System.out.println("hello,cxk");
+    }
 }
