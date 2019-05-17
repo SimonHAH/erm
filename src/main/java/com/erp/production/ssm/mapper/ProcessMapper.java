@@ -1,6 +1,6 @@
 package com.erp.production.ssm.mapper;
 
-import com.erp.production.ssm.bean.technology.ProcessExample;
+import com.erp.production.ssm.bean.ProcessExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.erp.production.ssm.mapper;
 
-import com.erp.production.ssm.bean.plan.Work;
-import com.erp.production.ssm.bean.plan.WorkExample;
+import com.erp.production.ssm.bean.Work;
+import com.erp.production.ssm.bean.WorkExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
