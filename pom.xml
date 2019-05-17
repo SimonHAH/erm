@@ -164,6 +164,13 @@
             <version>1.6.12</version>
         </dependency>
 
+        <!--连接池-->
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.5.2</version>
+        </dependency>
+
     </dependencies>
 
     <build>
