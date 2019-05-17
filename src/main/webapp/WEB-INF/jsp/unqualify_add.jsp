@@ -99,7 +99,7 @@
 		
 		//ajax的post方式提交表单
 		//$("#unqualifyAddForm").serialize()将表单序列号为key-value形式的字符串
-		$.post("unqualify/insert",$("#unqualifyAddForm").serialize(), function(data){
+		$.post("sys/insert",$("#unqualifyAddForm").serialize(), function(data){
 			if(data.status == 200){
 				$.messager.alert('提示','新增不合格品申请成功!');
 				clearUnqualifyAddForm();
