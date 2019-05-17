@@ -1,5 +1,5 @@
 <%@page import="org.springframework.web.context.request.SessionScope"%>
-<%@page import="org.apache.shiro.session.Session"%>
+<%--<%@page import="org.apache.shiro.session.Session"%>--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,12 +33,12 @@
 							<span style="display:inline-block;font-size:20px;color:#c1dff7;margin:0 0 8px 0;">
 								大型生产管理中间件
 							</span><br/>
-							
+
 							<span style="color:#c1dff7;">${activeUser.rolename}:</span>
 							<span style="color:#c1dff7;">
 								${activeUser.username}
 							</span>
-						    &nbsp;<a href="logout" style="text-decoration:none;color:#A9C3D6;"> 退出</a>&nbsp;  &nbsp; 
+						    &nbsp;<a href="logout" style="text-decoration:none;color:#A9C3D6;"> 退出</a>&nbsp;  &nbsp;
 						</div>
 					</div>
 				</td>
