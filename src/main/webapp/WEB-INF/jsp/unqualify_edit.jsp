@@ -80,7 +80,7 @@
 			return ;
 		}
 		unqualifyApplyEditEditor.sync();
-		$.post("unqualify/update_all",$("#unqualifyApplyEditForm").serialize(), function(data){
+		$.post("sys/update_all",$("#unqualifyApplyEditForm").serialize(), function(data){
 			if(data.status == 200){
 				$.messager.alert('提示','修改不合格品申请成功!','info',function(){
 					$("#unqualifyEditWindow").window('close');
