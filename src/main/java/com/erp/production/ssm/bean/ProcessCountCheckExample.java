@@ -437,62 +437,62 @@ public class ProcessCountCheckExample {
         }
 
         public Criteria andUnqualifyIsNull() {
-            addCriterion("unqualify is null");
+            addCriterion("sys is null");
             return (Criteria) this;
         }
 
         public Criteria andUnqualifyIsNotNull() {
-            addCriterion("unqualify is not null");
+            addCriterion("sys is not null");
             return (Criteria) this;
         }
 
         public Criteria andUnqualifyEqualTo(Integer value) {
-            addCriterion("unqualify =", value, "unqualify");
+            addCriterion("sys =", value, "sys");
             return (Criteria) this;
         }
 
         public Criteria andUnqualifyNotEqualTo(Integer value) {
-            addCriterion("unqualify <>", value, "unqualify");
+            addCriterion("sys <>", value, "sys");
             return (Criteria) this;
         }
 
         public Criteria andUnqualifyGreaterThan(Integer value) {
-            addCriterion("unqualify >", value, "unqualify");
+            addCriterion("sys >", value, "sys");
             return (Criteria) this;
         }
 
         public Criteria andUnqualifyGreaterThanOrEqualTo(Integer value) {
-            addCriterion("unqualify >=", value, "unqualify");
+            addCriterion("sys >=", value, "sys");
             return (Criteria) this;
         }
 
         public Criteria andUnqualifyLessThan(Integer value) {
-            addCriterion("unqualify <", value, "unqualify");
+            addCriterion("sys <", value, "sys");
             return (Criteria) this;
         }
 
         public Criteria andUnqualifyLessThanOrEqualTo(Integer value) {
-            addCriterion("unqualify <=", value, "unqualify");
+            addCriterion("sys <=", value, "sys");
             return (Criteria) this;
         }
 
         public Criteria andUnqualifyIn(List<Integer> values) {
-            addCriterion("unqualify in", values, "unqualify");
+            addCriterion("sys in", values, "sys");
             return (Criteria) this;
         }
 
         public Criteria andUnqualifyNotIn(List<Integer> values) {
-            addCriterion("unqualify not in", values, "unqualify");
+            addCriterion("sys not in", values, "sys");
             return (Criteria) this;
         }
 
         public Criteria andUnqualifyBetween(Integer value1, Integer value2) {
-            addCriterion("unqualify between", value1, value2, "unqualify");
+            addCriterion("sys between", value1, value2, "sys");
             return (Criteria) this;
         }
 
         public Criteria andUnqualifyNotBetween(Integer value1, Integer value2) {
-            addCriterion("unqualify not between", value1, value2, "unqualify");
+            addCriterion("sys not between", value1, value2, "sys");
             return (Criteria) this;
         }
 
