@@ -1,4 +1,4 @@
-package com.erp.production.ssm.bean;
+package com.erp.production.ssm.bean.technology;
 
 public class Process {
     private String processId;
