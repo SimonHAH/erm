@@ -4,6 +4,9 @@
 		"http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+
+	<!--引入外部文件-->
+	<properties resource="jdbc.properties"></properties>
 	<typeAliases>
       	<!--
       	通过package, 可以直接指定package的名字， mybatis会自动扫描你指定包下面的javabean,
@@ -13,4 +16,22 @@
       	<package name="com.erp.production.ssm.bean"/>
 
   	</typeAliases>
+
+	<environments default="mysql">
+		<!--配置环境-->
+		<environment id="mysql">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="username" value="${jdbc.username}"/>
+				<property name="password" value="${jdbc.password}"/>
+				<property name="url" value="${jdbc.url}"/>
+				<property name="driver" value="${jdbc.driver}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<!--指定带有注解的dao接口位置-->
+	<mappers>
+		<package name="com.erp.production.ssm.mapper"/>
+		<!--<mapper class="com.erp.production.ssm.mapper"/>-->
+	</mappers>
 </configuration>
