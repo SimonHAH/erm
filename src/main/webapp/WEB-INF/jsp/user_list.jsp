@@ -126,7 +126,7 @@ function formatUserStatus(value){
 	//打开角色信息
 	function  openRole(index){ 
 		var row = onUserClickRow(index);
-		$.get("role/get/"+row.roleId,'',function(data){
+		$.get("employee/get/"+row.roleId,'',function(data){
 			$("#userRoleWindow").window({
 	    		onLoad :function(){
 	    			//回显数据
@@ -150,7 +150,7 @@ function formatUserStatus(value){
 			}); 
 			$("#userRoleEditForm [name=permission]").val(permission);
 		}
-		$.post("role/update_all",$("#userRoleEditForm").serialize(), function(data){
+		$.post("employee/update_all",$("#userRoleEditForm").serialize(), function(data){
 			if(data.label == 200){
 				$.messager.alert('提示', data.msg);
 				$("#userRoleInfo").dialog("close");

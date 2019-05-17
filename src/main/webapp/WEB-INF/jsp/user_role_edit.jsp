@@ -201,7 +201,7 @@
 			}); 
 			$("#userRoleEditForm [name=permission]").val(permission);
 		}
-		$.post("role/update_all",$("#userRoleEditForm").serialize(), function(data){
+		$.post("employee/update_all",$("#userRoleEditForm").serialize(), function(data){
 			if(data.label == 200){
 				$.messager.alert('提示', data.msg);
 				$("#userRoleWindow").window('close');
