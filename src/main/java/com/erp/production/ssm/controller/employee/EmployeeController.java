@@ -38,6 +38,10 @@ public class EmployeeController {
         return  "employee_list";
     }
 
+   /* @RequestMapping(value = "/get_date")
+    public List<Employee> getData(DepartmentExample example) {
+        return employeeService.selectByExample(example);
+    }*/
 
 
 
