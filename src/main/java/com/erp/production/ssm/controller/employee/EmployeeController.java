@@ -1,5 +1,6 @@
 package com.erp.production.ssm.controller.employee;
 
+import com.erp.production.ssm.bean.DepartmentExample;
 import com.erp.production.ssm.bean.Employee;
 import com.erp.production.ssm.bean.EmployeeExample;
 import com.erp.production.ssm.service.EmployeeService;
@@ -31,14 +32,15 @@ public class EmployeeController {
     }
 
 
-    /**
-     * 查询所有员工列表
-     * @param example
-     * @return
-     */
+
     @RequestMapping(value = "/find")
-    public List<Employee> findEmployee(EmployeeExample example) {
-        return  employeeService.selectByExample(example);
+    public String findEmployee() {
+        return  "employee_list";
+    }
+
+    @RequestMapping(value = "/get_date")
+    public List<Employee> getData(DepartmentExample example) {
+        return employeeService.selectByExample(example);
     }
 
 
