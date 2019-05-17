@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.erp.production.ssm.mapper.ManufactureMapper">
-  <resultMap id="BaseResultMap" type="com.erp.production.ssm.bean.Manufacture">
+  <resultMap id="BaseResultMap" type="com.erp.production.ssm.bean.plan.Manufacture">
     <id column="manufacture_sn" jdbcType="VARCHAR" property="manufactureSn" />
     <result column="order_id" jdbcType="VARCHAR" property="orderId" />
     <result column="technology_id" jdbcType="VARCHAR" property="technologyId" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List">
     manufacture_sn, order_id, technology_id, launch_quantity, begin_date, end_date
   </sql>
-  <select id="selectByExample" parameterType="com.erp.production.ssm.bean.ManufactureExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.erp.production.ssm.bean.plan.ManufactureExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -94,13 +94,13 @@
     delete from manufacture
     where manufacture_sn = #{manufactureSn,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.erp.production.ssm.bean.ManufactureExample">
+  <delete id="deleteByExample" parameterType="com.erp.production.ssm.bean.plan.ManufactureExample">
     delete from manufacture
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.erp.production.ssm.bean.Manufacture">
+  <insert id="insert" parameterType="com.erp.production.ssm.bean.plan.Manufacture">
     insert into manufacture (manufacture_sn, order_id, technology_id, 
       launch_quantity, begin_date, end_date
       )
@@ -108,7 +108,7 @@
       #{launchQuantity,jdbcType=INTEGER}, #{beginDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.erp.production.ssm.bean.Manufacture">
+  <insert id="insertSelective" parameterType="com.erp.production.ssm.bean.plan.Manufacture">
     insert into manufacture
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="manufactureSn != null">
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.erp.production.ssm.bean.ManufactureExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.erp.production.ssm.bean.plan.ManufactureExample" resultType="java.lang.Long">
     select count(*) from manufacture
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -195,7 +195,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.erp.production.ssm.bean.Manufacture">
+  <update id="updateByPrimaryKeySelective" parameterType="com.erp.production.ssm.bean.plan.Manufacture">
     update manufacture
     <set>
       <if test="orderId != null">
@@ -216,7 +216,7 @@
     </set>
     where manufacture_sn = #{manufactureSn,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.erp.production.ssm.bean.Manufacture">
+  <update id="updateByPrimaryKey" parameterType="com.erp.production.ssm.bean.plan.Manufacture">
     update manufacture
     set order_id = #{orderId,jdbcType=VARCHAR},
       technology_id = #{technologyId,jdbcType=VARCHAR},
