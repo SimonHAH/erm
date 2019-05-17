@@ -17,7 +17,7 @@
     </context:component-scan>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="typeAliasesPackage" value="com.cskaoyan.ssm.bean"/>
+        <property name="typeAliasesPackage" value="com.erp.production.ssm.bean"/>
         <property name="dataSource" ref="datasource"/>
     </bean>
 
@@ -30,7 +30,7 @@
 
     <!--扫描包-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.cskaoyan.ssm.mapper"/>
+        <property name="basePackage" value="com.erp.production.ssm.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
