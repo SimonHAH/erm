@@ -2,11 +2,16 @@ package com.erp.production.ssm.mapper;
 
 import com.erp.production.ssm.bean.MaterialReceive;
 import com.erp.production.ssm.bean.MaterialReceiveExample;
+import com.erp.production.ssm.bean.material.MaterialReceiveVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface MaterialReceiveMapper {
+
+    //扩展的mapper接口方法
+    List<MaterialReceiveVO> find();
+
     long countByExample(MaterialReceiveExample example);
 
     int deleteByExample(MaterialReceiveExample example);

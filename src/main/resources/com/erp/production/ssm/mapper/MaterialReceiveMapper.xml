@@ -10,6 +10,25 @@
     <result column="receiver" jdbcType="VARCHAR" property="receiver" />
     <result column="note" jdbcType="VARCHAR" property="note" />
   </resultMap>
+
+  <!-- 扩展的sql -->
+  <!-- 查询所有记录 -->
+  <select id="find" parameterType="MaterialReceive" resultMap="BaseResultMap">
+    SELECT
+    receive_id,
+    amount,
+    receive_date,
+    sender,
+    receiver,
+    material_receive.note,
+    material.material_id
+    FROM
+    material_receive
+    LEFT JOIN material ON
+    material.material_id=material_receive.material_id
+    <!--  order by material_receive.receive_date -->
+  </select>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
