@@ -24,3 +24,7 @@ out/
 
 # Mac
 .DS_Store
+
+# SQL
+jdbc.properties
+pom.xml
