@@ -1,7 +1,9 @@
-package com.erp.production.ssm.service;
+package com.erp.production.ssm.service.technology;
 
 import com.erp.production.ssm.bean.customize.PageResult;
 import com.erp.production.ssm.bean.technology.Technology;
+
+import java.util.List;
 
 /**
  * @author Nemo
@@ -9,5 +11,7 @@ import com.erp.production.ssm.bean.technology.Technology;
  * @date 2019/5/17
  */
 public interface TechnologyService {
-    PageResult getList(Integer page, Integer rows, Technology technology);
+    PageResult getList(Integer page, Integer rows);
+
+    List<Technology> find();
 }
