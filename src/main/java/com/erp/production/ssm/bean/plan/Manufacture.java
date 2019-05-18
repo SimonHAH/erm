@@ -1,5 +1,7 @@
 package com.erp.production.ssm.bean.plan;
 
+import com.erp.production.ssm.bean.technology.Technology;
+
 import java.util.Date;
 
 public class Manufacture {
@@ -14,6 +16,26 @@ public class Manufacture {
     private Date beginDate;
 
     private Date endDate;
+
+    private Order cOrder;
+
+    private Technology technology;
+
+    public Order getcOrder() {
+        return cOrder;
+    }
+
+    public void setcOrder(Order cOrder) {
+        this.cOrder = cOrder;
+    }
+
+    public Technology getTechnology() {
+        return technology;
+    }
+
+    public void setTechnology(Technology technology) {
+        this.technology = technology;
+    }
 
     public String getManufactureSn() {
         return manufactureSn;

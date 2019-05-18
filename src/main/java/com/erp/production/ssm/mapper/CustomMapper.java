@@ -7,6 +7,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface CustomMapper {
+
+    //自己扩展的方法
+    List<Custom> find();
+
+    //逆向工程生产的方法
     long countByExample(CustomExample example);
 
     int deleteByExample(CustomExample example);

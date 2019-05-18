@@ -9,6 +9,12 @@
     <result column="note" jdbcType="VARCHAR" property="note" />
     <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
+
+  <select id="find" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from product
+  </select>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

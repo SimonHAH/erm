@@ -7,6 +7,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface ManufactureMapper {
+
+    //自己拓展的方法
+    List<Manufacture> find();
+
+    //逆向工程生产的方法
     long countByExample(ManufactureExample example);
 
     int deleteByExample(ManufactureExample example);

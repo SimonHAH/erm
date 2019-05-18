@@ -8,7 +8,65 @@
     <result column="launch_quantity" jdbcType="INTEGER" property="launchQuantity" />
     <result column="begin_date" jdbcType="TIMESTAMP" property="beginDate" />
     <result column="end_date" jdbcType="TIMESTAMP" property="endDate" />
+    <association property="cOrder" javaType="order">
+      <id column="order_id" jdbcType="VARCHAR" property="orderId" />
+      <result column="custom_id" jdbcType="VARCHAR" property="customId" />
+      <result column="product_id" jdbcType="VARCHAR" property="productId" />
+      <result column="order_date" jdbcType="TIMESTAMP" property="orderDate" />
+      <result column="request_date" jdbcType="TIMESTAMP" property="requestDate" />
+      <result column="note" jdbcType="VARCHAR" property="note" />
+      <result column="quantity" jdbcType="INTEGER" property="quantity" />
+      <result column="unit_price" jdbcType="DECIMAL" property="unitPrice" />
+      <result column="unit" jdbcType="VARCHAR" property="unit" />
+      <result column="image" jdbcType="VARCHAR" property="image" />
+      <result column="file" jdbcType="VARCHAR" property="file" />
+      <result column="status" jdbcType="INTEGER" property="status" />
+    </association>
+    <association property="technology" javaType="technology">
+      <id column="technology_id" jdbcType="VARCHAR" property="technologyId" />
+      <result column="technology_name" jdbcType="VARCHAR" property="technologyName" />
+      <result column="price" jdbcType="DECIMAL" property="price" />
+      <result column="vital_process_period" jdbcType="VARCHAR" property="vitalProcessPeriod" />
+      <result column="standard_capacity" jdbcType="INTEGER" property="standardCapacity" />
+      <result column="overtime_standard_capacity" jdbcType="INTEGER" property="overtimeStandardCapacity" />
+      <result column="overtime_overfulfil_capacity" jdbcType="INTEGER" property="overtimeOverfulfilCapacity" />
+      <result column="double_capacity" jdbcType="INTEGER" property="doubleCapacity" />
+      <result column="overfulfil_capacity" jdbcType="INTEGER" property="overfulfilCapacity" />
+    </association>
   </resultMap>
+
+  <select id="find" resultMap="BaseResultMap">
+    select
+    manufacture_sn,
+    launch_quantity,
+    begin_date,
+    end_date,
+    m.order_id,
+    custom_id,
+    product_id,
+    order_date,
+    request_date,
+    note,
+    quantity,
+    unit_price,
+    unit,
+    image,
+    file,
+    status,
+    m.technology_id,
+    technology_name,
+    price,
+    vital_process_period,
+    standard_capacity,
+    overtime_standard_capacity,
+    overtime_overfulfil_capacity,
+    double_capacity,
+    overfulfil_capacity
+    from manufacture m
+    LEFT JOIN c_order o on o.order_id = m.order_id
+    LEFT JOIN technology t on t.technology_id = m.technology_id
+  </select>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
