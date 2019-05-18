@@ -34,4 +34,10 @@ public class ManufactureServiceImpl implements ManufactureService {
 
         return result;
     }
+
+    @Override
+    public Manufacture get(String manufactureSn) {
+        Manufacture manufacture = manufactureMapper.selectByPrimaryKey(manufactureSn);
+        return manufacture;
+    }
 }

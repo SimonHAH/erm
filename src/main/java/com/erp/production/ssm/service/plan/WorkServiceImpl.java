@@ -1,37 +1,37 @@
 package com.erp.production.ssm.service.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
-import com.erp.production.ssm.bean.plan.Product;
-import com.erp.production.ssm.mapper.ProductMapper;
+import com.erp.production.ssm.bean.plan.Work;
+import com.erp.production.ssm.mapper.WorkMapper;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Service
-public class ProductServiceImpl implements ProductService {
 
+@Service
+public class WorkServiceImpl implements WorkService{
     @Autowired
-    ProductMapper productMapper;
+    WorkMapper workMapper;
 
     @Override
     public CommonResult getList(int page, int rows) {
         //分页处理
         PageHelper.startPage(page, rows);
-        List<Product> products = productMapper.find();
+        List<Work> works = workMapper.find();
         //创建一个返回值对象
-        CommonResult<Product> result = new CommonResult<>();
-        result.setRows(products);
+        CommonResult<Work> result = new CommonResult<>();
+        result.setRows(works);
         //取记录总条数
         //PageInfo<Task> pageInfo = new PageInfo<>(tasks);
-        result.setTotal(products.size());
+        result.setTotal(works.size());
 
         return result;
     }
 
     @Override
-    public Product get(String productId) {
-        Product product = productMapper.selectByPrimaryKey(productId);
-        return product;
+    public Work get(String workId) {
+        Work work = workMapper.selectByPrimaryKey(workId);
+        return work;
     }
 }

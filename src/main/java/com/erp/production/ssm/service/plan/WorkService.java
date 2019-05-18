@@ -1,11 +1,12 @@
 package com.erp.production.ssm.service.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
-import com.erp.production.ssm.bean.plan.Order;
+import com.erp.production.ssm.bean.plan.Work;
 
 
-public interface OrderService {
+public interface WorkService {
 
     CommonResult getList(int page, int rows);
-    Order get(String orderId);
+
+    Work get(String workId);
 }

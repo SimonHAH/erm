@@ -28,4 +28,10 @@ public class OrderServiceImpl implements OrderService {
 
         return result;
     }
+
+    @Override
+    public Order get(String orderId) {
+        Order order = orderMapper.selectByPrimaryKey(orderId);
+        return order;
+    }
 }

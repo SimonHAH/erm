@@ -7,4 +7,6 @@ public interface ManufactureService {
 
     Manufacture queryManufactureById(String id);
     CommonResult getList(int page, int rows);
+
+    Manufacture get(String manufactureSn);
 }
