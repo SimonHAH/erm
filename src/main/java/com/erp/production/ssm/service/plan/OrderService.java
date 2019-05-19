@@ -3,6 +3,8 @@ package com.erp.production.ssm.service.plan;
 import com.erp.production.ssm.bean.common.CommonResult;
 import com.erp.production.ssm.bean.plan.Order;
 
+import java.util.List;
+
 
 public interface OrderService {
 
@@ -15,4 +17,5 @@ public interface OrderService {
 
     CommonResult searchOrderByProductName(Integer page, Integer rows, String productName);
 
+    List<Order> find();
 }

@@ -2,6 +2,7 @@ package com.erp.production.ssm.service.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
 import com.erp.production.ssm.bean.plan.Product;
+import com.erp.production.ssm.bean.plan.ProductExample;
 import com.erp.production.ssm.mapper.ProductMapper;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,12 @@ public class ProductServiceImpl implements ProductService {
     public Product get(String productId) {
         Product product = productMapper.selectByPrimaryKey(productId);
         return product;
+    }
+
+    @Override
+    public List<Product> find() {
+        ProductExample productExample = new ProductExample();
+        return productMapper.selectByExample(productExample);
     }
 
     @Override
@@ -79,4 +86,6 @@ public class ProductServiceImpl implements ProductService {
 
         return result;
     }
+
+
 }

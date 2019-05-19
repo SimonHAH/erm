@@ -2,6 +2,7 @@ package com.erp.production.ssm.service.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
 import com.erp.production.ssm.bean.plan.Custom;
+import com.erp.production.ssm.bean.plan.CustomExample;
 import com.erp.production.ssm.mapper.CustomMapper;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,12 @@ import java.util.List;
 public class CustomServiceImpl implements CustomService {
     @Autowired
     CustomMapper customMapper;
+
+    @Override
+    public List<Custom> find() {
+        CustomExample customExample = new CustomExample();
+        return customMapper.selectByExample(customExample);
+    }
 
     @Override
     public CommonResult getList(int page, int rows) {
@@ -58,4 +65,6 @@ public class CustomServiceImpl implements CustomService {
 
         return result;
     }
+
+
 }

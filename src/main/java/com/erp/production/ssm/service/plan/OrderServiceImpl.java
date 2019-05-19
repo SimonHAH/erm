@@ -15,6 +15,11 @@ public class OrderServiceImpl implements OrderService {
     OrderMapper orderMapper;
 
     @Override
+    public List<Order> find() {
+        return orderMapper.find();
+    }
+
+    @Override
     public CommonResult getList(int page, int rows) {
         //分页处理
         PageHelper.startPage(page, rows);
@@ -79,4 +84,6 @@ public class OrderServiceImpl implements OrderService {
 
         return result;
     }
+
+
 }

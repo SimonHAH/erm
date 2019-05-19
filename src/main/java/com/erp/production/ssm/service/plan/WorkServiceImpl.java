@@ -2,6 +2,7 @@ package com.erp.production.ssm.service.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
 import com.erp.production.ssm.bean.plan.Work;
+import com.erp.production.ssm.bean.plan.WorkExample;
 import com.erp.production.ssm.mapper.WorkMapper;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,12 @@ public class WorkServiceImpl implements WorkService{
     public Work get(String workId) {
         Work work = workMapper.selectByPrimaryKey(workId);
         return work;
+    }
+
+    @Override
+    public List<Work> find() {
+        WorkExample workExample = new WorkExample();
+        return workMapper.selectByExample(workExample);
     }
 
 
@@ -95,4 +102,6 @@ public class WorkServiceImpl implements WorkService{
 
         return result;
     }
+
+
 }
