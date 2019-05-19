@@ -8,6 +8,11 @@ import java.util.List;
 
 public interface DeviceMapper {
 
+    List<Device> find(Device device);
+
+    List<Device> getData();
+
+
 
 
     // 逆向工程生成的mapper接口
@@ -32,4 +37,5 @@ public interface DeviceMapper {
     int updateByPrimaryKeySelective(Device record);
 
     int updateByPrimaryKey(Device record);
+
 }

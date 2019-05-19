@@ -28,4 +28,7 @@ public interface DeviceMaintainMapper {
     int updateByPrimaryKeySelective(DeviceMaintain record);
 
     int updateByPrimaryKey(DeviceMaintain record);
+
+    // 自定义接口
+    List<DeviceMaintain> find(DeviceMaintain deviceMaintain);
 }

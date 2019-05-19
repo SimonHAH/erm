@@ -1,6 +1,6 @@
 package com.erp.production.ssm.controller;
 
-import com.erp.production.ssm.bean.customize.PageResult;
+import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.bean.technology.Technology;
 import com.erp.production.ssm.service.TechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +28,9 @@ public class TechnologyController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public PageResult list(Integer page, Integer rows, Technology technology) {
+    public ResponseVo list(Integer page, Integer rows, Technology technology) {
 
-        PageResult result = technologyService.getList(page, rows, technology);
+        ResponseVo result = technologyService.getList(page, rows, technology);
 
         return result;
     }

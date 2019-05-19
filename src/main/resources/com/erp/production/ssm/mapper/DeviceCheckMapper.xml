@@ -9,6 +9,12 @@
     <result column="device_check_result" jdbcType="VARCHAR" property="deviceCheckResult" />
     <result column="device_check_fault_id" jdbcType="VARCHAR" property="deviceCheckFaultId" />
   </resultMap>
+
+  <resultMap id="AddResultMap" type="com.erp.production.ssm.bean.VO.DeviceCheckVO" extends="BaseResultMap">
+    <result column="device_name" property="deviceName" jdbcType="VARCHAR"/>
+    <result column="device_check_emp" property="deviceCheckEmp" jdbcType="VARCHAR"/>
+  </resultMap>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -226,4 +232,27 @@
       device_check_fault_id = #{deviceCheckFaultId,jdbcType=VARCHAR}
     where device_check_id = #{deviceCheckId,jdbcType=VARCHAR}
   </update>
+
+  <!--#############################################分隔线############################################-->
+<select id="find" resultMap="AddResultMap">
+  select
+    device_check_id,
+    device_check.device_id,
+    device.device_name,
+    emp_id as device_check_emp_id,
+    emp_name as device_check_emp,
+    device_check_date,
+    device_check_result,
+    device_check_fault_id
+  from
+    device_check,
+    device,
+    employee
+  where
+    device_check.device_id = device.device_id
+  and device_check_emp_id = employee.emp_id
+
+  order by device_check_id asc
+
+</select>
 </mapper>

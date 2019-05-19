@@ -1,6 +1,6 @@
 package com.erp.production.ssm.service.impl;
 
-import com.erp.production.ssm.bean.customize.PageResult;
+import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.bean.technology.Technology;
 import com.erp.production.ssm.service.TechnologyService;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TechnologyServiceImpl implements TechnologyService {
     @Override
-    public PageResult getList(Integer page, Integer rows, Technology technology) {
+    public ResponseVo getList(Integer page, Integer rows, Technology technology) {
         return null;
     }
 }

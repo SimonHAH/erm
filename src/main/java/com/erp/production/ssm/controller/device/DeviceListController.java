@@ -1,14 +1,15 @@
 package com.erp.production.ssm.controller.device;
 
 import com.erp.production.ssm.bean.Device;
-import com.erp.production.ssm.bean.customize.CustomResult;
-import com.erp.production.ssm.bean.customize.PageResult;
+import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.service.DeviceService;
-import com.github.pagehelper.PageHelper;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * Created by HorseXInsect
@@ -21,17 +22,35 @@ public class DeviceListController{
     @Autowired
     DeviceService deviceService;
 
+
     @RequestMapping("/list")
     @ResponseBody
-    public PageResult getList(int page, int rows, Device device) {
-        PageResult result = deviceService.getList(page, rows, device);
-        return result;
+    public ResponseVo getList(int page, int rows, Device device) {
+        ResponseVo responseVo = deviceService.getList(page, rows, device);
+
+        return responseVo;
+
     }
 
-    @RequestMapping("/add")
+    @RequestMapping("/get_data")
+    @ResponseBody
+    public List<Device> getData() {
+        return deviceService.find();
+    }
+
+    // 迷之add_judge
+    @RequestMapping("/add_judge")
     public String add() {
         return "deviceList_add";
     }
+
+    // 玄幻add
+    @RequestMapping("/add")
+    public String add1() {
+        return "deviceList_add";
+    }
+
+
 
 
 }

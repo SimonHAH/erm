@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface DeviceTypeMapper {
+    // 逆向接口
     long countByExample(DeviceTypeExample example);
 
     int deleteByExample(DeviceTypeExample example);
@@ -28,4 +29,10 @@ public interface DeviceTypeMapper {
     int updateByPrimaryKeySelective(DeviceType record);
 
     int updateByPrimaryKey(DeviceType record);
+
+
+    // 自定义的接口
+    List<DeviceType> find(DeviceType deviceType);
+
+    List<DeviceType> listType();
 }

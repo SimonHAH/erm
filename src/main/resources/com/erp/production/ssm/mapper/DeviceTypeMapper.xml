@@ -11,6 +11,11 @@
     <result column="device_type_quantity" jdbcType="INTEGER" property="deviceTypeQuantity" />
     <result column="device_type_warranty" jdbcType="TIMESTAMP" property="deviceTypeWarranty" />
   </resultMap>
+
+  <resultMap id="AddResultMap" type="com.erp.production.ssm.bean.VO.DeviceTypeVO" extends="BaseResultMap">
+    <result column="device_type_idd" property="deviceTypeIdd" jdbcType="VARCHAR" />
+  </resultMap>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -258,4 +263,31 @@
       device_type_warranty = #{deviceTypeWarranty,jdbcType=TIMESTAMP}
     where device_type_id = #{deviceTypeId,jdbcType=VARCHAR}
   </update>
+
+  <!--#############################################分隔线############################################-->
+
+  <select id="find" resultMap="AddResultMap">
+    select device_type_id,
+      device_type_id as device_type_idd,
+      device_type_model,
+      device_type_name,
+      device_type_producer,
+      device_type_quantity,
+      device_type_spec,
+      device_type_supplier,
+      device_type_warranty
+    from
+      device_type
+    order by device_type_id asc
+  </select>
+
+  <select id="listType" resultMap="BaseResultMap">
+		SELECT
+			device_type_id,
+			device_type_name
+		FROM
+			device_type
+
+		order by device_type_id ASC
+	</select>
 </mapper>

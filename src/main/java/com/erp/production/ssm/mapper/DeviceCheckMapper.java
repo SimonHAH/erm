@@ -28,4 +28,8 @@ public interface DeviceCheckMapper {
     int updateByPrimaryKeySelective(DeviceCheck record);
 
     int updateByPrimaryKey(DeviceCheck record);
+
+
+    // 自定义接口
+    List<DeviceCheck> find(DeviceCheck deviceCheck);
 }

@@ -6,7 +6,7 @@ import java.util.List;
  * Created by HorseXInsect
  * 2019/5/17 20:01
  */
-public class PageResult {
+public class ResponseVo {
     private long total;
     private List<?> rows;
 
@@ -24,5 +24,13 @@ public class PageResult {
 
     public void setRows(List<?> rows) {
         this.rows = rows;
+    }
+
+    @Override
+    public String toString() {
+        return "ResponseVo{" +
+                "total=" + total +
+                ", rows=" + rows +
+                '}';
     }
 }

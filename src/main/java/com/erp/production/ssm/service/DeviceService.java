@@ -1,8 +1,11 @@
 package com.erp.production.ssm.service;
 
 import com.erp.production.ssm.bean.Device;
+import com.erp.production.ssm.bean.DeviceType;
 import com.erp.production.ssm.bean.customize.CustomResult;
-import com.erp.production.ssm.bean.customize.PageResult;
+import com.erp.production.ssm.bean.customize.ResponseVo;
+
+import java.util.List;
 
 /**
  * Created by HorseXInsect
@@ -10,7 +13,9 @@ import com.erp.production.ssm.bean.customize.PageResult;
  */
 public interface DeviceService {
 
-    PageResult getList(int page, int rows, Device device);
+    ResponseVo getList(int page, int rows, Device device);
+
+    List<Device> find();
 
     CustomResult insert(Device device);
     CustomResult deleteBatch(String[] device);
