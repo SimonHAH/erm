@@ -35,4 +35,20 @@ public class CustomController {
         return result;
     }
 
+    //根据客户id查找
+    @RequestMapping("/search_custom_by_customId")
+    @ResponseBody
+    public CommonResult searchCustomByCustomId(Integer page, Integer rows, String searchValue) {
+        CommonResult result = customService.searchCustomByCustomId(page, rows, searchValue);
+        return result;
+    }
+
+    //根据客户名查找
+    @RequestMapping("/search_custom_by_customName")
+    @ResponseBody
+    public CommonResult searchCustomByCustomName(Integer page, Integer rows, String searchValue) {
+        CommonResult result = customService.searchCustomByCustomName(page, rows, searchValue);
+        return result;
+    }
+
 }

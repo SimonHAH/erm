@@ -40,4 +40,50 @@ public class ManufactureServiceImpl implements ManufactureService {
         Manufacture manufacture = manufactureMapper.selectByPrimaryKey(manufactureSn);
         return manufacture;
     }
+
+
+    @Override
+    public CommonResult searchManufactureByManufactureSn(Integer page, Integer rows, String ManufactureSn) {
+        //分页处理
+        PageHelper.startPage(page, rows);
+        List<Manufacture> manufactures = manufactureMapper.searchManufactureByManufactureSn(ManufactureSn);
+        //创建一个返回值对象
+        CommonResult<Manufacture> result = new CommonResult<>();
+        result.setRows(manufactures);
+        //取记录总条数
+        //PageInfo<Task> pageInfo = new PageInfo<>(tasks);
+        result.setTotal(manufactures.size());
+
+        return result;
+    }
+
+    @Override
+    public CommonResult searchManufactureByManufactureOrderId(Integer page, Integer rows, String orderId) {
+        //分页处理
+        PageHelper.startPage(page, rows);
+        List<Manufacture> manufactures = manufactureMapper.searchManufactureByManufactureOrderId(orderId);
+        //创建一个返回值对象
+        CommonResult<Manufacture> result = new CommonResult<>();
+        result.setRows(manufactures);
+        //取记录总条数
+        //PageInfo<Task> pageInfo = new PageInfo<>(tasks);
+        result.setTotal(manufactures.size());
+
+        return result;
+    }
+
+    @Override
+    public CommonResult searchManufactureByManufactureTechnologyName(Integer page, Integer rows, String technologyName) {
+        //分页处理
+        PageHelper.startPage(page, rows);
+        List<Manufacture> manufactures = manufactureMapper.searchManufactureByManufactureTechnologyName(technologyName);
+        //创建一个返回值对象
+        CommonResult<Manufacture> result = new CommonResult<>();
+        result.setRows(manufactures);
+        //取记录总条数
+        //PageInfo<Task> pageInfo = new PageInfo<>(tasks);
+        result.setTotal(manufactures.size());
+
+        return result;
+    }
 }

@@ -20,6 +20,24 @@
     from custom
   </select>
 
+  <select id="searchCustomByCustomId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from custom
+    where custom_id
+    like CONCAT('%',#{customId},'%' )
+  </select>
+
+  <select id="searchCustomByCustomName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from custom
+    where custom_name
+    like CONCAT('%',#{customName},'%' )
+  </select>
+
+
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

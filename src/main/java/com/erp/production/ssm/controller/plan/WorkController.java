@@ -44,4 +44,36 @@ public class WorkController {
         return work;
     }
 
+    //根据作业id查找
+    @RequestMapping("/search_work_by_workId")
+    @ResponseBody
+    public CommonResult searchWorkByWorkId(Integer page, Integer rows, String searchValue) {
+        CommonResult result = workService.searchWorkByWorkId(page, rows, searchValue);
+        return result;
+    }
+
+    //根据产品名称查找
+    @RequestMapping("/search_work_by_workProduct")
+    @ResponseBody
+    public CommonResult searchWorkByWorkProduct(Integer page, Integer rows, String searchValue) {
+        CommonResult result = workService.searchWorkByWorkProductName(page, rows, searchValue);
+        return result;
+    }
+
+    //根据设备id查找
+    @RequestMapping("/search_work_by_workDevice")
+    @ResponseBody
+    public CommonResult searchWorkByWorkDevice(Integer page, Integer rows, String searchValue){
+        CommonResult result = workService.searchWorkByWorkDeviceId(page, rows, searchValue);
+        return result;
+    }
+
+    //根据工序id查找
+    @RequestMapping("/search_work_by_workProcess")
+    @ResponseBody
+    public CommonResult searchWorkByWorkProcess(Integer page, Integer rows, String searchValue) {
+        CommonResult result = workService.searchWorkByWorkProcessId(page, rows, searchValue);
+        return result;
+    }
+
 }

@@ -36,4 +36,49 @@ public class TaskServiceImpl implements TaskService {
 
         return result;
     }
+
+    @Override
+    public CommonResult searchTaskByTaskId(Integer page, Integer rows, String taskId) {
+        //分页处理
+        PageHelper.startPage(page, rows);
+        List<Task> tasks = taskMapper.searchTaskByTaskId(taskId);
+        //创建一个返回值对象
+        CommonResult<Task> result = new CommonResult<>();
+        result.setRows(tasks);
+        //取记录总条数
+        //PageInfo<Task> pageInfo = new PageInfo<>(tasks);
+        result.setTotal(tasks.size());
+
+        return result;
+    }
+
+    @Override
+    public CommonResult searchTaskByTaskWorkId(Integer page, Integer rows, String workId) {
+        //分页处理
+        PageHelper.startPage(page, rows);
+        List<Task> tasks = taskMapper.searchTaskByTaskWorkId(workId);
+        //创建一个返回值对象
+        CommonResult<Task> result = new CommonResult<>();
+        result.setRows(tasks);
+        //取记录总条数
+        //PageInfo<Task> pageInfo = new PageInfo<>(tasks);
+        result.setTotal(tasks.size());
+
+        return result;
+    }
+
+    @Override
+    public CommonResult searchTaskByTaskManufactureSn(Integer page, Integer rows, String manufactureSn) {
+        //分页处理
+        PageHelper.startPage(page, rows);
+        List<Task> tasks = taskMapper.searchTaskByTaskManufactureSn(manufactureSn);
+        //创建一个返回值对象
+        CommonResult<Task> result = new CommonResult<>();
+        result.setRows(tasks);
+        //取记录总条数
+        //PageInfo<Task> pageInfo = new PageInfo<>(tasks);
+        result.setTotal(tasks.size());
+
+        return result;
+    }
 }

@@ -15,6 +15,31 @@
     <include refid="Base_Column_List"/>
     from product
   </select>
+
+  <select id="searchProductByProductId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from product
+    where product_id
+    LIKE CONCAT('%',#{productId},'%' )
+  </select>
+
+  <select id="searchProductByProductName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from product
+    where product_name
+    LIKE CONCAT('%',#{productName},'%' )
+  </select>
+
+  <select id="searchProductByProductType" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from product
+    where product_type
+    LIKE CONCAT('%',#{productType},'%' )
+  </select>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

@@ -11,6 +11,12 @@ public interface ManufactureMapper {
     //自己拓展的方法
     List<Manufacture> find();
 
+    List<Manufacture> searchManufactureByManufactureSn(@Param("manufactureSn") String manufactureSn);
+
+    List<Manufacture> searchManufactureByManufactureOrderId(@Param("orderId") String orderId);
+
+    List<Manufacture> searchManufactureByManufactureTechnologyName(@Param("technologyName") String technologyName);
+
     //逆向工程生产的方法
     long countByExample(ManufactureExample example);
 
@@ -33,4 +39,6 @@ public interface ManufactureMapper {
     int updateByPrimaryKeySelective(Manufacture record);
 
     int updateByPrimaryKey(Manufacture record);
+
+
 }

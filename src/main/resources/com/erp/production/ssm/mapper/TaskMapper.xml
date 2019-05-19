@@ -13,6 +13,24 @@
     select task_id,manufacture_sn,work_id,task_quantity,working_hours from task
   </select>
 
+  <select id="searchTaskByTaskId" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from task where task_id
+    LIKE CONCAT('%',#{taskId},'%' )
+  </select>
+
+  <select id="searchTaskByTaskWorkId" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from task where work_id
+    LIKE CONCAT('%',#{workId},'%' )
+  </select>
+
+  <select id="searchTaskByTaskManufactureSn" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from task where manufacture_sn
+    LIKE CONCAT('%',#{manufactureSn},'%' )
+  </select>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

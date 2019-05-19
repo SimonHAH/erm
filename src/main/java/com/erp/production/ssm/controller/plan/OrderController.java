@@ -44,4 +44,28 @@ public class OrderController {
         return order;
     }
 
+    //根据订单id查找
+    @RequestMapping("/search_order_by_orderId")
+    @ResponseBody
+    public CommonResult searchOrderByOrderId(Integer page, Integer rows, String searchValue){
+        CommonResult result = orderService.searchOrderByOrderId(page, rows, searchValue);
+        return result;
+    }
+
+    //根据客户名称查找
+    @RequestMapping("/search_order_by_orderCustom")
+    @ResponseBody
+    public CommonResult searchOrderByOrderCustom(Integer page, Integer rows, String searchValue){
+        CommonResult result = orderService.searchOrderByCustomName(page, rows, searchValue);
+        return result;
+    }
+
+    //根据产品名称查找
+    @RequestMapping("/search_order_by_orderProduct")
+    @ResponseBody
+    public CommonResult searchOrderByProductName(Integer page, Integer rows, String searchValue){
+        CommonResult result = orderService.searchOrderByProductName(page, rows, searchValue);
+        return result;
+    }
+
 }

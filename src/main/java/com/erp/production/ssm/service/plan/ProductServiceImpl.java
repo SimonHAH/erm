@@ -34,4 +34,49 @@ public class ProductServiceImpl implements ProductService {
         Product product = productMapper.selectByPrimaryKey(productId);
         return product;
     }
+
+    @Override
+    public CommonResult searchProductByProductId(Integer page, Integer rows, String productId) {
+        //分页处理
+        PageHelper.startPage(page, rows);
+        List<Product> products = productMapper.searchProductByProductId(productId);
+        //创建一个返回值对象
+        CommonResult<Product> result = new CommonResult<>();
+        result.setRows(products);
+        //取记录总条数
+        //PageInfo<Task> pageInfo = new PageInfo<>(tasks);
+        result.setTotal(products.size());
+
+        return result;
+    }
+
+    @Override
+    public CommonResult searchProductByProductName(Integer page, Integer rows, String productName) {
+        //分页处理
+        PageHelper.startPage(page, rows);
+        List<Product> products = productMapper.searchProductByProductName(productName);
+        //创建一个返回值对象
+        CommonResult<Product> result = new CommonResult<>();
+        result.setRows(products);
+        //取记录总条数
+        //PageInfo<Task> pageInfo = new PageInfo<>(tasks);
+        result.setTotal(products.size());
+
+        return result;
+    }
+
+    @Override
+    public CommonResult searchProductByProductType(Integer page, Integer rows, String productType) {
+        //分页处理
+        PageHelper.startPage(page, rows);
+        List<Product> products = productMapper.searchProductByProductType(productType);
+        //创建一个返回值对象
+        CommonResult<Product> result = new CommonResult<>();
+        result.setRows(products);
+        //取记录总条数
+        //PageInfo<Task> pageInfo = new PageInfo<>(tasks);
+        result.setTotal(products.size());
+
+        return result;
+    }
 }

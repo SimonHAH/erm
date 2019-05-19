@@ -10,6 +10,12 @@ public interface TaskMapper {
     //自己拓展的方法
     List<Task> find();
 
+    List<Task> searchTaskByTaskId(@Param("taskId") String taskId);
+
+    List<Task> searchTaskByTaskWorkId(@Param("workId") String workId);
+
+    List<Task> searchTaskByTaskManufactureSn(@Param("manufactureSn") String manufactureSn);
+
     //逆向工程生产的方法
     long countByExample(TaskExample example);
 
@@ -32,4 +38,6 @@ public interface TaskMapper {
     int updateByPrimaryKeySelective(Task record);
 
     int updateByPrimaryKey(Task record);
+
+
 }

@@ -11,6 +11,12 @@ public interface ProductMapper {
     //自己扩展的方法
     List<Product> find();
 
+    List<Product> searchProductByProductId(@Param("productId") String productId);
+
+    List<Product> searchProductByProductName(@Param("productName") String productName);
+
+    List<Product> searchProductByProductType(@Param("productType") String productType);
+
     //逆向工程的方法
     long countByExample(ProductExample example);
 
@@ -33,4 +39,6 @@ public interface ProductMapper {
     int updateByPrimaryKeySelective(Product record);
 
     int updateByPrimaryKey(Product record);
+
+
 }

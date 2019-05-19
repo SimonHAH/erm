@@ -45,4 +45,29 @@ public class ManufactureController {
         return manufacture;
     }
 
+
+    //根据生产批号查找
+    @RequestMapping("/search_manufacture_by_manufactureSn")
+    @ResponseBody
+    public CommonResult searchManufactureByManufactureSn(Integer page, Integer rows, String searchValue) {
+        CommonResult result = manufactureService.searchManufactureByManufactureSn(page, rows, searchValue);
+        return result;
+    }
+
+    //根据订单id查找
+    @RequestMapping("/search_manufacture_by_manufactureOrderId")
+    @ResponseBody
+    public CommonResult searchManufactureByManufactureOrderId(Integer page, Integer rows, String searchValue) {
+        CommonResult result = manufactureService.searchManufactureByManufactureOrderId(page, rows, searchValue);
+        return result;
+    }
+
+    //根据工艺名称查找
+    @RequestMapping("/search_manufacture_by_manufactureTechnologyName")
+    @ResponseBody
+    public CommonResult searchManufactureByManufactureTechnologyName(Integer page, Integer rows, String searchValue) {
+        CommonResult result = manufactureService.searchManufactureByManufactureTechnologyName(page, rows, searchValue);
+        return result;
+    }
+
 }

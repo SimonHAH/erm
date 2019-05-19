@@ -67,6 +67,54 @@
     LEFT JOIN technology t on t.technology_id = m.technology_id
   </select>
 
+  <select id="searchManufactureByManufactureSn" resultMap="BaseResultMap">
+    select
+    manufacture_sn,
+    launch_quantity,
+    begin_date,
+    end_date,
+    m.order_id,
+    m.technology_id,
+    technology_name
+    from manufacture m
+    LEFT JOIN c_order o on o.order_id = m.order_id
+    LEFT JOIN technology t on t.technology_id = m.technology_id
+    where m.manufacture_sn
+    LIKE CONCAT('%',#{manufactureSn},'%' )
+  </select>
+
+  <select id="searchManufactureByManufactureOrderId" resultMap="BaseResultMap">
+    select
+    manufacture_sn,
+    launch_quantity,
+    begin_date,
+    end_date,
+    m.order_id,
+    m.technology_id,
+    technology_name
+    from manufacture m
+    LEFT JOIN c_order o on o.order_id = m.order_id
+    LEFT JOIN technology t on t.technology_id = m.technology_id
+    where m.order_id
+    LIKE CONCAT('%',#{orderId},'%' )
+  </select>
+
+  <select id="searchManufactureByManufactureTechnologyName" resultMap="BaseResultMap">
+    select
+    manufacture_sn,
+    launch_quantity,
+    begin_date,
+    end_date,
+    m.order_id,
+    m.technology_id,
+    technology_name
+    from manufacture m
+    LEFT JOIN c_order o on o.order_id = m.order_id
+    LEFT JOIN technology t on t.technology_id = m.technology_id
+    where technology_name
+    LIKE CONCAT('%',#{technologyName},'%' )
+  </select>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

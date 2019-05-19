@@ -11,6 +11,10 @@ public interface CustomMapper {
     //自己扩展的方法
     List<Custom> find();
 
+    List<Custom> searchCustomByCustomId(@Param("customId") String customId);
+
+    List<Custom> searchCustomByCustomName(@Param("customName") String customName);
+
     //逆向工程生产的方法
     long countByExample(CustomExample example);
 
@@ -33,4 +37,6 @@ public interface CustomMapper {
     int updateByPrimaryKeySelective(Custom record);
 
     int updateByPrimaryKey(Custom record);
+
+
 }

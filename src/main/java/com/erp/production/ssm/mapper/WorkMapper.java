@@ -11,6 +11,14 @@ public interface WorkMapper {
     //自己扩展的方法
     List<Work> find();
 
+    List<Work> searchWorkByWorkId(@Param("workId") String workId);
+
+    List<Work> searchWorkByWorkProductName(@Param("productName") String productName);
+
+    List<Work> searchWorkByWorkDeviceId(@Param("deviceId") String deviceId);
+
+    List<Work> searchWorkByWorkProcessId(@Param("processId") String processId);
+
     //逆向工程生产的方法
     long countByExample(WorkExample example);
 
@@ -33,4 +41,6 @@ public interface WorkMapper {
     int updateByPrimaryKeySelective(Work record);
 
     int updateByPrimaryKey(Work record);
+
+
 }

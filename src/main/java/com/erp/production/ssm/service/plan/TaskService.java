@@ -11,4 +11,10 @@ public interface TaskService {
     Task queryTaskById(String id);
 
     CommonResult getList(int page, int rows);
+
+    CommonResult searchTaskByTaskId(Integer page, Integer rows, String taskId);
+
+    CommonResult searchTaskByTaskWorkId(Integer page, Integer rows, String workId);
+
+    CommonResult searchTaskByTaskManufactureSn(Integer page, Integer rows, String manufactureSn);
 }

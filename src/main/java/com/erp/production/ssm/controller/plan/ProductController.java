@@ -43,4 +43,29 @@ public class ProductController {
         Product product = productService.get(productId);
         return product;
     }
+
+
+    //根据产品id查找
+    @RequestMapping("/search_product_by_productId")
+    @ResponseBody
+    public CommonResult searchProductByProductId(Integer page, Integer rows, String searchValue) {
+        CommonResult result = productService.searchProductByProductId(page, rows, searchValue);
+        return result;
+    }
+
+    //根据产品名称查找
+    @RequestMapping("/search_product_by_productName")
+    @ResponseBody
+    public CommonResult searchProductByProductName(Integer page, Integer rows, String searchValue) {
+        CommonResult result = productService.searchProductByProductName(page, rows, searchValue);
+        return result;
+    }
+
+    //根据产品类型查找
+    @RequestMapping("/search_product_by_productType")
+    @ResponseBody
+    public CommonResult searchProductByProductType(Integer page, Integer rows, String searchValue) {
+        CommonResult result = productService.searchProductByProductType(page, rows, searchValue);
+        return result;
+    }
 }
