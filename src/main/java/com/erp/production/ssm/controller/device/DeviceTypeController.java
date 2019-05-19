@@ -28,11 +28,27 @@ public class DeviceTypeController {
         return responseVo;
     }
 
-    /*@RequestMapping("/get_data")
+    @RequestMapping("/get_data")
     @ResponseBody
     public List<DeviceType> getData() {
         List<DeviceType> list = deviceTypeService.find();
         return list;
-    }*/
+    }
+
+    //根据设备种类编号查找
+    @RequestMapping("/search_deviceType_by_deviceTypeId")
+    @ResponseBody
+    public ResponseVo searchDeviceByDeviceId(int page, int rows, String searchValue) {
+        ResponseVo responseVo = deviceTypeService.searchDeviceTypeByDeviceTypeId(page, rows, searchValue);
+        return responseVo;
+    }
+
+    // 根据设备种类名称
+    @RequestMapping("search_deviceType_by_deviceTypeName")
+    @ResponseBody
+    public ResponseVo searchDeviceByDeviceTypeName(int page, int rows, String searchValue) {
+        ResponseVo responseVo = deviceTypeService.searchDeviceByDeviceTypeName(page, rows, searchValue);
+        return responseVo;
+    }
 
 }

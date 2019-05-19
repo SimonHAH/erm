@@ -17,11 +17,21 @@ public interface DeviceService {
 
     List<Device> find();
 
+    // 根据id查找
+    ResponseVo searchDeviceByDeviceId(int page, int rows, String deviceId);
+
+    // 根据名称查找
+    ResponseVo searchDeviceByDeviceName(int page, int rows, String deviceName);
+
+    // 根据设备各类查找
+    ResponseVo searchDeviceByDeviceTypeName(int page, int rows, String deviceTypeName);
+
+
+
     CustomResult insert(Device device);
     CustomResult deleteBatch(String[] device);
     CustomResult update(Device device);
     CustomResult updateNote(Device device);
-
 
 
 }

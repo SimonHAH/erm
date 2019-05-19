@@ -348,4 +348,82 @@
 
 		order by device_id ASC
 	</select>
+
+  <select id="searchDeviceByDeviceId" resultMap="AddResultMap">
+		SELECT
+			device_id,
+			device_name,
+			device.device_type_id,
+			device_type_name,
+			device_status_id,
+			device_purchase_date,
+			device_purchase_price,
+			device_manufacture_date,
+			device_service_life,
+			device_keeper_id,
+			emp_name as device_keeper,
+			note
+		FROM
+			device,
+			device_type,
+			employee
+		WHERE
+			device.device_type_id = device_type.device_type_id
+		AND device.device_keeper_id = employee.emp_id
+		AND	device_id LIKE CONCAT(
+				'%',
+				#{deviceId},'%' )
+	</select>
+
+  <select id="searchDeviceByDeviceName" resultMap="AddResultMap">
+      select
+          device_id,
+			device_name,
+			device.device_type_id,
+			device_type_name,
+			device_status_id,
+			device_purchase_date,
+			device_purchase_price,
+			device_manufacture_date,
+			device_service_life,
+			device_keeper_id,
+			emp_name as device_keeper,
+			note
+		FROM
+			device,
+			device_type,
+			employee
+		WHERE
+			device.device_type_id = device_type.device_type_id
+		AND device.device_keeper_id = employee.emp_id
+		AND	device_name LIKE CONCAT(
+				'%',
+				#{deviceName},'%' )
+  </select>
+
+  <select id="searchDeviceByDeviceTypeName" resultMap="AddResultMap">
+      select
+          device_id,
+			device_name,
+			device.device_type_id,
+			device_type_name,
+			device_status_id,
+			device_purchase_date,
+			device_purchase_price,
+			device_manufacture_date,
+			device_service_life,
+			device_keeper_id,
+			emp_name as device_keeper,
+			note
+		FROM
+			device,
+			device_type,
+			employee
+		WHERE
+			device.device_type_id = device_type.device_type_id
+		AND device.device_keeper_id = employee.emp_id
+		AND	device_type_name LIKE CONCAT(
+				'%',
+				#{deviceTypeName},'%' )
+  </select>
 </mapper>
