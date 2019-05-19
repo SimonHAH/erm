@@ -1,6 +1,7 @@
 package com.erp.production.ssm.service.impl;
 
 import com.erp.production.ssm.bean.Device;
+import com.erp.production.ssm.bean.DeviceType;
 import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.mapper.DeviceMapper;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by HorseXInsect
@@ -42,6 +44,49 @@ public class DeviceServiceImpl implements DeviceService {
         List<Device> deviceList = deviceMapper.getData();
         return deviceList;
     }
+
+    @Override
+    public ResponseVo searchDeviceByDeviceId(int page, int rows, String deviceId) {
+        //分页处理
+        PageHelper.startPage(page, rows);
+        List<Device> list = deviceMapper.searchDeviceByDeviceId(deviceId);
+        //创建一个返回值对象
+        ResponseVo responseVo = new ResponseVo();
+        responseVo.setRows(list);
+        //取记录总条数
+        PageInfo<Device> pageInfo = new PageInfo<>(list);
+        responseVo.setTotal(pageInfo.getTotal());
+        return responseVo;
+    }
+
+    @Override
+    public ResponseVo searchDeviceByDeviceName(int page, int rows, String deviceName) {
+        //分页处理
+        PageHelper.startPage(page, rows);
+        List<Device> list = deviceMapper.searchDeviceByDeviceName(deviceName);
+        //创建一个返回值对象
+        ResponseVo responseVo = new ResponseVo();
+        responseVo.setRows(list);
+        //取记录总条数
+        PageInfo<Device> pageInfo = new PageInfo<>(list);
+        responseVo.setTotal(pageInfo.getTotal());
+        return responseVo;
+    }
+
+    @Override
+    public ResponseVo searchDeviceByDeviceTypeName(int page, int rows, String deviceTypeName) {
+        // 分页
+        PageHelper.startPage(page, rows);
+        List<Device> list = deviceMapper.searchDeviceByDeviceTypeName(deviceTypeName);
+        // 创建对象
+        ResponseVo responseVo = new ResponseVo();
+        responseVo.setRows(list);
+        // 取记录总条数
+        PageInfo<Device> pageInfo = new PageInfo<>(list);
+        responseVo.setTotal(pageInfo.getTotal());
+        return responseVo;
+    }
+
 
     @Override
     public CustomResult insert(Device device) {

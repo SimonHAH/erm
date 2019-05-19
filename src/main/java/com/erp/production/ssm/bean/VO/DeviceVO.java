@@ -13,6 +13,15 @@ public class DeviceVO extends Device {
 
     private String deviceKeeper;
 
+    @Override
+    public String toString() {
+        return "DeviceVO{" +
+                "deviceIdd='" + deviceIdd + '\'' +
+                ", deviceTypeName='" + deviceTypeName + '\'' +
+                ", deviceKeeper='" + deviceKeeper + '\'' +
+                '}';
+    }
+
     public String getDeviceIdd() {
         return deviceIdd;
     }

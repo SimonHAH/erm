@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/order")
 public class OrderController {
@@ -42,6 +44,12 @@ public class OrderController {
     public Order getItemById(@PathVariable String orderId){
         Order order = orderService.get(orderId);
         return order;
+    }
+
+    @RequestMapping("/get_data")
+    @ResponseBody
+    public List<Order> getData() {
+        return orderService.find();
     }
 
     //根据订单id查找

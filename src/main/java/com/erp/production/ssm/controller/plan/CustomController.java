@@ -1,11 +1,14 @@
 package com.erp.production.ssm.controller.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
+import com.erp.production.ssm.bean.plan.Custom;
 import com.erp.production.ssm.service.plan.CustomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/custom")
@@ -33,6 +36,12 @@ public class CustomController {
     private CommonResult showList(Integer page,Integer rows){
         CommonResult result = customService.getList(page, rows);
         return result;
+    }
+
+    @RequestMapping("/get_data")
+    @ResponseBody
+    public List<Custom> getData() {
+        return customService.find();
     }
 
     //根据客户id查找

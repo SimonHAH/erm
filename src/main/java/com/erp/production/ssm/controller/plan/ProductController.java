@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/product")
 public class ProductController {
@@ -42,6 +44,12 @@ public class ProductController {
     public Product getItemById(@PathVariable String productId){
         Product product = productService.get(productId);
         return product;
+    }
+
+    @RequestMapping("/get_data")
+    @ResponseBody
+    public List<Product> getData() {
+        return productService.find();
     }
 
 

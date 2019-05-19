@@ -3,6 +3,8 @@ package com.erp.production.ssm.service.plan;
 import com.erp.production.ssm.bean.common.CommonResult;
 import com.erp.production.ssm.bean.plan.Work;
 
+import java.util.List;
+
 
 public interface WorkService {
 
@@ -18,4 +20,7 @@ public interface WorkService {
     CommonResult searchWorkByWorkDeviceId(Integer page, Integer rows, String deviceId);
 
     CommonResult searchWorkByWorkProcessId(Integer page, Integer rows, String processId);
+
+    List<Work> find();
+
 }

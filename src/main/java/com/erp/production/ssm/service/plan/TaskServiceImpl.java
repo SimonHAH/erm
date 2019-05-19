@@ -1,7 +1,9 @@
 package com.erp.production.ssm.service.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.plan.Task;
+import com.erp.production.ssm.bean.plan.TaskExample;
 import com.erp.production.ssm.mapper.TaskMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -35,6 +37,12 @@ public class TaskServiceImpl implements TaskService {
         result.setTotal(tasks.size());
 
         return result;
+    }
+
+    @Override
+    public List<Task> find() {
+        TaskExample taskExample = new TaskExample();
+        return taskMapper.selectByExample(taskExample);
     }
 
     @Override
@@ -81,4 +89,16 @@ public class TaskServiceImpl implements TaskService {
 
         return result;
     }
+
+    @Override
+    public CustomResult insert(Task task) {
+        int i = taskMapper.insert(task);
+        if(i>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "新增生产派工信息失败");
+        }
+    }
+
+
 }

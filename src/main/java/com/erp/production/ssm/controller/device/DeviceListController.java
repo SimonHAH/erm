@@ -50,7 +50,29 @@ public class DeviceListController{
         return "deviceList_add";
     }
 
+    //根据设备种类编号查找
+    @RequestMapping("/search_device_by_deviceId")
+    @ResponseBody
+    public ResponseVo searchDeviceByDeviceId(int page, int rows, String searchValue) {
+        ResponseVo responseVo = deviceService.searchDeviceByDeviceId(page, rows, searchValue);
+        return responseVo;
+    }
 
+    // 根据设备名称查找
+    @RequestMapping("/search_device_by_deviceName")
+    @ResponseBody
+    public ResponseVo searchDeviceByDeviceName(int page, int rows, String searchValue) {
+        ResponseVo responseVo = deviceService.searchDeviceByDeviceName(page, rows, searchValue);
+        return responseVo;
+    }
+
+    // 根据设备名称查找
+    @RequestMapping("/search_device_by_deviceTypeName")
+    @ResponseBody
+    public ResponseVo searchDeviceByDeviceTypeName(int page, int rows, String searchValue) {
+        ResponseVo responseVo = deviceService.searchDeviceByDeviceTypeName(page, rows, searchValue);
+        return responseVo;
+    }
 
 
 }

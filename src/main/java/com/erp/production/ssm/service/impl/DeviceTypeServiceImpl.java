@@ -42,4 +42,30 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
         List<DeviceType> list = deviceTypeMapper.listType();
         return list;
     }
+
+    @Override
+    public ResponseVo searchDeviceTypeByDeviceTypeId(int page, int rows, String DeviceTypeId) {
+        // 分页
+        PageHelper.startPage(page, rows);
+        List<DeviceType> list = deviceTypeMapper.searchDeviceTypeByDeviceTypeId(DeviceTypeId);
+        ResponseVo responseVo = new ResponseVo();
+        responseVo.setRows(list);
+        PageInfo<DeviceType> pageInfo = new PageInfo<>(list);
+        responseVo.setTotal(pageInfo.getTotal());
+        return responseVo;
+    }
+
+    @Override
+    public ResponseVo searchDeviceByDeviceTypeName(int page, int rows, String DeviceTypeName) {
+        PageHelper.startPage(page, rows);
+        List<DeviceType> list = deviceTypeMapper.searchDeviceByDeviceTypeName(DeviceTypeName);
+        ResponseVo responseVo = new ResponseVo();
+        responseVo.setRows(list);
+        PageInfo<DeviceType> pageInfo = new PageInfo<>(list);
+        responseVo.setTotal(pageInfo.getTotal());
+        return responseVo;
+
+    }
+
+
 }

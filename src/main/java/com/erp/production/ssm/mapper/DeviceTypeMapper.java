@@ -35,4 +35,8 @@ public interface DeviceTypeMapper {
     List<DeviceType> find(DeviceType deviceType);
 
     List<DeviceType> listType();
+
+    List<DeviceType> searchDeviceTypeByDeviceTypeId(@Param("deviceTypeId") String deviceTypeId);
+
+    List<DeviceType> searchDeviceByDeviceTypeName(@Param("deviceTypeName") String deviceTypeName);
 }

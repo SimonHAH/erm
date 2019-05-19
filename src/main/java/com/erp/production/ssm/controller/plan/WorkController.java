@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/work")
 public class WorkController {
@@ -42,6 +44,12 @@ public class WorkController {
     public Work getItemById(@PathVariable String workId){
         Work work = workService.get(workId);
         return work;
+    }
+
+    @RequestMapping("/get_data")
+    @ResponseBody
+    public List<Work> getData() {
+        return workService.find();
     }
 
     //根据作业id查找

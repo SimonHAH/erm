@@ -1,12 +1,19 @@
 package com.erp.production.ssm.controller.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.plan.Task;
 import com.erp.production.ssm.service.plan.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/task")
@@ -24,6 +31,12 @@ public class TaskController {
         return "task_add";
     }
 
+    @RequestMapping("/add_judge")
+    private String addJudge(){
+        return "task_add";
+    }
+
+
     @RequestMapping("/edit")
     private String edit(){
         return "task_edit";
@@ -35,6 +48,30 @@ public class TaskController {
         CommonResult result = taskService.getList(page, rows);
         return result;
     }
+
+    @RequestMapping("/get_data")
+    @ResponseBody
+    public List<Task> getData() {
+        return taskService.find();
+    }
+
+    @RequestMapping(value="/insert", method= RequestMethod.POST)
+    @ResponseBody
+    private CustomResult insert(@Valid Task task, BindingResult bindingResult) throws Exception{
+        CustomResult result;
+        if(bindingResult.hasErrors()){
+            FieldError fieldError = bindingResult.getFieldError();
+            return CustomResult.build(100, fieldError.getDefaultMessage());
+        }
+        if(taskService.queryTaskById(task.getTaskId()) != null){
+            result = new CustomResult(0, "该生产派工编号已经存在，请更换生产派工编号！", null);
+        }else{
+            result = taskService.insert(task);
+        }
+        return result;
+    }
+
+
 
     //根据生产派工id查找
     @RequestMapping("/search_task_by_taskId")

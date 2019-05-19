@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/manufacture")
 public class ManufactureController {
@@ -43,6 +45,12 @@ public class ManufactureController {
     public Manufacture getItemById(@PathVariable String manufactureSn){
         Manufacture manufacture = manufactureService.get(manufactureSn);
         return manufacture;
+    }
+
+    @RequestMapping("/get_data")
+    @ResponseBody
+    public List<Manufacture> getData() {
+        return manufactureService.find();
     }
 
 

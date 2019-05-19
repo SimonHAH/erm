@@ -13,4 +13,8 @@ public interface DeviceTypeService {
     ResponseVo getList(int page, int rows, DeviceType deviceType);
 
     List<DeviceType> find();
+
+    ResponseVo searchDeviceTypeByDeviceTypeId(int page, int rows, String DeviceTypeId);
+
+    ResponseVo searchDeviceByDeviceTypeName(int page, int rows, String DeviceTypeName);
 }
