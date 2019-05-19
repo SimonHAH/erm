@@ -2,6 +2,7 @@ package com.erp.production.ssm.service.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
 import com.erp.production.ssm.bean.plan.Manufacture;
+import com.erp.production.ssm.bean.plan.ManufactureExample;
 import com.erp.production.ssm.mapper.ManufactureMapper;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,12 @@ public class ManufactureServiceImpl implements ManufactureService {
     public Manufacture get(String manufactureSn) {
         Manufacture manufacture = manufactureMapper.selectByPrimaryKey(manufactureSn);
         return manufacture;
+    }
+
+    @Override
+    public List<Manufacture> find() {
+        ManufactureExample example = new ManufactureExample();
+        return manufactureMapper.selectByExample(example);
     }
 
 
@@ -86,4 +93,6 @@ public class ManufactureServiceImpl implements ManufactureService {
 
         return result;
     }
+
+
 }

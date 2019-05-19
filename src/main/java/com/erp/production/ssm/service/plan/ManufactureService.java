@@ -3,6 +3,8 @@ package com.erp.production.ssm.service.plan;
 import com.erp.production.ssm.bean.common.CommonResult;
 import com.erp.production.ssm.bean.plan.Manufacture;
 
+import java.util.List;
+
 public interface ManufactureService {
 
     Manufacture queryManufactureById(String id);
@@ -15,5 +17,7 @@ public interface ManufactureService {
     CommonResult searchManufactureByManufactureOrderId(Integer page, Integer rows, String orderId);
 
     CommonResult searchManufactureByManufactureTechnologyName(Integer page, Integer rows, String technologyName);
+
+    List<Manufacture> find();
 
 }
