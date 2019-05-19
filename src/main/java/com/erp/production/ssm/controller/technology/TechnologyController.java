@@ -53,10 +53,10 @@ public class TechnologyController {
 
     }
 
-   @RequestMapping("get_data")
-   @ResponseBody
+    @RequestMapping("get_data")
+    @ResponseBody
     public List<Technology> getData() {
-       List<Technology> list = technologyService.find();
-       return list;
-   }
+        List<Technology> list = technologyService.find();
+        return list;
+    }
 }
