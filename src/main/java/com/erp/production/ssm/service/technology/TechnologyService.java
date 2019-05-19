@@ -1,6 +1,7 @@
 package com.erp.production.ssm.service.technology;
 
 import com.erp.production.ssm.bean.customize.PageResult;
+import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.bean.technology.Technology;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  * @date 2019/5/17
  */
 public interface TechnologyService {
+
     PageResult getList(Integer page, Integer rows);
 
     List<Technology> find();

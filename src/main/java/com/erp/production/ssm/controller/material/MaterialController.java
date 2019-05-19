@@ -1,7 +1,7 @@
 package com.erp.production.ssm.controller.material;
 
 import com.erp.production.ssm.bean.Material;
-import com.erp.production.ssm.bean.customize.PageResult;
+import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.service.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,8 +23,8 @@ public class MaterialController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public PageResult getItemList(Integer page, Integer rows, Material material) throws Exception{
-        PageResult result = materialService.getList(page, rows, material);
+    public ResponseVo getItemList(Integer page, Integer rows, Material material) throws Exception{
+        ResponseVo result = materialService.getList(page, rows, material);
         return result;
     }
 

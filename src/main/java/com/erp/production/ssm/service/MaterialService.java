@@ -1,7 +1,7 @@
 package com.erp.production.ssm.service;
 
 import com.erp.production.ssm.bean.Material;
-import com.erp.production.ssm.bean.customize.PageResult;
+import com.erp.production.ssm.bean.customize.ResponseVo;
 
 import java.util.List;
 
@@ -9,5 +9,5 @@ public interface MaterialService {
 
     List<Material> find() throws Exception;
 
-    PageResult getList(Integer page, Integer rows, Material material);
+    ResponseVo getList(Integer page, Integer rows, Material material);
 }

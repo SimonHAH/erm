@@ -9,6 +9,11 @@
     <result column="device_fault_date" jdbcType="TIMESTAMP" property="deviceFaultDate" />
     <result column="device_fault_maintenance" jdbcType="VARCHAR" property="deviceFaultMaintenance" />
   </resultMap>
+
+  <resultMap id="AddResultMap" type="com.erp.production.ssm.bean.VO.DeviceFaultVO" extends="BaseResultMap">
+      <result column="device_name" property="deviceName" jdbcType="VARCHAR"/>
+  </resultMap>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -226,4 +231,20 @@
       device_fault_maintenance = #{deviceFaultMaintenance,jdbcType=VARCHAR}
     where device_fault_id = #{deviceFaultId,jdbcType=VARCHAR}
   </update>
+
+  <select id="find" resultMap="AddResultMap">
+    select
+        device.device_id,
+        device_fault_cause,
+        device_fault_detail,
+        device_fault_date,
+        device_fault_maintenance,
+        device_fault_id,
+        device_name
+    from
+        device_fault,
+        device
+    where
+        device_fault.device_id = device.device_id
+  </select>
 </mapper>

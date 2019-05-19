@@ -6,7 +6,7 @@ import java.util.List;
  * Created by HorseXInsect
  * 2019/5/17 20:01
  */
-public class PageResult {
+public class ResponseVo {
     private long total;
     private List<?> rows;
 

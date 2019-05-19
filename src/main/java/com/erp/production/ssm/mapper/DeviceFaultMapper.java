@@ -2,6 +2,7 @@ package com.erp.production.ssm.mapper;
 
 import com.erp.production.ssm.bean.DeviceFault;
 import com.erp.production.ssm.bean.DeviceFaultExample;
+import com.erp.production.ssm.bean.VO.DeviceFaultVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -28,4 +29,7 @@ public interface DeviceFaultMapper {
     int updateByPrimaryKeySelective(DeviceFault record);
 
     int updateByPrimaryKey(DeviceFault record);
+
+    // 自定义接口
+    List<DeviceFaultVO> find(DeviceFault deviceFault);
 }

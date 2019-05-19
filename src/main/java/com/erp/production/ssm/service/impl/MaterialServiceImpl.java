@@ -1,7 +1,7 @@
 package com.erp.production.ssm.service.impl;
 import com.erp.production.ssm.bean.Material;
 import com.erp.production.ssm.bean.MaterialExample;
-import com.erp.production.ssm.bean.customize.PageResult;
+import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.mapper.MaterialMapper;
 import com.erp.production.ssm.service.MaterialService;
 import com.github.pagehelper.PageHelper;
@@ -23,14 +23,14 @@ public class MaterialServiceImpl implements MaterialService {
     }
 
     @Override
-    public PageResult getList(Integer page, Integer rows, Material material) {
+    public ResponseVo getList(Integer page, Integer rows, Material material) {
         //查询列表
         MaterialExample example = new MaterialExample();
         //分页处理
         PageHelper.startPage(page, rows);
         List<Material> list = materialMapper.selectByExample(example);
         //创建一个返回值对象
-        PageResult result = new PageResult();
+        ResponseVo result = new ResponseVo();
         result.setRows(list);
         //取记录总条数
         PageInfo<Material> pageInfo = new PageInfo<>(list);
