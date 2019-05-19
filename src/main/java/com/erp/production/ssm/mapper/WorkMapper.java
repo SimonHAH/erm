@@ -7,6 +7,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface WorkMapper {
+
+    //自己扩展的方法
+    List<Work> find();
+
+    //逆向工程生产的方法
     long countByExample(WorkExample example);
 
     int deleteByExample(WorkExample example);

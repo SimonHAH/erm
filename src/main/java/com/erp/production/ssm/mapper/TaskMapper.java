@@ -7,6 +7,10 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface TaskMapper {
+    //自己拓展的方法
+    List<Task> find();
+
+    //逆向工程生产的方法
     long countByExample(TaskExample example);
 
     int deleteByExample(TaskExample example);

@@ -1,5 +1,8 @@
 package com.erp.production.ssm.bean.plan;
 
+import com.erp.production.ssm.bean.Device;
+import com.erp.production.ssm.bean.technology.Process;
+
 public class Work {
     private String workId;
 
@@ -12,6 +15,36 @@ public class Work {
     private String deviceId;
 
     private Integer rating;
+
+    private Product product;
+
+    private Process process;
+
+    private Device device;
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Process getProcess() {
+        return process;
+    }
+
+    public void setProcess(Process process) {
+        this.process = process;
+    }
+
+    public Device getDevice() {
+        return device;
+    }
+
+    public void setDevice(Device device) {
+        this.device = device;
+    }
 
     public String getWorkId() {
         return workId;

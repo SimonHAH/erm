@@ -1,38 +1,46 @@
 package com.erp.production.ssm.controller.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
-import com.erp.production.ssm.service.plan.TaskService;
+import com.erp.production.ssm.bean.plan.Product;
+import com.erp.production.ssm.service.plan.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/task")
-public class TaskController {
+@RequestMapping("/product")
+public class ProductController {
     @Autowired
-    private TaskService taskService;
+    private ProductService productService;
 
     @RequestMapping("/find")
     public String find(){
-        return "task_list";
+        return "product_list";
     }
 
     @RequestMapping("/add")
     private String add(){
-        return "task_add";
+        return "product_add";
     }
 
     @RequestMapping("/edit")
     private String edit(){
-        return "task_edit";
+        return "product_edit";
     }
 
     @RequestMapping("/list")
     @ResponseBody
     private CommonResult showList(Integer page,Integer rows){
-        CommonResult result = taskService.getList(page, rows);
+        CommonResult result = productService.getList(page, rows);
         return result;
     }
 
+    @RequestMapping("/get/{productId}")
+    @ResponseBody
+    public Product getItemById(@PathVariable String productId){
+        Product product = productService.get(productId);
+        return product;
+    }
 }

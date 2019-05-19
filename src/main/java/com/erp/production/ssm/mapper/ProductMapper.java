@@ -7,6 +7,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface ProductMapper {
+
+    //自己扩展的方法
+    List<Product> find();
+
+    //逆向工程的方法
     long countByExample(ProductExample example);
 
     int deleteByExample(ProductExample example);
