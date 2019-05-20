@@ -83,5 +83,10 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
         return deviceTypeMapper.selectByPrimaryKey(deviceId);
     }
 
+    @Override
+    public CustomResult deleteBatch(String[] ids) {
+        return null;
+    }
+
 
 }
