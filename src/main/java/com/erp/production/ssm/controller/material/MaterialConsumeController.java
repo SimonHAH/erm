@@ -27,4 +27,19 @@ public class MaterialConsumeController {
         PageResult result = materialConsumeService.getList(page, rows, materialConsume);
         return result;
     }
+    @RequestMapping("/search_materialConsume_by_consumeId")
+    @ResponseBody
+    public PageResult searchMaterialConsumeByConsumeId(Integer page,Integer rows,String searchValue){
+        return materialConsumeService.searchMaterialConsumeByConsumeId(page,rows,searchValue);
+    }
+    @RequestMapping("/search_materialConsume_by_materialId")
+    @ResponseBody
+    public PageResult searchMaterialConsumeByMaterialId(Integer page,Integer rows,String searchValue){
+        return materialConsumeService.searchMaterialConsumeByMaterialId(page,rows,searchValue);
+    }
+    @RequestMapping("/search_materialConsume_by_workId")
+    @ResponseBody
+    public PageResult searchMaterialConsumeByWorkId(Integer page,Integer rows,String searchValue){
+        return materialConsumeService.searchMaterialConsumeByWorkId(page,rows,searchValue);
+    }
 }

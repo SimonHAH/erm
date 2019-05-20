@@ -1,6 +1,7 @@
 package com.erp.production.ssm.service.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.plan.Work;
 import com.erp.production.ssm.bean.plan.WorkExample;
 import com.erp.production.ssm.mapper.WorkMapper;
@@ -40,6 +41,16 @@ public class WorkServiceImpl implements WorkService{
     public List<Work> find() {
         WorkExample workExample = new WorkExample();
         return workMapper.selectByExample(workExample);
+    }
+
+    @Override
+    public CustomResult insert(Work work) {
+        int insert = workMapper.insert(work);
+        if(insert>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "新增生成作业信息失败");
+        }
     }
 
 

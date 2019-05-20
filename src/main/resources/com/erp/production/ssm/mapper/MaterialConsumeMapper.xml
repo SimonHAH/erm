@@ -43,6 +43,66 @@
 		LEFT JOIN work ON material_consume.work_id = work.work_id
 	</select>
 
+    <!-- 依据consumeID查询 -->
+    <select id="searchMaterialConsumeByConsumeId" parameterType="string" resultMap="BaseResultMap">
+		SELECT
+			consume_id,
+			consume_amount,
+			consume_date,
+			sender,
+			receiver,
+			material_consume.note,
+			material.material_id,
+			work.work_id
+		FROM
+			material_consume
+		LEFT JOIN  material
+			ON	 material_consume.material_id=material.material_id
+		LEFT JOIN  work
+		    ON   material_consume.work_id=work.work_id
+		WHERE  consume_id like CONCAT('%',#{consumeId},'%' )
+	</select>
+
+    <!-- 依据materialID查询 -->
+    <select id="searchMaterialConsumeByMaterialId" parameterType="string" resultMap="BaseResultMap">
+		SELECT
+			consume_id,
+			consume_amount,
+			consume_date,
+			sender,
+			receiver,
+			material_consume.note,
+			material.material_id,
+			work.work_id
+		FROM
+			material_consume
+		LEFT JOIN  material
+			ON	 material_consume.material_id=material.material_id
+		LEFT JOIN  work
+		    ON   material_consume.work_id=work.work_id
+		  where  material_consume.material_id like CONCAT('%',#{materialId},'%' )
+	  </select>
+
+    <!-- 依据workID查询 -->
+    <select id="searchMaterialConsumeByWorkId" parameterType="string" resultMap="BaseResultMap">
+		SELECT
+				consume_id,
+				consume_amount,
+				consume_date,
+				sender,
+				receiver,
+				material_consume.note,
+				material.material_id,
+				work.work_id
+		FROM
+				material_consume
+			LEFT JOIN  material
+				ON	 material_consume.material_id=material.material_id
+			LEFT JOIN  work
+			    ON   material_consume.work_id=work.work_id
+			WHERE material_consume.work_id like CONCAT('%',#{workId},'%' )
+   	</select>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

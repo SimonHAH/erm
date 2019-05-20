@@ -1,6 +1,7 @@
 package com.erp.production.ssm.service.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.plan.Product;
 import com.erp.production.ssm.bean.plan.ProductExample;
 import com.erp.production.ssm.mapper.ProductMapper;
@@ -40,6 +41,16 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> find() {
         ProductExample productExample = new ProductExample();
         return productMapper.selectByExample(productExample);
+    }
+
+    @Override
+    public CustomResult insert(Product product) {
+        int insert = productMapper.insert(product);
+        if(insert>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "新增产品信息失败");
+        }
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.erp.production.ssm.bean.plan;
+package com.erp.production.ssm.bean.VO;
 
 import com.erp.production.ssm.bean.plan.Custom;
 import com.erp.production.ssm.bean.plan.Product;
@@ -6,12 +6,15 @@ import com.erp.production.ssm.bean.plan.Product;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Order {
+/**
+ * @author Turtle
+ * @title: CustomOrderVO
+ * @projectName production_ms
+ * @description: TODO
+ * @date 2019/5/20 14:16
+ */
+public class CustomOrderVO {
     private String orderId;
-
-    private String customId;
-
-    private String productId;
 
     private Date orderDate;
 
@@ -35,44 +38,12 @@ public class Order {
 
     private Product product;
 
-    public Custom getCustom() {
-        return custom;
-    }
-
-    public void setCustom(Custom custom) {
-        this.custom = custom;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
     public String getOrderId() {
         return orderId;
     }
 
     public void setOrderId(String orderId) {
         this.orderId = orderId == null ? null : orderId.trim();
-    }
-
-    public String getCustomId() {
-        return customId;
-    }
-
-    public void setCustomId(String customId) {
-        this.customId = customId == null ? null : customId.trim();
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId == null ? null : productId.trim();
     }
 
     public Date getOrderDate() {
@@ -145,5 +116,21 @@ public class Order {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Custom getCustom() {
+        return custom;
+    }
+
+    public void setCustom(Custom custom) {
+        this.custom = custom;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

@@ -13,4 +13,10 @@ public interface MaterialConsumeService {
 
 	PageResult getList(int page, int rows, MaterialConsumeVO materialConsume)
 			throws Exception;
+
+	PageResult searchMaterialConsumeByConsumeId(Integer page, Integer rows, String searchValue);
+
+	PageResult searchMaterialConsumeByMaterialId(Integer page, Integer rows, String searchValue);
+
+	PageResult searchMaterialConsumeByWorkId(Integer page, Integer rows, String searchValue);
 }

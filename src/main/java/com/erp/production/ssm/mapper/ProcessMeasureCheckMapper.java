@@ -2,12 +2,23 @@ package com.erp.production.ssm.mapper;
 
 import com.erp.production.ssm.bean.ProcessMeasureCheck;
 import com.erp.production.ssm.bean.ProcessMeasureCheckExample;
+import com.erp.production.ssm.bean.VO.ProcessMeasureCheckVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface ProcessMeasureCheckMapper {
-    long countByExample(ProcessMeasureCheckExample example);
+    //扩展的mapper接口方法
+    int updateNote(ProcessMeasureCheck processMeasureCheck);
+
+    int deleteBatch(String[] ids);
+
+    List<ProcessMeasureCheckVO> searchPMeasureCheckByPMeasureCheckId(String processMeasureCheckId);
+
+    List<ProcessMeasureCheckVO> find(ProcessMeasureCheck processMeasureCheck);
+
+    //逆向工程生成的mapper接口
+    int countByExample(ProcessMeasureCheckExample example);
 
     int deleteByExample(ProcessMeasureCheckExample example);
 
