@@ -1,4 +1,4 @@
-package com.erp.production.ssm.service;
+package com.erp.production.ssm.service.device;
 
 import com.erp.production.ssm.bean.DeviceCheck;
 import com.erp.production.ssm.bean.customize.ResponseVo;

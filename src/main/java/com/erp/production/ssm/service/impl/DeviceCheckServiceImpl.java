@@ -3,7 +3,7 @@ package com.erp.production.ssm.service.impl;
 import com.erp.production.ssm.bean.DeviceCheck;
 import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.mapper.DeviceCheckMapper;
-import com.erp.production.ssm.service.DeviceCheckService;
+import com.erp.production.ssm.service.device.DeviceCheckService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
