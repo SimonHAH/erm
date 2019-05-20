@@ -121,5 +121,4 @@ public class DeviceTypeController {
         return deviceTypeService.update(deviceType);
     }
 
-
 }

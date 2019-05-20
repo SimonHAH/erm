@@ -1,10 +1,10 @@
-package com.erp.production.ssm.service.impl;
+package com.erp.production.ssm.service.device;
 
 import com.erp.production.ssm.bean.DeviceFault;
 import com.erp.production.ssm.bean.VO.DeviceFaultVO;
 import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
-import com.erp.production.ssm.mapper.DeviceFaultMapper;
+import com.erp.production.ssm.mapper.device.DeviceFaultMapper;
 import com.erp.production.ssm.service.device.DeviceFaultService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

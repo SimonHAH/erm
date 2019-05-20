@@ -21,4 +21,6 @@ public interface DeviceCheckService {
     CustomResult deleteBatch(String[] ids);
 
     CustomResult update(DeviceCheck deviceCheck);
+
+    ResponseVo searchDeviceCheckByDeviceCheckId(int page, int rows, String searchValue);
 }

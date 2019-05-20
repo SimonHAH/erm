@@ -1,9 +1,9 @@
-package com.erp.production.ssm.service.impl;
+package com.erp.production.ssm.service.device;
 
 import com.erp.production.ssm.bean.DeviceCheck;
 import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
-import com.erp.production.ssm.mapper.DeviceCheckMapper;
+import com.erp.production.ssm.mapper.device.DeviceCheckMapper;
 import com.erp.production.ssm.service.device.DeviceCheckService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -69,5 +69,19 @@ public class DeviceCheckServiceImpl implements DeviceCheckService {
         }else{
             return CustomResult.build(101, "修改设备例检失败");
         }
+    }
+
+    @Override
+    public ResponseVo searchDeviceCheckByDeviceCheckId(int page, int rows, String deviceCheckId) {
+        PageHelper.startPage(page, rows);
+        List<DeviceCheck> list = deviceCheckMapper.searchDeviceCheckByDeviceCheckId(deviceCheckId);
+        //创建一个返回值对象
+        ResponseVo result = new ResponseVo();
+        result.setRows(list);
+        //取记录总条数
+        PageInfo<DeviceCheck> pageInfo = new PageInfo<>(list);
+        result.setTotal(pageInfo.getTotal());
+        return result;
+
     }
 }

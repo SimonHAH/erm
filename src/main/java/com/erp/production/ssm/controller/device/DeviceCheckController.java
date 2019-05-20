@@ -96,4 +96,12 @@ public class DeviceCheckController {
         }
         return deviceCheckService.update(deviceCheck);
     }
+
+    //根据设备例检编号查找
+    @RequestMapping("/search_deviceCheck_by_deviceCheckId")
+    @ResponseBody
+    public ResponseVo searchDeviceCheckByDeviceCheckId(int page, int rows, String searchValue) {
+        ResponseVo responseVo = deviceCheckService.searchDeviceCheckByDeviceCheckId(page, rows, searchValue);
+        return responseVo;
+    }
 }

@@ -1,4 +1,4 @@
-package com.erp.production.ssm.mapper;
+package com.erp.production.ssm.mapper.device;
 
 import com.erp.production.ssm.bean.DeviceMaintain;
 import com.erp.production.ssm.bean.DeviceMaintainExample;
@@ -31,4 +31,6 @@ public interface DeviceMaintainMapper {
 
     // 自定义接口
     List<DeviceMaintain> find(DeviceMaintain deviceMaintain);
+
+    int deleteBatch(String[] deviceMaintainIds);
 }
