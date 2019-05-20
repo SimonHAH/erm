@@ -20,4 +20,8 @@ public interface CustomService {
     List<Custom> find();
 
     CustomResult insert(Custom custom);
+
+    CustomResult updateAll(Custom custom);
+
+    CustomResult deleteBatch(String[] ids);
 }

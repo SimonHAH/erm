@@ -40,4 +40,5 @@ public interface TaskMapper {
     int updateByPrimaryKey(Task record);
 
 
+    int deleteBatch(@Param("ids") String[] ids);
 }

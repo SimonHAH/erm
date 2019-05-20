@@ -24,6 +24,7 @@
     </association>
   </resultMap>
 
+  <!--查询所有记录-->
   <select id="find" resultMap="BaseResultMap">
     select
     order_id, o.custom_id, o.product_id, order_date, request_date, o.note, quantity, unit_price,
@@ -33,6 +34,15 @@
     left join custom c on o.custom_id = c.custom_id
     left join product p on o.product_id = p.product_id
   </select>
+
+  <!--批量删除-->
+  <delete id="deleteBatch">
+    DELETE FROM c_order WHERE
+    order_id IN
+    <foreach collection="ids" item="id" separator="," open="(" close=")">
+      #{id}
+    </foreach>
+  </delete>
 
   <select id="searchOrderByOrderId" resultMap="BaseResultMap">
     select

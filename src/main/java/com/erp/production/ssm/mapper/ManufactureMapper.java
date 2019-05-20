@@ -40,5 +40,5 @@ public interface ManufactureMapper {
 
     int updateByPrimaryKey(Manufacture record);
 
-
+    int deleteBatch(@Param("ids") String[] ids);
 }

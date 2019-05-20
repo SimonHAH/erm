@@ -10,11 +10,21 @@
     <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
 
+  <!--查询所有记录-->
   <select id="find" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
     from product
   </select>
+
+  <!--批量删除-->
+  <delete id="deleteBatch">
+    DELETE FROM product WHERE
+    work_id IN
+    <foreach collection="ids" item="id" separator="," open="(" close=")">
+      #{id}
+    </foreach>
+  </delete>
 
   <select id="searchProductByProductId" resultMap="BaseResultMap">
     select

@@ -51,6 +51,14 @@
     left join device d on w.device_id = d.device_id
   </select>
 
+  <delete id="deleteBatch">
+    DELETE FROM work WHERE
+    work_id IN
+    <foreach collection="ids" item="id" separator="," open="(" close=")">
+      #{id}
+    </foreach>
+  </delete>
+
   <select id="searchWorkByWorkId" resultMap="BaseResultMap">
     select
     work_id, process_number, rating,
