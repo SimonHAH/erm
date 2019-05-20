@@ -1,6 +1,7 @@
 package com.erp.production.ssm.service;
 
 import com.erp.production.ssm.bean.MaterialConsume;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.PageResult;
 import com.erp.production.ssm.bean.material.MaterialConsumeVO;
 
@@ -19,4 +20,14 @@ public interface MaterialConsumeService {
 	PageResult searchMaterialConsumeByMaterialId(Integer page, Integer rows, String searchValue);
 
 	PageResult searchMaterialConsumeByWorkId(Integer page, Integer rows, String searchValue);
+
+	CustomResult updateNote(MaterialConsume materialConsume);
+
+	MaterialConsume get(String consumeId);
+
+	CustomResult insert(MaterialConsume materialConsume);
+
+	CustomResult updateAll(MaterialConsume materialConsume);
+
+	CustomResult deleteBatch(String[] ids);
 }

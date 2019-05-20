@@ -79,4 +79,38 @@ public class MaterialServiceImpl implements MaterialService {
             return CustomResult.build(101, "修改物料信息失败");
         }
     }
+
+    @Override
+    public CustomResult updateAll(Material material) {
+        int i = materialMapper.updateByPrimaryKey(material);
+        if(i>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "修改物料信息失败");
+        }
+    }
+
+    @Override
+    public Material get(String materialId) {
+        return materialMapper.selectByPrimaryKey(materialId);
+    }
+
+    @Override
+    public CustomResult insert(Material material){
+        int i = materialMapper.insert(material);
+        if(i>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "新增物料信息失败");
+        }
+    }
+    @Override
+    public CustomResult deleteBatch(String[] ids){
+        int i = materialMapper.deleteBatch(ids);
+        if(i>0){
+            return CustomResult.ok();
+        }else{
+            return null;
+        }
+    }
 }

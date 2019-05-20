@@ -18,4 +18,12 @@ public interface MaterialService {
     PageResult searchMaterialByMaterialType(Integer page, Integer rows, String materialType);
 
     CustomResult updateNote(Material material);
+
+    CustomResult updateAll(Material material);
+
+    Material get(String materialId);
+
+    CustomResult insert(Material material);
+
+    CustomResult deleteBatch(String[] ids);
 }
