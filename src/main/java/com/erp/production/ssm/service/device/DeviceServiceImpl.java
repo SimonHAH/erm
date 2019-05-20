@@ -1,9 +1,9 @@
-package com.erp.production.ssm.service.impl;
+package com.erp.production.ssm.service.device;
 
 import com.erp.production.ssm.bean.Device;
 import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
-import com.erp.production.ssm.mapper.DeviceMapper;
+import com.erp.production.ssm.mapper.device.DeviceMapper;
 import com.erp.production.ssm.service.device.DeviceService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -113,7 +113,12 @@ public class DeviceServiceImpl implements DeviceService {
 
     @Override
     public CustomResult update(Device device) {
-        return null;
+        int i = deviceMapper.updateByPrimaryKeySelective(device);
+        if(i>=0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "修改设备信息失败");
+        }
     }
 
     @Override

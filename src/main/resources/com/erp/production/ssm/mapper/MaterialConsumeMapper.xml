@@ -26,6 +26,24 @@
   </resultMap>
 
   <!-- 扩展的sql -->
+  <delete id="deleteBatch">
+    DELETE
+    FROM
+    material_consume
+    WHERE
+    consume_id IN
+    <foreach collection="array" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+
+  <!-- 修改备注-->
+  <update id="updateNote" parameterType="com.erp.production.ssm.bean.MaterialConsume" >
+		UPDATE material_consume
+		SET note = #{note}
+		WHERE
+			consume_id = #{consumeId,jdbcType=VARCHAR}
+	</update>
   <!-- 查询所有记录 -->
   <select id="find" resultMap="BaseResultMap">
 		SELECT

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp.production.ssm.mapper.DeviceMaintainMapper">
+<mapper namespace="com.erp.production.ssm.mapper.device.DeviceMaintainMapper">
   <resultMap id="BaseResultMap" type="com.erp.production.ssm.bean.DeviceMaintain">
     <id column="device_maintain_id" jdbcType="VARCHAR" property="deviceMaintainId" />
     <result column="device_fault_id" jdbcType="VARCHAR" property="deviceFaultId" />
@@ -264,4 +264,16 @@
       note = #{note,jdbcType=VARCHAR}
     where device_maintain_id = #{deviceMaintainId,jdbcType=VARCHAR}
   </update>
+
+  <!-- 批量删除 -->
+  <delete id="deleteBatch">
+    DELETE
+    FROM
+    device_maintain
+    WHERE
+    device_maintain_id IN
+    <foreach collection="array" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
 </mapper>

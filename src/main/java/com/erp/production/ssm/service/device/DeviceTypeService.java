@@ -1,6 +1,7 @@
 package com.erp.production.ssm.service.device;
 
 import com.erp.production.ssm.bean.DeviceType;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
 
 import java.util.List;
@@ -17,4 +18,12 @@ public interface DeviceTypeService {
     ResponseVo searchDeviceTypeByDeviceTypeId(int page, int rows, String DeviceTypeId);
 
     ResponseVo searchDeviceByDeviceTypeName(int page, int rows, String DeviceTypeName);
+
+    CustomResult insert(DeviceType deviceType);
+
+    DeviceType get(String deviceId);
+
+    CustomResult deleteBatch(String[] ids);
+
+    CustomResult update(DeviceType deviceType);
 }

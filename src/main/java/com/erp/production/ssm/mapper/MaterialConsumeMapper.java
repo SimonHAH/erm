@@ -38,4 +38,8 @@ public interface MaterialConsumeMapper {
     List<MaterialConsumeVO> searchMaterialConsumeByConsumeId(String searchValue);
 
     List<MaterialConsumeVO> searchMaterialConsumeByWorkId(String searchValue);
+
+    int updateNote(MaterialConsume materialConsume);
+
+    int deleteBatch(String[] ids);
 }

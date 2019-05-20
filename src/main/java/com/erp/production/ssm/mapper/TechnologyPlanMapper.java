@@ -1,5 +1,6 @@
 package com.erp.production.ssm.mapper;
 
+import com.erp.production.ssm.bean.VO.TechnologyPlanVO;
 import com.erp.production.ssm.bean.technology.TechnologyPlan;
 import com.erp.production.ssm.bean.technology.TechnologyPlanExample;
 import org.apache.ibatis.annotations.Param;
@@ -28,4 +29,6 @@ public interface TechnologyPlanMapper {
     int updateByPrimaryKeySelective(TechnologyPlan record);
 
     int updateByPrimaryKey(TechnologyPlan record);
+
+    List<TechnologyPlanVO> find();
 }

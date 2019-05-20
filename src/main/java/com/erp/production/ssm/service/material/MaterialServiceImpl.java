@@ -1,11 +1,11 @@
-package com.erp.production.ssm.service.impl;
+package com.erp.production.ssm.service.material;
 import com.erp.production.ssm.bean.Material;
 import com.erp.production.ssm.bean.MaterialExample;
 import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.PageResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.mapper.MaterialMapper;
-import com.erp.production.ssm.service.MaterialService;
+import com.erp.production.ssm.service.material.MaterialService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,6 +77,40 @@ public class MaterialServiceImpl implements MaterialService {
             return CustomResult.ok();
         }else{
             return CustomResult.build(101, "修改物料信息失败");
+        }
+    }
+
+    @Override
+    public CustomResult updateAll(Material material) {
+        int i = materialMapper.updateByPrimaryKey(material);
+        if(i>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "修改物料信息失败");
+        }
+    }
+
+    @Override
+    public Material get(String materialId) {
+        return materialMapper.selectByPrimaryKey(materialId);
+    }
+
+    @Override
+    public CustomResult insert(Material material){
+        int i = materialMapper.insert(material);
+        if(i>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "新增物料信息失败");
+        }
+    }
+    @Override
+    public CustomResult deleteBatch(String[] ids){
+        int i = materialMapper.deleteBatch(ids);
+        if(i>0){
+            return CustomResult.ok();
+        }else{
+            return null;
         }
     }
 }

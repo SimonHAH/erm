@@ -5,6 +5,7 @@ import com.erp.production.ssm.bean.technology.Process;
 import com.erp.production.ssm.service.technology.ProcessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -40,5 +41,11 @@ public class ProcessController {
         List<Process> list = processService.find();
 
         return list;
+    }
+
+    @RequestMapping("/get/{processId}")
+    @ResponseBody
+    public Process getItemById(@PathVariable String processId) {
+        return processService.getItemById(processId);
     }
 }
