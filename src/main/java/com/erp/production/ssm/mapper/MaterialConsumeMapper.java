@@ -2,11 +2,15 @@ package com.erp.production.ssm.mapper;
 
 import com.erp.production.ssm.bean.MaterialConsume;
 import com.erp.production.ssm.bean.MaterialConsumeExample;
+import com.erp.production.ssm.bean.material.MaterialConsumeVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface MaterialConsumeMapper {
+    //扩展的接口
+    List<MaterialConsumeVO> find(MaterialConsumeVO materialConsume);
+
     long countByExample(MaterialConsumeExample example);
 
     int deleteByExample(MaterialConsumeExample example);

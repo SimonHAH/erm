@@ -13,7 +13,7 @@
 
   <!-- 扩展的sql -->
   <!-- 查询所有记录 -->
-  <select id="find" parameterType="MaterialReceive" resultMap="BaseResultMap">
+  <select id="find" resultMap="BaseResultMap">
     SELECT
     receive_id,
     amount,
@@ -28,6 +28,62 @@
     material.material_id=material_receive.material_id
     <!--  order by material_receive.receive_date -->
   </select>
+
+  <!-- 批量删除 -->
+  <delete id="deleteBatch">
+    DELETE
+    FROM
+    material_receive
+    WHERE
+    receive_id IN
+    <foreach collection="array" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+
+  <!-- 修改备注-->
+  <update id="updateNote">
+		UPDATE material_receive
+		SET note = #{note}
+		WHERE
+			receive_id = #{receiveId,jdbcType=VARCHAR}
+	</update>
+
+  <!-- 依据ReceiveId查询 -->
+  <select id="searchMaterialReceiveByReceiveId"  resultMap="BaseResultMap">
+		SELECT
+		    receive_id,
+		    amount,
+		    receive_date,
+		    sender,
+		    receiver,
+		    material_receive.note,
+			material.material_id
+		FROM
+			material_receive,
+			material
+		WHERE
+			material.material_id=material_receive.material_id
+	    AND receive_id like CONCAT('%',#{receiveId},'%' )
+	</select>
+
+  <!-- 依据materialId查询 -->
+  <select id="searchMaterialReceiveByMaterialId" resultMap="BaseResultMap">
+		SELECT
+		    receive_id,
+		    amount,
+		    receive_date,
+		    sender,
+		    receiver,
+		    material_receive.note,
+			material.material_id
+		FROM
+			material_receive,
+			material
+		WHERE
+			material.material_id=material_receive.material_id
+	    AND material.material_id like CONCAT('%',#{materialId},'%' )
+	</select>
 
   <sql id="Example_Where_Clause">
     <where>

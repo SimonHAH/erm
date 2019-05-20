@@ -138,7 +138,8 @@
 
 <script>
 
-function doSearch_materialReceive(value,name){ //用户输入用户名,点击搜素,触发此函数  
+function doSearch_materialReceive(value,name)
+{ //用户输入用户名,点击搜素,触发此函数
 	if(value == null || value == ''){
 		$("#materialReceiveList").datagrid({
 	        title:'物料收入列表', singleSelect:false, collapsible:true, pagination:true, rownumbers:true, method:'get',

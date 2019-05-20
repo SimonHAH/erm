@@ -1,6 +1,7 @@
 package com.erp.production.ssm.service.impl;
 import com.erp.production.ssm.bean.Material;
 import com.erp.production.ssm.bean.MaterialExample;
+import com.erp.production.ssm.bean.customize.PageResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.mapper.MaterialMapper;
 import com.erp.production.ssm.service.MaterialService;
@@ -35,9 +36,36 @@ public class MaterialServiceImpl implements MaterialService {
         //取记录总条数
         PageInfo<Material> pageInfo = new PageInfo<>(list);
 
-        result.setTotal(list.size());
+        result.setTotal(pageInfo.getTotal());
 
         return result;
     }
 
+    @Override
+    public PageResult searchMaterialByMaterialId(Integer page, Integer rows, String materialId) {
+        //分页处理
+        PageHelper.startPage(page, rows);
+        List<Material> list = materialMapper.searchMaterialByMaterialId(materialId);
+        //创建一个返回值对象
+        PageResult result = new PageResult();
+        result.setRows(list);
+        //取记录总条数
+        PageInfo<Material> pageInfo = new PageInfo<>(list);
+        result.setTotal(pageInfo.getTotal());
+        return result;
+    }
+
+    @Override
+    public PageResult searchMaterialByMaterialType(Integer page, Integer rows, String materialType) {
+        //分页处理
+        PageHelper.startPage(page,rows);
+        List<Material> list = materialMapper.searchMaterialByMaterialType(materialType);
+        //创建一个返回值对象
+        PageResult result = new PageResult();
+        result.setRows(list);
+        //取记录总条数
+        PageInfo<Material> pageInfo = new PageInfo<>(list);
+        result.setTotal(pageInfo.getTotal());
+        return result;
+    }
 }
