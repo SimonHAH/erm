@@ -1,6 +1,7 @@
 package com.erp.production.ssm.service.impl;
 import com.erp.production.ssm.bean.Material;
 import com.erp.production.ssm.bean.MaterialExample;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.PageResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.mapper.MaterialMapper;
@@ -67,5 +68,15 @@ public class MaterialServiceImpl implements MaterialService {
         PageInfo<Material> pageInfo = new PageInfo<>(list);
         result.setTotal(pageInfo.getTotal());
         return result;
+    }
+
+    @Override
+    public CustomResult updateNote(Material material) {
+        int i = materialMapper.updateByPrimaryKeySelective(material);
+        if(i>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "修改物料信息失败");
+        }
     }
 }
