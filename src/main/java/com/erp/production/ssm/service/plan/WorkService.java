@@ -25,4 +25,8 @@ public interface WorkService {
     List<Work> find();
 
     CustomResult insert(Work work);
+
+    CustomResult updateAll(Work work);
+
+    CustomResult deleteBatch(String[] ids);
 }

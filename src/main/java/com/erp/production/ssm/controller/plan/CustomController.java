@@ -41,6 +41,18 @@ public class CustomController {
         return "custom_edit";
     }
 
+    @RequestMapping("/edit_judge")
+    @ResponseBody
+    private String editJudge(){
+        return null;
+    }
+
+    @RequestMapping("/delete_judge")
+    @ResponseBody
+    private String deleteJudge(){
+        return null;
+    }
+
     @RequestMapping("/list")
     @ResponseBody
     private CommonResult showList(Integer page,Integer rows){
@@ -67,6 +79,24 @@ public class CustomController {
         }else{
             result = customService.insert(custom);
         }
+        return result;
+    }
+
+    @RequestMapping(value="/update_all")
+    @ResponseBody
+    private CustomResult updateAll(@Valid Custom custom, BindingResult bindingResult) throws Exception {
+        if(bindingResult.hasErrors()){
+            FieldError fieldError = bindingResult.getFieldError();
+            return CustomResult.build(100, fieldError.getDefaultMessage());
+        }
+        return customService.updateAll(custom);
+    }
+
+
+    @RequestMapping(value="/delete_batch")
+    @ResponseBody
+    private CustomResult deleteBatch(String[] ids) throws Exception {
+        CustomResult result = customService.deleteBatch(ids);
         return result;
     }
 

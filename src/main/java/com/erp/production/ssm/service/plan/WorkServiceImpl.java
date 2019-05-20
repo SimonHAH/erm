@@ -6,6 +6,7 @@ import com.erp.production.ssm.bean.plan.Work;
 import com.erp.production.ssm.bean.plan.WorkExample;
 import com.erp.production.ssm.mapper.WorkMapper;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +26,8 @@ public class WorkServiceImpl implements WorkService{
         CommonResult<Work> result = new CommonResult<>();
         result.setRows(works);
         //取记录总条数
-        //PageInfo<Task> pageInfo = new PageInfo<>(tasks);
-        result.setTotal(works.size());
+        PageInfo<Work> pageInfo = new PageInfo<>(works);
+        result.setTotal(pageInfo.getTotal());
 
         return result;
     }
@@ -50,6 +51,26 @@ public class WorkServiceImpl implements WorkService{
             return CustomResult.ok();
         }else{
             return CustomResult.build(101, "新增生成作业信息失败");
+        }
+    }
+
+    @Override
+    public CustomResult updateAll(Work work) {
+        int update = workMapper.updateByPrimaryKey(work);
+        if(update>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "修改作业信息失败");
+        }
+    }
+
+    @Override
+    public CustomResult deleteBatch(String[] ids) {
+        int delete = workMapper.deleteBatch(ids);
+        if(delete>0){
+            return CustomResult.ok();
+        }else{
+            return null;
         }
     }
 

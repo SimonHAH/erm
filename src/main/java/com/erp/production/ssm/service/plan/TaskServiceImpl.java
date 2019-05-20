@@ -33,8 +33,8 @@ public class TaskServiceImpl implements TaskService {
         CommonResult<Task> result = new CommonResult<>();
         result.setRows(tasks);
         //取记录总条数
-        //PageInfo<Task> pageInfo = new PageInfo<>(tasks);
-        result.setTotal(tasks.size());
+        PageInfo<Task> pageInfo = new PageInfo<>(tasks);
+        result.setTotal(pageInfo.getTotal());
 
         return result;
     }
@@ -43,6 +43,26 @@ public class TaskServiceImpl implements TaskService {
     public List<Task> find() {
         TaskExample taskExample = new TaskExample();
         return taskMapper.selectByExample(taskExample);
+    }
+
+    @Override
+    public CustomResult updateAll(Task task) {
+        int update = taskMapper.updateByPrimaryKey(task);
+        if(update>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "修改生产派工信息失败");
+        }
+    }
+
+    @Override
+    public CustomResult deleteBatch(String[] ids) {
+        int delete = taskMapper.deleteBatch(ids);
+        if(delete>0){
+            return CustomResult.ok();
+        }else{
+            return null;
+        }
     }
 
     @Override

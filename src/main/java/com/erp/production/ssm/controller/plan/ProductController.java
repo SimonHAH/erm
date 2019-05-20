@@ -42,6 +42,18 @@ public class ProductController {
         return "product_edit";
     }
 
+    @RequestMapping("/edit_judge")
+    @ResponseBody
+    private String editJudge(){
+        return null;
+    }
+
+    @RequestMapping("/delete_judge")
+    @ResponseBody
+    private String deleteJudge(){
+        return null;
+    }
+
     @RequestMapping("/list")
     @ResponseBody
     private CommonResult showList(Integer page,Integer rows){
@@ -75,6 +87,24 @@ public class ProductController {
         }else{
             result = productService.insert(product);
         }
+        return result;
+    }
+
+    @RequestMapping(value="/update_all")
+    @ResponseBody
+    private CustomResult updateAll(@Valid Product product, BindingResult bindingResult) throws Exception {
+        if(bindingResult.hasErrors()){
+            FieldError fieldError = bindingResult.getFieldError();
+            return CustomResult.build(100, fieldError.getDefaultMessage());
+        }
+        return productService.updateAll(product);
+    }
+
+
+    @RequestMapping(value="/delete_batch")
+    @ResponseBody
+    private CustomResult deleteBatch(String[] ids) throws Exception {
+        CustomResult result = productService.deleteBatch(ids);
         return result;
     }
 

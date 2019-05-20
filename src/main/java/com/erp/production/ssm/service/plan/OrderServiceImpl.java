@@ -6,6 +6,7 @@ import com.erp.production.ssm.bean.plan.Order;
 import com.erp.production.ssm.bean.plan.OrderExample;
 import com.erp.production.ssm.mapper.OrderMapper;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,26 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public CustomResult updateAll(Order order) {
+        int update = orderMapper.updateByPrimaryKey(order);
+        if(update>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "修改订单信息失败");
+        }
+    }
+
+    @Override
+    public CustomResult deleteBatch(String[] ids) {
+        int delete = orderMapper.deleteBatch(ids);
+        if(delete>0){
+            return CustomResult.ok();
+        }else{
+            return null;
+        }
+    }
+
+    @Override
     public CommonResult getList(int page, int rows) {
         //分页处理
         PageHelper.startPage(page, rows);
@@ -41,8 +62,8 @@ public class OrderServiceImpl implements OrderService {
         CommonResult<Order> result = new CommonResult<>();
         result.setRows(orders);
         //取记录总条数
-        //PageInfo<Task> pageInfo = new PageInfo<>(tasks);
-        result.setTotal(orders.size());
+        PageInfo<Order> pageInfo = new PageInfo<>(orders);
+        result.setTotal(pageInfo.getTotal());
 
         return result;
     }

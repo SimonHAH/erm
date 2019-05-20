@@ -20,6 +20,15 @@
     from custom
   </select>
 
+  <!--批量删除-->
+  <delete id="deleteBatch">
+    DELETE FROM custom WHERE
+    custom_id IN
+    <foreach collection="ids" item="id" separator="," open="(" close=")">
+      #{id}
+    </foreach>
+  </delete>
+
   <select id="searchCustomByCustomId" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
