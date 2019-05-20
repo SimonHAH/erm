@@ -113,7 +113,12 @@ public class DeviceServiceImpl implements DeviceService {
 
     @Override
     public CustomResult update(Device device) {
-        return null;
+        int i = deviceMapper.updateByPrimaryKeySelective(device);
+        if(i>=0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "修改设备信息失败");
+        }
     }
 
     @Override

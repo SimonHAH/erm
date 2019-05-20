@@ -36,19 +36,20 @@ public class DeviceListController{
 
     }
 
-    @RequestMapping("/get_data")
+    /*@RequestMapping("/get_data")
     @ResponseBody
     public List<Device> getData() {
         return deviceService.find();
-    }
+    }*/
 
-    // 迷之add_judge
+    // 必须要返回点什么才能通过add_judge访问到add，贼jb蠢
     @RequestMapping("/add_judge")
+    @ResponseBody
     public String add() {
-        return "deviceList_add";
+        return null;
     }
 
-    // 玄幻add
+
     @RequestMapping("/add")
     public String add1() {
         return "deviceList_add";
@@ -83,10 +84,10 @@ public class DeviceListController{
     @ResponseBody
     private CustomResult insert(@Valid Device device, BindingResult bindingResult) {
         CustomResult result;
-        if(bindingResult.hasErrors()){
+        /*if(bindingResult.hasErrors()){
             FieldError fieldError = bindingResult.getFieldError();
-            return CustomResult.build(100, fieldError.getDefaultMessage());
-        }
+            return CustomResult.build(123, fieldError.getDefaultMessage());
+        }*/
         if(deviceService.get(device.getDeviceId()) != null){
             result = new CustomResult(0, "该设备编号已经存在，请更换设备编号！", null);
         }else{
@@ -95,29 +96,38 @@ public class DeviceListController{
         return result;
     }
 
-    @RequestMapping(value="/delete_judge")
+    @RequestMapping("/delete_judge")
     @ResponseBody
     private CustomResult deleteJudge() {
         return null;
     }
 
-    @RequestMapping(value="/delete_batch")
+    @RequestMapping("/delete_batch")
     @ResponseBody
     private CustomResult deleteBatch(String[] ids) {
         CustomResult result = deviceService.deleteBatch(ids);
         return result;
     }
 
-    /*@RequestMapping(value="/edit_judge")
+    @RequestMapping("/edit_judge")
     @ResponseBody
     private CustomResult editJudge() {
         return null;
-    }*/
+    }
 
-    @RequestMapping(value="/edit")
-    @ResponseBody
+    @RequestMapping("/edit")
     private String edit() {
         return "deviceList_edit";
+    }
+
+    @RequestMapping(value="/update")
+    @ResponseBody
+    private CustomResult update(@Valid Device device, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            FieldError fieldError = bindingResult.getFieldError();
+            return CustomResult.build(123, fieldError.getDefaultMessage());
+        }
+        return deviceService.update(device);
     }
 
 }

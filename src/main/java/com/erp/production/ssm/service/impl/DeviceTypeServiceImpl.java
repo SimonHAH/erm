@@ -1,6 +1,8 @@
 package com.erp.production.ssm.service.impl;
 
+import com.erp.production.ssm.bean.Device;
 import com.erp.production.ssm.bean.DeviceType;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.mapper.DeviceTypeMapper;
 import com.erp.production.ssm.service.device.DeviceTypeService;
@@ -64,6 +66,21 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
         responseVo.setTotal(pageInfo.getTotal());
         return responseVo;
 
+    }
+
+    @Override
+    public CustomResult insert(DeviceType deviceType) {
+        int i = deviceTypeMapper.insert(deviceType);
+        if(i>=0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "新增设备信息失败");
+        }
+    }
+
+    @Override
+    public DeviceType get(String deviceId) {
+        return deviceTypeMapper.selectByPrimaryKey(deviceId);
     }
 
 
