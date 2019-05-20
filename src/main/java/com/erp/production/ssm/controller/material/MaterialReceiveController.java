@@ -1,6 +1,5 @@
 package com.erp.production.ssm.controller.material;
 
-import com.erp.production.ssm.bean.MaterialReceive;
 import com.erp.production.ssm.bean.customize.PageResult;
 import com.erp.production.ssm.service.MaterialReceiveService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,16 @@ public class MaterialReceiveController {
     @RequestMapping("/list")
     @ResponseBody
     public PageResult getList(Integer page, Integer rows) throws Exception{
-        PageResult result = materialReceiveService.getList(page, rows);
-        return result;
+        PageResult pageResult = materialReceiveService.getList(page, rows);
+        return pageResult;
+    }
+
+    //根据物料接收id查找
+    @RequestMapping("/search_materialReceive_by_receiveId")
+    @ResponseBody
+    public PageResult searchMaterialReceiveByReceiveId(Integer page, Integer rows, String searchValue)
+            throws Exception{
+        PageResult pageResult = materialReceiveService.searchMaterialReceiveByReceiveId(page, rows, searchValue);
+        return pageResult;
     }
 }
