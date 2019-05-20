@@ -1,10 +1,15 @@
 package com.erp.production.ssm.bean;
 
+import javax.validation.constraints.Size;
+
 public class Department {
+    @Size(max=40, message="{id.length.error}")
     private String departmentId;
 
+    @Size(max=100, message="{name.length.error}")
     private String departmentName;
 
+    @Size(max=5000, message="{note.length.error}")
     private String note;
 
     public String getDepartmentId() {

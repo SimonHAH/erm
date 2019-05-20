@@ -51,6 +51,16 @@ public class ProcessMeasureCheckController {
         return "p_measure_check_edit";
     }
 
+    @RequestMapping("/add_judge")
+    public String add_judge() throws Exception{
+        return "p_measure_check_add";
+    }
+
+    @RequestMapping("/edit_judge")
+    public String edit_judge() throws Exception{
+        return "p_measure_check_edit";
+    }
+
     @RequestMapping("/list")
     @ResponseBody
     public PageResult getList(Integer page, Integer rows, ProcessMeasureCheck processMeasureCheck)
@@ -103,6 +113,15 @@ public class ProcessMeasureCheckController {
     @RequestMapping(value="/delete_batch")
     @ResponseBody
     private CustomResult deleteBatch(String[] ids) throws Exception {
+        System.out.println(ids);
+        CustomResult result = processMeasureService.deleteBatch(ids);
+        return result;
+    }
+
+
+    @RequestMapping(value="/delete_judge")
+    @ResponseBody
+    private CustomResult delete_judge(String[] ids) throws Exception {
         System.out.println(ids);
         CustomResult result = processMeasureService.deleteBatch(ids);
         return result;

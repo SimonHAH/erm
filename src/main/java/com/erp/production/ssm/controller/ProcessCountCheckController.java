@@ -47,10 +47,22 @@ public class ProcessCountCheckController {
         return "p_count_check_add";
     }
 
+    @RequestMapping("/add_judge")
+    public String add_judge() throws Exception{
+        return "p_count_check_add";
+    }
+
     @RequestMapping("/edit")
     public String edit() throws Exception{
         return "p_count_check_edit";
     }
+
+    @RequestMapping("/edit_judge")
+    public String edit_judge() throws Exception{
+        return "p_count_check_edit";
+    }
+
+
 
     @RequestMapping("/list")
     @ResponseBody
@@ -106,6 +118,12 @@ public class ProcessCountCheckController {
     @RequestMapping(value="/delete")
     @ResponseBody
     private CustomResult delete(String id) throws Exception {
+        return null;
+    }
+
+    @RequestMapping(value="/delete_judge")
+    @ResponseBody
+    private CustomResult delete_judge(String id) throws Exception {
         return null;
     }
 

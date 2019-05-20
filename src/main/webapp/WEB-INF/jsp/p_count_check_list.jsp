@@ -4,14 +4,14 @@
 <script type="text/javascript" charset="utf-8" src="js/kindeditor-4.1.10/kindeditor-all-min.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/kindeditor-4.1.10/lang/zh_CN.js"></script>
 
-<table  id="pCountCheckList" title="工序计数质检" class="easyui-datagrid" data-options="singleSelect:false,
+<table  id="p_count_checkList" title="工序计数质检" class="easyui-datagrid" data-options="singleSelect:false,
 		collapsible:true,pagination:true,rownumbers:true,url:'p_count_check/list',method:'get',fitColumns:true,
-		pageSize:10,toolbar:toolbar_pCountCheck">
+		pageSize:10,toolbar:toolbar_p_count_check">
 	<thead>
 	<tr>
 		<th data-options="field:'ck',checkbox:true"></th>
-		<th data-options="field:'pCountCheckId',align:'center',width:100">工序计数质检编号</th>
-		<th data-options="field:'processId',align:'center',width:100,formatter:formatPCountCheckProcess">
+		<th data-options="field:'p_count_checkId',align:'center',width:100">工序计数质检编号</th>
+		<th data-options="field:'processId',align:'center',width:100,formatter:formatp_count_checkProcess">
 			工序编号
 		</th>
 		<th data-options="field:'checkItem',align:'center',width:100">检验项目</th>
@@ -23,54 +23,54 @@
 		<th data-options="field:'measureData',width:100,align:'center'">实际测量数据</th>
 		<th data-options="field:'empName',width:100,align:'center',formatter:formatEmp_pCount">检验人</th>
 		<th data-options="field:'result',width:100,align:'center'">检验结果</th>
-		<th data-options="field:'note',width:100,align:'center', formatter:formatPCountCheckNote">备注</th>
+		<th data-options="field:'note',width:100,align:'center', formatter:formatp_count_checkNote">备注</th>
 	</tr>
 	</thead>
 </table>
 
 <!-- 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111 -->
 
-<div  id="toolbar_pCountCheck" style=" height: 22px; padding: 3px 11px; background: #fafafa;">
+<div  id="toolbar_p_count_check" style=" height: 22px; padding: 3px 11px; background: #fafafa;">
 
-	<c:forEach items="${sessionScope.sysPermissionList}" var="per" >
-		<c:if test="${per=='pCountCheck:add' }" >
+	<%--<c:forEach items="${sessionScope.sysPermissionList}" var="per" >
+		<c:if test="${per=='p_count_check:add' }" >--%>
 			<div style="float: left;">
-				<a href="#" class="easyui-linkbutton" plain="true" icon="icon-add" onclick="pCountCheck_add()">
+				<a href="#" class="easyui-linkbutton" plain="true" icon="icon-add" onclick="p_count_check_add()">
 					新增
 				</a>
 			</div>
-		</c:if>
-		<c:if test="${per=='pCountCheck:edit' }" >
+		<%--</c:if>
+		<c:if test="${per=='p_count_check:edit' }" >--%>
 			<div style="float: left;">
-				<a href="#" class="easyui-linkbutton" plain="true" icon="icon-edit" onclick="pCountCheck_edit()">
+				<a href="#" class="easyui-linkbutton" plain="true" icon="icon-edit" onclick="p_count_check_edit()">
 					编辑
 				</a>
 			</div>
-		</c:if>
-		<c:if test="${per=='pCountCheck:delete' }" >
+		<%--</c:if>
+		<c:if test="${per=='p_count_check:delete' }" >--%>
 			<div style="float: left;">
-				<a href="#" class="easyui-linkbutton" plain="true" icon="icon-cancel" onclick="pCountCheck_delete()">
+				<a href="#" class="easyui-linkbutton" plain="true" icon="icon-cancel" onclick="p_count_check_delete()">
 					删除
 				</a>
 			</div>
-		</c:if>
-	</c:forEach>
+		<%--</c:if>
+	</c:forEach>--%>
 
 	<div class="datagrid-btn-separator"></div>
 
 	<div style="float: left;">
-		<a href="#" class="easyui-linkbutton" plain="true" icon="icon-reload" onclick="pCountCheck_reload()">
+		<a href="#" class="easyui-linkbutton" plain="true" icon="icon-reload" onclick="p_count_check_reload()">
 			刷新
 		</a>
 	</div>
 
-	<div id="search_pCountCheck" style="float: right;">
-		<input id="search_text_pCountCheck" class="easyui-searchbox"
-			   data-options="searcher:doSearch_pCountCheck,prompt:'请输入...',menu:'#menu_pCountCheck'"
+	<div id="search_p_count_check" style="float: right;">
+		<input id="search_text_p_count_check" class="easyui-searchbox"
+			   data-options="searcher:doSearch_p_count_check,prompt:'请输入...',menu:'#menu_p_count_check'"
 			   style="width:250px;vertical-align: middle;">
 		</input>
-		<div id="menu_pCountCheck" style="width:120px">
-			<div data-options="name:'pCountCheckId'">工序计数质检编号</div>
+		<div id="menu_p_count_check" style="width:120px">
+			<div data-options="name:'p_count_checkId'">工序计数质检编号</div>
 
 		</div>
 	</div>
@@ -78,10 +78,10 @@
 </div>
 <!-- 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111 -->
 
-<div id="pCountCheckEditWindow" class="easyui-window" title="编辑工序计数质检" data-options="modal:true,closed:true,
+<div id="p_count_checkEditWindow" class="easyui-window" title="编辑工序计数质检" data-options="modal:true,closed:true,
 	resizable:true,iconCls:'icon-save',href:'p_count_check/edit'" style="width:65%;height:80%;padding:10px;">
 </div>
-<div id="pCountCheckAddWindow" class="easyui-window" title="添加工序计数质检" data-options="modal:true,closed:true,
+<div id="p_count_checkAddWindow" class="easyui-window" title="添加工序计数质检" data-options="modal:true,closed:true,
 	resizable:true,iconCls:'icon-save',href:'p_count_check/add'" style="width:65%;height:80%;padding:10px;">
 </div>
 
@@ -187,10 +187,10 @@
 
 <!-- ********************************************************************************** -->
 
-<div id="pCountCheckNoteDialog" class="easyui-dialog" title="工序计数质检备注" data-options="modal:true,closed:true,
+<div id="p_count_checkNoteDialog" class="easyui-dialog" title="工序计数质检备注" data-options="modal:true,closed:true,
 		resizable:true,iconCls:'icon-save'" style="width:55%;height:65%;padding:10px">
-	<form id="pCountCheckNoteForm" method="post">
-		<input type="hidden" name="pCountCheckId"/>
+	<form id="p_count_checkNoteForm" method="post">
+		<input type="hidden" name="p_count_checkId"/>
 		<table cellpadding="5" >
 			<tr>
 				<td>备注:</td>
@@ -201,19 +201,19 @@
 		</table>
 	</form>
 	<div style="padding:5px">
-		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="updatePCountCheckNote()">保存</a>
+		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="updatep_count_checkNote()">保存</a>
 	</div>
 </div>
 <script>
-	function doSearch_pCountCheck(value,name){ //用户输入用户名,点击搜素,触发此函数
+	function doSearch_p_count_check(value,name){ //用户输入用户名,点击搜素,触发此函数
 		if(value == null || value == ''){
-			$("#pCountCheckList").datagrid({
+			$("#p_count_checkList").datagrid({
 				title:'工序计数质检', singleSelect:false, collapsible:true, pagination:true, rownumbers:true, method:'get',
-				nowrap:true, toolbar:"toolbar_pCountCheck", url:'p_count_check/list', method:'get',
+				nowrap:true, toolbar:"toolbar_p_count_check", url:'p_count_check/list', method:'get',
 				loadMsg:'数据加载中......',  fitColumns:true,//允许表格自动缩放,以适应父容器
 				columns : [ [
 					{field : 'ck', checkbox:true },
-					{field : 'pCountCheckId', width : 100, title : '工序计数质检编号', align:'center'},
+					{field : 'p_count_checkId', width : 100, title : '工序计数质检编号', align:'center'},
 					{field : 'processId', width : 100, align : 'center', title : '工序编号'},
 					{field : 'checkItem', width : 100, align : 'center', title : '检验项目'},
 					{field : 'sample', width : 100, title : '样本总数', align:'center'},
@@ -224,17 +224,17 @@
 					{field : 'measureData', width : 100, title : '实际测量数据', align:'center'},
 					{field : 'empName', width : 100, title : '检验人', align:'center',formatter:formatEmp_pCount},
 					{field : 'result', width : 100, title : '检验结果', align:'center'},
-					{field : 'note', width : 100, title : '备注', align:'center', formatter:formatPCountCheckNote}
+					{field : 'note', width : 100, title : '备注', align:'center', formatter:formatp_count_checkNote}
 				] ],
 			});
 		}else{
-			$("#pCountCheckList").datagrid({
+			$("#p_count_checkList").datagrid({
 				title:'工序计数质检', singleSelect:false, collapsible:true, pagination:true, rownumbers:true, method:'get',
-				nowrap:true, toolbar:"toolbar_pCountCheck", url:'p_count_check/search_pCountCheck_by_'+name+'?searchValue='
+				nowrap:true, toolbar:"toolbar_p_count_check", url:'p_count_check/search_p_count_check_by_'+name+'?searchValue='
 						+value, loadMsg:'数据加载中......',  fitColumns:true,//允许表格自动缩放,以适应父容器
 				columns : [ [
 					{field : 'ck', checkbox:true },
-					{field : 'pCountCheckId', width : 100, title : '工序计数质检编号', align:'center'},
+					{field : 'p_count_checkId', width : 100, title : '工序计数质检编号', align:'center'},
 					{field : 'processId', width : 100, align : 'center', title : '工序编号'},
 					{field : 'checkItem', width : 100, align : 'center', title : '检验项目'},
 					{field : 'sample', width : 100, title : '样本总数', align:'center'},
@@ -245,14 +245,14 @@
 					{field : 'measureData', width : 100, title : '实际测量数据', align:'center'},
 					{field : 'empName', width : 100, title : '检验人', align:'center',formatter:formatEmp_pCount},
 					{field : 'result', width : 100, title : '检验结果', align:'center'},
-					{field : 'note', width : 100, title : '备注', align:'center', formatter:formatPCountCheckNote}
+					{field : 'note', width : 100, title : '备注', align:'center', formatter:formatp_count_checkNote}
 				] ],
 			});
 		}
 	}
 
 	//格式化工序信息
-	function  formatPCountCheckProcess(value, row, index){
+	function  formatp_count_checkProcess(value, row, index){
 		if(value == null){
 			return '无';
 		}
@@ -263,7 +263,7 @@
 
 	//打开工序信息对话框
 	function  openCountP2P(index){
-		var row = onPCountCheckClickRow(index);
+		var row = onp_count_checkClickRow(index);
 		$("#p2pCountInfo").dialog({
 			onOpen :function(){
 
@@ -277,7 +277,7 @@
 
 	function submitp2pCountEditForm(){
 		//此处写工序信息
-		$.get("pCountCheck/edit_judge",'',function(data){
+		$.get("p_count_check/edit_judge",'',function(data){
 			if(data.msg != null){
 				$.messager.alert('提示', data.msg);
 			}else{
@@ -310,7 +310,7 @@
 
 	//打开检验人信息对话框
 	function  openEmp_pCount(index){
-		var row = onPCountCheckClickRow(index);
+		var row = onp_count_checkClickRow(index);
 		$("#empInfo_pCount").dialog({
 			onOpen :function(){
 				$.get("employee/get/"+row.empId,'',function(data){
@@ -348,53 +348,53 @@
 		});
 	}
 
-	var pCountCheckNoteEditor ;
+	var p_count_checkNoteEditor ;
 
 	//格式化工序计数质检要求
-	function formatPCountCheckNote(value, row, index){
+	function formatp_count_checkNote(value, row, index){
 		if(value !=null && value != ''){
-			return "<a href=javascript:openPCountCheckNote("+index+")>"+"备注"+"</a>";
+			return "<a href=javascript:openp_count_checkNote("+index+")>"+"备注"+"</a>";
 		}else{
 			return "无";
 		}
 	}
 
 	//根据index拿到该行值
-	function onPCountCheckClickRow(index) {
-		var rows = $('#pCountCheckList').datagrid('getRows');
+	function onp_count_checkClickRow(index) {
+		var rows = $('#p_count_checkList').datagrid('getRows');
 		return rows[index];
 
 	}
 
 	//打开工序计数质检要求富文本编辑器对话框
-	function  openPCountCheckNote(index){
-		var row = onPCountCheckClickRow(index);
-		$("#pCountCheckNoteDialog").dialog({
+	function  openp_count_checkNote(index){
+		var row = onp_count_checkClickRow(index);
+		$("#p_count_checkNoteDialog").dialog({
 			onOpen :function(){
-				$("#pCountCheckNoteForm [name=pCountCheckId]").val(row.pCountCheckId);
-				pCountCheckNoteEditor = TAOTAO.createEditor("#pCountCheckNoteForm [name=note]");
-				pCountCheckNoteEditor.html(row.note);
+				$("#p_count_checkNoteForm [name=p_count_checkId]").val(row.p_count_checkId);
+				p_count_checkNoteEditor = TAOTAO.createEditor("#p_count_checkNoteForm [name=note]");
+				p_count_checkNoteEditor.html(row.note);
 			},
 
 			onBeforeClose: function (event, ui) {
 				// 关闭Dialog前移除编辑器
-				KindEditor.remove("#pCountCheckNoteForm [name=note]");
+				KindEditor.remove("#p_count_checkNoteForm [name=note]");
 			}
 		}).dialog("open");
 
 	};
 
 	//更新工序计数质检备注
-	function updatePCountCheckNote(){
-		$.get("pCountCheck/edit_judge",'',function(data){
+	function updatep_count_checkNote(){
+		$.get("p_count_check/edit_judge",'',function(data){
 			if(data.msg != null){
 				$.messager.alert('提示', data.msg);
 			}else{
-				pCountCheckNoteEditor.sync();
-				$.post("p_count_check/update_note",$("#pCountCheckNoteForm").serialize(), function(data){
+				p_count_checkNoteEditor.sync();
+				$.post("p_count_check/update_note",$("#p_count_checkNoteForm").serialize(), function(data){
 					if(data.status == 200){
-						$("#pCountCheckNoteDialog").dialog("close");
-						$("#pCountCheckList").datagrid("reload");
+						$("#p_count_checkNoteDialog").dialog("close");
+						$("#p_count_checkList").datagrid("reload");
 						$.messager.alert("操作提示", "更新工序计数质检备注成功！");
 					}else{
 						$.messager.alert("操作提示", "更新工序计数质检备注失败！");
@@ -405,11 +405,11 @@
 	}
 
 	function getPCountSelectionsIds(){
-		var pCountCheckList = $("#pCountCheckList");
-		var sels = pCountCheckList.datagrid("getSelections");
+		var p_count_checkList = $("#p_count_checkList");
+		var sels = p_count_checkList.datagrid("getSelections");
 		var ids = [];
 		for(var i in sels){
-			ids.push(sels[i].pCountCheckId);
+			ids.push(sels[i].p_count_checkId);
 		}
 		ids = ids.join(",");
 
@@ -417,18 +417,18 @@
 	}
 
 	//////////////////////////////////////////////////////////////////////////
-	function pCountCheck_add(){
-		$.get("pCountCheck/add_judge",'',function(data){
+	function p_count_check_add(){
+		$.get("p_count_check/add_judge",'',function(data){
 			if(data.msg != null){
 				$.messager.alert('提示', data.msg);
 			}else{
-				$("#pCountCheckAddWindow").window("open");
+				$("#p_count_checkAddWindow").window("open");
 			}
 		});
 	}
 
-	function pCountCheck_edit(){
-		$.get("pCountCheck/edit_judge",'',function(data){
+	function p_count_check_edit(){
+		$.get("p_count_check/edit_judge",'',function(data){
 			if(data.msg != null){
 				$.messager.alert('提示', data.msg);
 			}else{
@@ -443,21 +443,21 @@
 					return ;
 				}
 
-				$("#pCountCheckEditWindow").window({
+				$("#p_count_checkEditWindow").window({
 					onLoad :function(){
 						//回显数据
-						var data = $("#pCountCheckList").datagrid("getSelections")[0];
+						var data = $("#p_count_checkList").datagrid("getSelections")[0];
 						data.cdate = TAOTAO.formatDateTime(data.cdate);
-						$("#pCountCheckEditForm").form("load", data);
-						pCountCheckEditEditor.html(data.note);
+						$("#p_count_checkEditForm").form("load", data);
+						p_count_checkEditEditor.html(data.note);
 					}
 				}).window("open");
 			}
 		});
 	}
 
-	function pCountCheck_delete(){
-		$.get("pCountCheck/delete_judge",'',function(data){
+	function p_count_check_delete(){
+		$.get("p_count_check/delete_judge",'',function(data){
 			if(data.msg != null){
 				$.messager.alert('提示', data.msg);
 			}else{
@@ -472,7 +472,7 @@
 						$.post("p_count_check/delete_batch",params, function(data){
 							if(data.status == 200){
 								$.messager.alert('提示','删除工序计数质检成功!',undefined,function(){
-									$("#pCountCheckList").datagrid("reload");
+									$("#p_count_checkList").datagrid("reload");
 								});
 							}
 						});
@@ -482,7 +482,7 @@
 		});
 	}
 
-	function pCountCheck_reload(){
-		$("#pCountCheckList").datagrid("reload");
+	function p_count_check_reload(){
+		$("#p_count_checkList").datagrid("reload");
 	}
 </script>

@@ -48,6 +48,11 @@ public class EmployeeController {
         return employeeService.find();
     }
 
+    @RequestMapping("/add_judge")
+    public String add_judge() throws Exception{
+        return "employee_add";
+    }
+
     @RequestMapping("/add")
     public String add() throws Exception{
         return "employee_add";
@@ -55,6 +60,11 @@ public class EmployeeController {
 
     @RequestMapping("/edit")
     public String edit() throws Exception{
+        return "employee_edit";
+    }
+
+    @RequestMapping("/edit_judge")
+    public String edit_judge() throws Exception{
         return "employee_edit";
     }
 
@@ -104,6 +114,13 @@ public class EmployeeController {
     @RequestMapping(value="/delete")
     @ResponseBody
     private CustomResult delete(String id) throws Exception {
+        CustomResult result = employeeService.delete(id);
+        return result;
+    }
+
+    @RequestMapping(value="/delete_judge")
+    @ResponseBody
+    private CustomResult delete_judge(String id) throws Exception {
         CustomResult result = employeeService.delete(id);
         return result;
     }

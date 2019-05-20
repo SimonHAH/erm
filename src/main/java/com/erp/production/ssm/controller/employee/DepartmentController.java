@@ -52,8 +52,19 @@ public class DepartmentController {
         return "department_add";
     }
 
+
+    @RequestMapping("/add_judge")
+    public String add_judge() throws Exception{
+        return "department_add";
+    }
+
     @RequestMapping("/edit")
     public String edit() throws Exception{
+        return "department_edit";
+    }
+
+    @RequestMapping("/edit_judge")
+    public String edit_judge() throws Exception{
         return "department_edit";
     }
 
@@ -113,6 +124,14 @@ public class DepartmentController {
     @RequestMapping(value="/delete")
     @ResponseBody
     private CustomResult delete(String id) throws Exception {
+        CustomResult result = departmentService.delete(id);
+        return result;
+    }
+
+
+    @RequestMapping(value="/delete_judge")
+    @ResponseBody
+    private CustomResult delete_judge(String id) throws Exception {
         CustomResult result = departmentService.delete(id);
         return result;
     }
