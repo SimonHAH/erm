@@ -36,11 +36,11 @@ public class DeviceListController{
 
     }
 
-    /*@RequestMapping("/get_data")
+    @RequestMapping("/get_data")
     @ResponseBody
     public List<Device> getData() {
         return deviceService.find();
-    }*/
+    }
 
     // 必须要返回点什么才能通过add_judge访问到add，贼jb蠢
     @RequestMapping("/add_judge")
@@ -120,6 +120,7 @@ public class DeviceListController{
         return "deviceList_edit";
     }
 
+    // 更新
     @RequestMapping(value="/update")
     @ResponseBody
     private CustomResult update(@Valid Device device, BindingResult bindingResult) {

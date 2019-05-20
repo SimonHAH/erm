@@ -39,4 +39,6 @@ public interface DeviceTypeMapper {
     List<DeviceType> searchDeviceTypeByDeviceTypeId(@Param("deviceTypeId") String deviceTypeId);
 
     List<DeviceType> searchDeviceByDeviceTypeName(@Param("deviceTypeName") String deviceTypeName);
+
+    int deleteBatch(String[] ids);
 }

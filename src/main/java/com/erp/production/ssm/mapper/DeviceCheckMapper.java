@@ -32,4 +32,8 @@ public interface DeviceCheckMapper {
 
     // 自定义接口
     List<DeviceCheck> find(DeviceCheck deviceCheck);
+
+    int deleteBatch(String[] deviceCheckIds);
+
+    int update(DeviceCheck deviceCheck);
 }

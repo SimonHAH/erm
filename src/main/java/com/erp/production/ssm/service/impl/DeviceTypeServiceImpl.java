@@ -85,7 +85,22 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
 
     @Override
     public CustomResult deleteBatch(String[] ids) {
-        return null;
+        int i = deviceTypeMapper.deleteBatch(ids);
+        if(i>=0){
+            return CustomResult.ok();
+        }else{
+            return null;
+        }
+    }
+
+    @Override
+    public CustomResult update(DeviceType deviceType) {
+        int i = deviceTypeMapper.updateByPrimaryKeySelective(deviceType);
+        if(i>=0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "修改设备信息失败");
+        }
     }
 
 

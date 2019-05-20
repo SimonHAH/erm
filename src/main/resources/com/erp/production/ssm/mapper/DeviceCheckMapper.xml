@@ -255,4 +255,16 @@
   order by device_check_id asc
 
 </select>
+
+  <!-- 批量删除 -->
+  <delete id="deleteBatch">
+    DELETE
+    FROM
+    device_check
+    WHERE
+    device_check_id IN
+    <foreach collection="array" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
 </mapper>

@@ -2,6 +2,7 @@ package com.erp.production.ssm.service.impl;
 
 import com.erp.production.ssm.bean.DeviceFault;
 import com.erp.production.ssm.bean.VO.DeviceFaultVO;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.mapper.DeviceFaultMapper;
 import com.erp.production.ssm.service.device.DeviceFaultService;
@@ -31,5 +32,40 @@ public class DeviceFaultServiceImpl implements DeviceFaultService {
         PageInfo<DeviceFaultVO> pageInfo = new PageInfo<>(list);
         responseVo.setTotal(pageInfo.getTotal());
         return responseVo;
+    }
+
+    @Override
+    public DeviceFault get(String deviceFaultId) {
+        return deviceFaultMapper.selectByPrimaryKey(deviceFaultId);
+    }
+
+    @Override
+    public CustomResult insert(DeviceFault deviceFault) {
+        int i = deviceFaultMapper.insert(deviceFault);
+        if(i>=0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "新增设备故障失败");
+        }
+    }
+
+    @Override
+    public CustomResult deleteBatch(String[] deviceFaultId) {
+        int i = deviceFaultMapper.deleteBatch(deviceFaultId);
+        if(i>=0){
+            return CustomResult.ok();
+        }else{
+            return null;
+        }
+    }
+
+    @Override
+    public CustomResult update(DeviceFault deviceFault) {
+        int i = deviceFaultMapper.updateByPrimaryKeySelective(deviceFault);
+        if(i>=0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "修改设备故障信息失败");
+        }
     }
 }

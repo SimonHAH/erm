@@ -24,4 +24,6 @@ public interface DeviceTypeService {
     DeviceType get(String deviceId);
 
     CustomResult deleteBatch(String[] ids);
+
+    CustomResult update(DeviceType deviceType);
 }

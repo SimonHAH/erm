@@ -32,4 +32,6 @@ public interface DeviceFaultMapper {
 
     // 自定义接口
     List<DeviceFaultVO> find(DeviceFault deviceFault);
+
+    int deleteBatch(String[] deviceFaultId);
 }

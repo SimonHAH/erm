@@ -1,6 +1,7 @@
 package com.erp.production.ssm.service.impl;
 
 import com.erp.production.ssm.bean.DeviceCheck;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.mapper.DeviceCheckMapper;
 import com.erp.production.ssm.service.device.DeviceCheckService;
@@ -33,5 +34,40 @@ public class DeviceCheckServiceImpl implements DeviceCheckService {
         PageInfo<DeviceCheck> pageInfo = new PageInfo<>(list);
         responseVo.setTotal(pageInfo.getTotal());
         return responseVo;
+    }
+
+    @Override
+    public DeviceCheck get(String id) {
+        return deviceCheckMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public CustomResult insert(DeviceCheck deviceCheck) {
+        int i = deviceCheckMapper.insert(deviceCheck);
+        if(i>=0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "新增设备例检失败");
+        }
+    }
+
+    @Override
+    public CustomResult deleteBatch(String[] deviceCheckIds) {
+        int i = deviceCheckMapper.deleteBatch(deviceCheckIds);
+        if(i>=0){
+            return CustomResult.ok();
+        }else{
+            return null;
+        }
+    }
+
+    @Override
+    public CustomResult update(DeviceCheck deviceCheck) {
+        int i = deviceCheckMapper.updateByPrimaryKeySelective(deviceCheck);
+        if(i>=0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "修改设备例检失败");
+        }
     }
 }
