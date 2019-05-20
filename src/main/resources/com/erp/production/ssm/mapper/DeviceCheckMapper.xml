@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp.production.ssm.mapper.DeviceCheckMapper">
+<mapper namespace="com.erp.production.ssm.mapper.device.DeviceCheckMapper">
   <resultMap id="BaseResultMap" type="com.erp.production.ssm.bean.DeviceCheck">
     <id column="device_check_id" jdbcType="VARCHAR" property="deviceCheckId" />
     <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
@@ -255,4 +255,33 @@
   order by device_check_id asc
 
 </select>
+
+  <!-- 批量删除 -->
+  <delete id="deleteBatch">
+    DELETE
+    FROM
+    device_check
+    WHERE
+    device_check_id IN
+    <foreach collection="array" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+
+  <select id="searchDeviceCheckByDeviceCheckId" resultMap="AddResultMap">
+      select
+          device_check_date,
+          emp_name as device_check_emp,
+          emp_id as device_check_emp_id,
+          device_check_fault_id,
+          device_check_id,
+          device_check_result,
+          device_check.device_id,
+          device_name
+      from
+          device_check, device, employee
+      where device.device_id = device_check.device_id
+      and device_check_emp_id = employee.emp_id
+      and device_check_id like concat ('%', #{deviceCheckId}, '%')
+  </select>
 </mapper>

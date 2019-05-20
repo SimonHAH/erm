@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,11 +43,31 @@ public class TaskController {
         return "task_edit";
     }
 
+    @RequestMapping("/edit_judge")
+    @ResponseBody
+    private String editJudge(){
+        return null;
+    }
+
+    @RequestMapping("/delete_judge")
+    @ResponseBody
+    private String deleteJudge(){
+        return null;
+    }
+
+
     @RequestMapping("/list")
     @ResponseBody
     private CommonResult showList(Integer page,Integer rows){
         CommonResult result = taskService.getList(page, rows);
         return result;
+    }
+
+    @RequestMapping("/get/{taskId}")
+    @ResponseBody
+    public Task getItemById(@PathVariable String taskId){
+        Task work = taskService.get(taskId);
+        return work;
     }
 
     @RequestMapping("/get_data")
@@ -63,7 +84,7 @@ public class TaskController {
             FieldError fieldError = bindingResult.getFieldError();
             return CustomResult.build(100, fieldError.getDefaultMessage());
         }
-        if(taskService.queryTaskById(task.getTaskId()) != null){
+        if(taskService.get(task.getTaskId()) != null){
             result = new CustomResult(0, "该生产派工编号已经存在，请更换生产派工编号！", null);
         }else{
             result = taskService.insert(task);
@@ -71,6 +92,23 @@ public class TaskController {
         return result;
     }
 
+    @RequestMapping(value="/update_all")
+    @ResponseBody
+    private CustomResult updateAll(@Valid Task task, BindingResult bindingResult) throws Exception {
+        if(bindingResult.hasErrors()){
+            FieldError fieldError = bindingResult.getFieldError();
+            return CustomResult.build(100, fieldError.getDefaultMessage());
+        }
+        return taskService.updateAll(task);
+    }
+
+
+    @RequestMapping(value="/delete_batch")
+    @ResponseBody
+    private CustomResult deleteBatch(String[] ids) throws Exception {
+        CustomResult result = taskService.deleteBatch(ids);
+        return result;
+    }
 
 
     //根据生产派工id查找

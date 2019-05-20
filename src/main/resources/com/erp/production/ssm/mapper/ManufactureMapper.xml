@@ -67,6 +67,15 @@
     LEFT JOIN technology t on t.technology_id = m.technology_id
   </select>
 
+  <!--批量删除-->
+  <delete id="deleteBatch">
+    DELETE FROM manufacture WHERE
+    manufacture_sn IN
+    <foreach collection="ids" item="id" separator="," open="(" close=")">
+      #{id}
+    </foreach>
+  </delete>
+
   <select id="searchManufactureByManufactureSn" resultMap="BaseResultMap">
     select
     manufacture_sn,

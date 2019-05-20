@@ -43,4 +43,6 @@ public interface WorkMapper {
     int updateByPrimaryKey(Work record);
 
 
+    int deleteBatch(@Param("ids") String[] ids);
+
 }

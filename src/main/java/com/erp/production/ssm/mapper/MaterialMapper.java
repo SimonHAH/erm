@@ -7,6 +7,12 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface MaterialMapper {
+    //扩展接口
+
+    List<Material> searchMaterialByMaterialId(String materialId);
+
+    List<Material> searchMaterialByMaterialType(String materialType);
+
     long countByExample(MaterialExample example);
 
     int deleteByExample(MaterialExample example);
@@ -28,4 +34,6 @@ public interface MaterialMapper {
     int updateByPrimaryKeySelective(Material record);
 
     int updateByPrimaryKey(Material record);
+
+    int deleteBatch(String[] ids);
 }

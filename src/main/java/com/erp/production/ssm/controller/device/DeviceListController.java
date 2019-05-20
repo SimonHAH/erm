@@ -1,14 +1,18 @@
 package com.erp.production.ssm.controller.device;
 
 import com.erp.production.ssm.bean.Device;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
-import com.erp.production.ssm.service.DeviceService;
-import org.apache.log4j.Logger;
+import com.erp.production.ssm.service.device.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -38,13 +42,14 @@ public class DeviceListController{
         return deviceService.find();
     }
 
-    // 迷之add_judge
+    // 必须要返回点什么才能通过add_judge访问到add，贼jb蠢
     @RequestMapping("/add_judge")
+    @ResponseBody
     public String add() {
-        return "deviceList_add";
+        return null;
     }
 
-    // 玄幻add
+
     @RequestMapping("/add")
     public String add1() {
         return "deviceList_add";
@@ -74,5 +79,56 @@ public class DeviceListController{
         return responseVo;
     }
 
+    // 新增
+    @RequestMapping(value="/insert", method=RequestMethod.POST)
+    @ResponseBody
+    private CustomResult insert(@Valid Device device, BindingResult bindingResult) {
+        CustomResult result;
+        /*if(bindingResult.hasErrors()){
+            FieldError fieldError = bindingResult.getFieldError();
+            return CustomResult.build(123, fieldError.getDefaultMessage());
+        }*/
+        if(deviceService.get(device.getDeviceId()) != null){
+            result = new CustomResult(0, "该设备编号已经存在，请更换设备编号！", null);
+        }else{
+            result = deviceService.insert(device);
+        }
+        return result;
+    }
+
+    @RequestMapping("/delete_judge")
+    @ResponseBody
+    private CustomResult deleteJudge() {
+        return null;
+    }
+
+    @RequestMapping("/delete_batch")
+    @ResponseBody
+    private CustomResult deleteBatch(String[] ids) {
+        CustomResult result = deviceService.deleteBatch(ids);
+        return result;
+    }
+
+    @RequestMapping("/edit_judge")
+    @ResponseBody
+    private CustomResult editJudge() {
+        return null;
+    }
+
+    @RequestMapping("/edit")
+    private String edit() {
+        return "deviceList_edit";
+    }
+
+    // 更新
+    @RequestMapping(value="/update")
+    @ResponseBody
+    private CustomResult update(@Valid Device device, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            FieldError fieldError = bindingResult.getFieldError();
+            return CustomResult.build(123, fieldError.getDefaultMessage());
+        }
+        return deviceService.update(device);
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.erp.production.ssm.service.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.plan.Order;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 public interface OrderService {
 
     CommonResult getList(int page, int rows);
+
     Order get(String orderId);
 
     CommonResult searchOrderByOrderId(Integer page, Integer rows, String orderId);
@@ -18,4 +20,11 @@ public interface OrderService {
     CommonResult searchOrderByProductName(Integer page, Integer rows, String productName);
 
     List<Order> find();
+
+    CustomResult insert(Order order);
+
+    CustomResult updateAll(Order order);
+
+    CustomResult deleteBatch(String[] ids);
+
 }

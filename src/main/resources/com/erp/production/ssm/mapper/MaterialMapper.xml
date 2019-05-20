@@ -8,6 +8,40 @@
     <result column="remaining" jdbcType="INTEGER" property="remaining" />
     <result column="note" jdbcType="VARCHAR" property="note" />
   </resultMap>
+  <!--扩展的接口-->
+
+  <delete id="deleteBatch">
+    DELETE
+    FROM
+    material
+    WHERE
+    material_id IN
+    <foreach collection="array" item="id" open="(" close=")" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+  <select id="searchMaterialByMaterialId"  parameterType="java.lang.String" resultMap="BaseResultMap">
+       SELECT
+			*
+		FROM
+			material
+		WHERE
+			material_id LIKE CONCAT(
+				'%',
+				#{materialId},'%' )
+    </select>
+
+  <select id="searchMaterialByMaterialType" parameterType="java.lang.String" resultMap="BaseResultMap">
+       SELECT
+			*
+		FROM
+			material
+		WHERE
+			material_type LIKE CONCAT(
+				'%',
+				#{materialType},'%' )
+  </select>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

@@ -82,4 +82,6 @@ public class DeviceType {
     public void setDeviceTypeWarranty(Date deviceTypeWarranty) {
         this.deviceTypeWarranty = deviceTypeWarranty;
     }
+
+
 }

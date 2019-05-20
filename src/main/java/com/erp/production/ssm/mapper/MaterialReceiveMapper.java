@@ -12,6 +12,15 @@ public interface MaterialReceiveMapper {
     //扩展的mapper接口方法
     List<MaterialReceiveVO> find();
 
+    int deleteBatch(String[] ids);
+
+    int updateNote(MaterialReceive record);
+
+    List<MaterialReceiveVO> searchMaterialReceiveByReceiveId(String receiveId);
+
+    List<MaterialReceiveVO> searchMaterialReceiveByMaterialId(String materialId);
+
+
     long countByExample(MaterialReceiveExample example);
 
     int deleteByExample(MaterialReceiveExample example);

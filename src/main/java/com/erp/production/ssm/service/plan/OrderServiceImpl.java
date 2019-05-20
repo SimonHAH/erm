@@ -1,9 +1,12 @@
 package com.erp.production.ssm.service.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.plan.Order;
+import com.erp.production.ssm.bean.plan.OrderExample;
 import com.erp.production.ssm.mapper.OrderMapper;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +19,38 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> find() {
-        return orderMapper.find();
+        OrderExample orderExample = new OrderExample();
+        return orderMapper.selectByExample(orderExample);
+    }
+
+    @Override
+    public CustomResult insert(Order order) {
+        int insert = orderMapper.insert(order);
+        if(insert>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "新增订单信息失败");
+        }
+    }
+
+    @Override
+    public CustomResult updateAll(Order order) {
+        int update = orderMapper.updateByPrimaryKey(order);
+        if(update>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "修改订单信息失败");
+        }
+    }
+
+    @Override
+    public CustomResult deleteBatch(String[] ids) {
+        int delete = orderMapper.deleteBatch(ids);
+        if(delete>0){
+            return CustomResult.ok();
+        }else{
+            return null;
+        }
     }
 
     @Override
@@ -28,8 +62,8 @@ public class OrderServiceImpl implements OrderService {
         CommonResult<Order> result = new CommonResult<>();
         result.setRows(orders);
         //取记录总条数
-        //PageInfo<Task> pageInfo = new PageInfo<>(tasks);
-        result.setTotal(orders.size());
+        PageInfo<Order> pageInfo = new PageInfo<>(orders);
+        result.setTotal(pageInfo.getTotal());
 
         return result;
     }

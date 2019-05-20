@@ -1,14 +1,19 @@
 package com.erp.production.ssm.controller.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.plan.Order;
 import com.erp.production.ssm.service.plan.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -27,9 +32,27 @@ public class OrderController {
         return "order_add";
     }
 
+    @RequestMapping("/add_judge")
+    private String add_judge(){
+        return "order_add";
+    }
+
+
     @RequestMapping("/edit")
     private String edit(){
         return "order_edit";
+    }
+
+    @RequestMapping("/edit_judge")
+    @ResponseBody
+    private String editJudge(){
+        return null;
+    }
+
+    @RequestMapping("/delete_judge")
+    @ResponseBody
+    private String deleteJudge(){
+        return null;
     }
 
     @RequestMapping("/list")
@@ -50,6 +73,41 @@ public class OrderController {
     @ResponseBody
     public List<Order> getData() {
         return orderService.find();
+    }
+
+    @RequestMapping(value="/insert", method= RequestMethod.POST)
+    @ResponseBody
+    private CustomResult insert(@Valid Order Order, BindingResult bindingResult) throws Exception {
+        CustomResult result;
+        if(bindingResult.hasErrors()){
+            FieldError fieldError = bindingResult.getFieldError();
+            System.out.println(fieldError.getDefaultMessage());
+            return CustomResult.build(100, fieldError.getDefaultMessage());
+        }
+        if(orderService.get(Order.getOrderId()) != null){
+            result = new CustomResult(0, "该订单编号已经存在，请更换订单编号！", null);
+        }else{
+            result = orderService.insert(Order);
+        }
+        return result;
+    }
+
+    @RequestMapping(value="/update_all")
+    @ResponseBody
+    private CustomResult updateAll(@Valid Order order, BindingResult bindingResult) throws Exception {
+        if(bindingResult.hasErrors()){
+            FieldError fieldError = bindingResult.getFieldError();
+            return CustomResult.build(100, fieldError.getDefaultMessage());
+        }
+        return orderService.updateAll(order);
+    }
+
+
+    @RequestMapping(value="/delete_batch")
+    @ResponseBody
+    private CustomResult deleteBatch(String[] ids) throws Exception {
+        CustomResult result = orderService.deleteBatch(ids);
+        return result;
     }
 
     //根据订单id查找

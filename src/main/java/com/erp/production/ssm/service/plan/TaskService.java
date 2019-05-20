@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface TaskService {
 
-    Task queryTaskById(String id);
+    Task get(String id);
 
     CommonResult getList(int page, int rows);
 
@@ -25,4 +25,7 @@ public interface TaskService {
 
     List<Task> find();
 
+    CustomResult updateAll(Task task);
+
+    CustomResult deleteBatch(String[] ids);
 }

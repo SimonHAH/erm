@@ -11,6 +11,11 @@
     <result column="technology_plan_start" jdbcType="TIMESTAMP" property="technologyPlanStart" />
     <result column="technology_plan_end" jdbcType="TIMESTAMP" property="technologyPlanEnd" />
   </resultMap>
+
+  <resultMap id="AddResultMap" type="com.erp.production.ssm.bean.VO.TechnologyPlanVO" extends="BaseResultMap">
+    <result column="technology_name" property="technologyName" jdbcType="VARCHAR" />
+  </resultMap>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -258,4 +263,22 @@
       technology_plan_end = #{technologyPlanEnd,jdbcType=TIMESTAMP}
     where technology_plan_id = #{technologyPlanId,jdbcType=VARCHAR}
   </update>
+
+
+  <select id="find" resultMap="AddResultMap">
+    select
+        technology_plan_id,
+        technology_name,
+        technology_plan.technology_id,
+        batch_amount,
+        start_plan,
+        end_plan,
+        commit_plan,
+        technology_plan_start,
+        technology_plan_end
+    from technology_plan
+    left join technology
+    on technology_plan.technology_id = technology.technology_id
+    order by technology_plan_id asc
+  </select>
 </mapper>

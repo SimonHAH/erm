@@ -7,7 +7,18 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface DepartmentMapper {
-    long countByExample(DepartmentExample example);
+    //扩展的mapper接口方法
+    int deleteBatch(String[] ids);
+
+    int updateNote(Department record);
+
+    List<Department> searchDepartmentByDepartmentId(String departmentId);
+
+    List<Department> searchDepartmentByDepartmentName(String departmentName);
+
+
+    //逆向工程生成的mapper接口
+    int countByExample(DepartmentExample example);
 
     int deleteByExample(DepartmentExample example);
 
