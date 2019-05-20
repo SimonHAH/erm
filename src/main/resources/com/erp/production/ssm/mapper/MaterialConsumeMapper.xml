@@ -27,7 +27,7 @@
 
   <!-- 扩展的sql -->
   <!-- 查询所有记录 -->
-  <select id="find" parameterType="MaterialConsume" resultMap="BaseResultMap">
+  <select id="find" resultMap="BaseResultMap">
 		SELECT
 			consume_id,
 			consume_amount,

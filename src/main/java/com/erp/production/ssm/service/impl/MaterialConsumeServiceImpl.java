@@ -33,7 +33,7 @@ public class MaterialConsumeServiceImpl implements MaterialConsumeService {
 		// TODO Auto-generated method stub
 		//分页处理
 		PageHelper.startPage(page, rows);
-		List<MaterialConsumeVO> list = materialConsumeMapper.find(materialConsume);
+			List<MaterialConsumeVO> list = materialConsumeMapper.find(materialConsume);
 		//创建一个返回值对象
 		PageResult result = new PageResult();
 		result.setRows(list);
