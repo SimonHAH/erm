@@ -1,16 +1,13 @@
-package com.erp.production.ssm.service.impl;
+package com.erp.production.ssm.service.material;
 
 import java.util.List;
 
-import com.erp.production.ssm.bean.Material;
 import com.erp.production.ssm.bean.MaterialReceive;
-import com.erp.production.ssm.bean.MaterialReceiveExample;
 import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.PageResult;
 import com.erp.production.ssm.bean.material.MaterialReceiveVO;
 import com.erp.production.ssm.mapper.MaterialReceiveMapper;
-import com.erp.production.ssm.service.MaterialReceiveService;
-import com.github.pagehelper.Page;
+import com.erp.production.ssm.service.material.MaterialReceiveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

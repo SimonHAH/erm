@@ -43,6 +43,18 @@ public class ManufactureController {
         return "manufacture_edit";
     }
 
+    @RequestMapping("/edit_judge")
+    @ResponseBody
+    private String editJudge(){
+        return null;
+    }
+
+    @RequestMapping("/delete_judge")
+    @ResponseBody
+    private String deleteJudge(){
+        return null;
+    }
+
     @RequestMapping("/list")
     @ResponseBody
     private CommonResult showList(Integer page, Integer rows){
@@ -76,6 +88,24 @@ public class ManufactureController {
         }else{
             result = manufactureService.insert(manufacture);
         }
+        return result;
+    }
+
+    @RequestMapping(value="/update_all")
+    @ResponseBody
+    private CustomResult updateAll(@Valid Manufacture manufacture, BindingResult bindingResult) throws Exception {
+        if(bindingResult.hasErrors()){
+            FieldError fieldError = bindingResult.getFieldError();
+            return CustomResult.build(100, fieldError.getDefaultMessage());
+        }
+        return manufactureService.updateAll(manufacture);
+    }
+
+
+    @RequestMapping(value="/delete_batch")
+    @ResponseBody
+    private CustomResult deleteBatch(String[] ids) throws Exception {
+        CustomResult result = manufactureService.deleteBatch(ids);
         return result;
     }
 

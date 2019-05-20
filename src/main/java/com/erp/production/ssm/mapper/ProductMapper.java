@@ -41,4 +41,5 @@ public interface ProductMapper {
     int updateByPrimaryKey(Product record);
 
 
+    int deleteBatch(@Param("ids") String[] ids);
 }

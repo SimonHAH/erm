@@ -32,6 +32,16 @@
 	<!-- 资源映射 -->
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"/> 
-	<mvc:resources location="/WEB-INF/image/" mapping="/image/**"/> 
+	<mvc:resources location="/WEB-INF/image/" mapping="/image/**"/>
+
+	<mvc:annotation-driven conversion-service="myConversionService"/>
+	<!--id对应上面的conversion-service-->
+	<bean id="myConversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<bean class="com.erp.production.ssm.util.DateUtils"/>
+			</set>
+		</property>
+	</bean>
 
 </beans>

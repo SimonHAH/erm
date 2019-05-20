@@ -25,4 +25,7 @@ public interface TaskService {
 
     List<Task> find();
 
+    CustomResult updateAll(Task task);
+
+    CustomResult deleteBatch(String[] ids);
 }

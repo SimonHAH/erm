@@ -38,5 +38,6 @@ public interface CustomMapper {
 
     int updateByPrimaryKey(Custom record);
 
+    int deleteBatch(@Param("ids") String[] ids);
 
 }

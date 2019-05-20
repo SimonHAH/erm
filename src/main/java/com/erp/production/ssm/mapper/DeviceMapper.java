@@ -13,6 +13,8 @@ public interface DeviceMapper {
 
     List<Device> getData();
 
+    int deleteBatch(@Param("array") String[] deviceIds);
+
     //根据设备id查找设备信息
     List<Device> searchDeviceByDeviceId(@Param("deviceId") String deviceId);
 

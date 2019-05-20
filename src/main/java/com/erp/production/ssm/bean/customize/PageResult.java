@@ -28,7 +28,7 @@ public class PageResult {
 
     @Override
     public String toString() {
-        return "ResponseVo{" +
+        return "PageResult{" +
                 "total=" + total +
                 ", rows=" + rows +
                 '}';

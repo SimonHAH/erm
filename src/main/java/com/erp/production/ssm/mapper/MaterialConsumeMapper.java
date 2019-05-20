@@ -32,4 +32,14 @@ public interface MaterialConsumeMapper {
     int updateByPrimaryKeySelective(MaterialConsume record);
 
     int updateByPrimaryKey(MaterialConsume record);
+
+    List<MaterialConsumeVO> searchMaterialConsumeByMaterialId(String searchValue);
+
+    List<MaterialConsumeVO> searchMaterialConsumeByConsumeId(String searchValue);
+
+    List<MaterialConsumeVO> searchMaterialConsumeByWorkId(String searchValue);
+
+    int updateNote(MaterialConsume materialConsume);
+
+    int deleteBatch(String[] ids);
 }

@@ -22,4 +22,9 @@ public interface ManufactureService {
     List<Manufacture> find();
 
     CustomResult insert(Manufacture manufacture);
+
+    CustomResult updateAll(Manufacture manufacture);
+
+    CustomResult deleteBatch(String[] ids);
+
 }

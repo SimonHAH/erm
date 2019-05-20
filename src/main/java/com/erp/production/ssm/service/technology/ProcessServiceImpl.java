@@ -42,4 +42,9 @@ public class ProcessServiceImpl implements ProcessService {
         List<Process> list = processMapper.selectByExample(example);
         return list;
     }
+
+    @Override
+    public Process getItemById(String processId) {
+        return processMapper.selectByPrimaryKey(processId);
+    }
 }

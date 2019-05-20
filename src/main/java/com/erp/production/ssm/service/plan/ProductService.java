@@ -22,4 +22,8 @@ public interface ProductService {
     List<Product> find();
 
     CustomResult insert(Product product);
+
+    CustomResult updateAll(Product product);
+
+    CustomResult deleteBatch(String[] ids);
 }

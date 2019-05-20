@@ -22,4 +22,9 @@ public interface OrderService {
     List<Order> find();
 
     CustomResult insert(Order order);
+
+    CustomResult updateAll(Order order);
+
+    CustomResult deleteBatch(String[] ids);
+
 }

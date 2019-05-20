@@ -46,4 +46,9 @@ public class TechnologyServiceImpl implements TechnologyService {
         TechnologyExample example = new TechnologyExample();
         return technologyMapper.selectByExample(example);
     }
+
+    @Override
+    public Technology getItemById(String technologyId) {
+        return technologyMapper.selectByPrimaryKey(technologyId);
+    }
 }

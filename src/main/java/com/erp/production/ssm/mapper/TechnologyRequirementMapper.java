@@ -1,5 +1,6 @@
 package com.erp.production.ssm.mapper;
 
+import com.erp.production.ssm.bean.VO.TechnologyRequirementVO;
 import com.erp.production.ssm.bean.technology.TechnologyRequirement;
 import com.erp.production.ssm.bean.technology.TechnologyRequirementExample;
 import org.apache.ibatis.annotations.Param;
@@ -28,4 +29,6 @@ public interface TechnologyRequirementMapper {
     int updateByPrimaryKeySelective(TechnologyRequirement record);
 
     int updateByPrimaryKey(TechnologyRequirement record);
+
+    List<TechnologyRequirementVO> find();
 }

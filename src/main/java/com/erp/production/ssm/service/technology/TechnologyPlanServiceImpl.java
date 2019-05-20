@@ -1,10 +1,8 @@
 package com.erp.production.ssm.service.technology;
 
-import com.erp.production.ssm.bean.VO.TechnologyRequirementVO;
+import com.erp.production.ssm.bean.VO.TechnologyPlanVO;
 import com.erp.production.ssm.bean.customize.PageResult;
-import com.erp.production.ssm.bean.technology.TechnologyRequirement;
-import com.erp.production.ssm.bean.technology.TechnologyRequirementExample;
-import com.erp.production.ssm.mapper.TechnologyRequirementMapper;
+import com.erp.production.ssm.mapper.TechnologyPlanMapper;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,15 +15,16 @@ import java.util.List;
  * @date 2019/5/20
  */
 @Service
-public class TechnologyRequirementServiceImpl implements TechnologyRequirementService {
+public class TechnologyPlanServiceImpl implements TechnologyPlanService {
 
     @Autowired
-    TechnologyRequirementMapper technologyRequirementMapper;
+    TechnologyPlanMapper technologyPlanMapper;
 
     @Override
     public PageResult getList(Integer page, Integer rows) {
         PageHelper.startPage(page, rows);
-        List<TechnologyRequirementVO> list = technologyRequirementMapper.find();
+
+        List<TechnologyPlanVO> list = technologyPlanMapper.find();
 
         PageResult result = new PageResult();
         result.setRows(list);

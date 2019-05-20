@@ -41,5 +41,5 @@ public interface OrderMapper {
     int updateByPrimaryKey(Order record);
 
 
-
+    int deleteBatch(@Param("ids") String[] ids);
 }
