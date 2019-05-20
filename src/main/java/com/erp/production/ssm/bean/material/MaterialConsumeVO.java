@@ -1,13 +1,14 @@
 package com.erp.production.ssm.bean.material;
 
 import com.erp.production.ssm.bean.Material;
+import com.erp.production.ssm.bean.plan.Work;
 
 import java.util.Date;
 
 public class MaterialConsumeVO {
     private String consumeId;
 
-//    private Work work;
+    private Work work;
 
     private Material material;
 
@@ -29,13 +30,13 @@ public class MaterialConsumeVO {
         this.consumeId = consumeId == null ? null : consumeId.trim();
     }
 
-//    public Work getWork() {
-//        return work;
-//    }
-//
-//    public void setWork(Work work) {
-//        this.work = work;
-//    }
+    public Work getWork() {
+        return work;
+    }
+
+    public void setWork(Work work) {
+        this.work = work;
+    }
 
     public Material getMaterial() {
         return material;
