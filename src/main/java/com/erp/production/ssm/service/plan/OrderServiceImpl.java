@@ -1,7 +1,9 @@
 package com.erp.production.ssm.service.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.plan.Order;
+import com.erp.production.ssm.bean.plan.OrderExample;
 import com.erp.production.ssm.mapper.OrderMapper;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,18 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> find() {
-        return orderMapper.find();
+        OrderExample orderExample = new OrderExample();
+        return orderMapper.selectByExample(orderExample);
+    }
+
+    @Override
+    public CustomResult insert(Order order) {
+        int insert = orderMapper.insert(order);
+        if(insert>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "新增订单信息失败");
+        }
     }
 
     @Override

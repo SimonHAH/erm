@@ -1,6 +1,7 @@
 package com.erp.production.ssm.service.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.plan.Product;
 
 import java.util.List;
@@ -20,4 +21,5 @@ public interface ProductService {
 
     List<Product> find();
 
+    CustomResult insert(Product product);
 }

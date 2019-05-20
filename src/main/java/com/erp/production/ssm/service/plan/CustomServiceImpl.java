@@ -1,6 +1,7 @@
 package com.erp.production.ssm.service.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.plan.Custom;
 import com.erp.production.ssm.bean.plan.CustomExample;
 import com.erp.production.ssm.mapper.CustomMapper;
@@ -19,6 +20,21 @@ public class CustomServiceImpl implements CustomService {
     public List<Custom> find() {
         CustomExample customExample = new CustomExample();
         return customMapper.selectByExample(customExample);
+    }
+
+    @Override
+    public CustomResult insert(Custom custom) {
+        int insert = customMapper.insert(custom);
+        if(insert>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "新增生成客户信息失败");
+        }
+    }
+
+    @Override
+    public Custom get(String customId) {
+        return customMapper.selectByPrimaryKey(customId);
     }
 
     @Override

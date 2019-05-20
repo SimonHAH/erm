@@ -63,7 +63,7 @@ public class TaskController {
             FieldError fieldError = bindingResult.getFieldError();
             return CustomResult.build(100, fieldError.getDefaultMessage());
         }
-        if(taskService.queryTaskById(task.getTaskId()) != null){
+        if(taskService.get(task.getTaskId()) != null){
             result = new CustomResult(0, "该生产派工编号已经存在，请更换生产派工编号！", null);
         }else{
             result = taskService.insert(task);

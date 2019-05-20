@@ -1,14 +1,19 @@
 package com.erp.production.ssm.controller.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.plan.Manufacture;
 import com.erp.production.ssm.service.plan.ManufactureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -25,12 +30,17 @@ public class ManufactureController {
 
     @RequestMapping("/add")
     private String add(){
-        return "manufacture_list_add";
+        return "manufacture_add";
+    }
+
+    @RequestMapping("/add_judge")
+    private String add_judge(){
+        return "manufacture_add";
     }
 
     @RequestMapping("/edit")
     private String edit(){
-        return "manufacture_list_edit";
+        return "manufacture_edit";
     }
 
     @RequestMapping("/list")
@@ -51,6 +61,22 @@ public class ManufactureController {
     @ResponseBody
     public List<Manufacture> getData() {
         return manufactureService.find();
+    }
+
+    @RequestMapping(value="/insert", method= RequestMethod.POST)
+    @ResponseBody
+    private CustomResult insert(@Valid Manufacture manufacture, BindingResult bindingResult) throws Exception {
+        CustomResult result;
+        if(bindingResult.hasErrors()){
+            FieldError fieldError = bindingResult.getFieldError();
+            return CustomResult.build(100, fieldError.getDefaultMessage());
+        }
+        if(manufactureService.get(manufacture.getManufactureSn()) != null){
+            result = new CustomResult(0, "该生产批号已经存在，请更换生产批号！", null);
+        }else{
+            result = manufactureService.insert(manufacture);
+        }
+        return result;
     }
 
 
