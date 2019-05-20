@@ -16,4 +16,6 @@ public interface TechnologyService {
     PageResult getList(Integer page, Integer rows);
 
     List<Technology> find();
+
+    Technology getItemById(String technologyId);
 }

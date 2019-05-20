@@ -6,6 +6,7 @@ import com.erp.production.ssm.service.technology.ProcessService;
 import com.erp.production.ssm.service.technology.TechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -38,9 +39,16 @@ public class TechnologyController {
         return technologyService.getList(page, rows);
     }
 
+    @RequestMapping("get_data")
+    @ResponseBody
+    public List<Technology> getData() {
+        List<Technology> list = technologyService.find();
+        return list;
+    }
+
     @RequestMapping("/add_judge")
     public String add_judge() {
-        return "technology_add";
+        return null;
     }
 
     @RequestMapping("/add")
@@ -53,10 +61,12 @@ public class TechnologyController {
 
     }
 
-    @RequestMapping("get_data")
+    @RequestMapping("/get/{technologyId}")
     @ResponseBody
-    public List<Technology> getData() {
-        List<Technology> list = technologyService.find();
-        return list;
+    public Technology getItemById(@PathVariable String technologyId) {
+        Technology technology = technologyService.getItemById(technologyId);
+        return technology;
     }
+
+
 }
