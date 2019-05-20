@@ -1,10 +1,11 @@
-package com.erp.production.ssm.controller;
+package com.erp.production.ssm.controller.employee;
 
-import com.erp.production.ssm.bean.ProcessMeasureCheck;
+import com.erp.production.ssm.bean.ProcessCountCheck;
 import com.erp.production.ssm.bean.VO.CustomOrderVO;
 import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.PageResult;
-import com.erp.production.ssm.service.ProcessMeasureService;
+import com.erp.production.ssm.service.ProcessCountCheckService;
+import jdk.nashorn.internal.ir.annotations.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,16 +19,16 @@ import javax.validation.Valid;
 
 /**
  * @author Turtle
- * @title: ProcessMeasureCheckController
+ * @title: ProcessCountCheckController
  * @projectName production_ms
  * @description: TODO
- * @date 2019/5/20 12:03
+ * @date 2019/5/20 15:01
  */
 @Controller
-@RequestMapping(value = "/p_measure_check")
-public class ProcessMeasureCheckController {
+@RequestMapping(value = "/p_count_check")
+public class ProcessCountCheckController {
     @Autowired
-    private ProcessMeasureService processMeasureService;
+    private ProcessCountCheckService processCountCheckService;
 
 
     @RequestMapping("/get/{orderId}")
@@ -38,101 +39,114 @@ public class ProcessMeasureCheckController {
 
     @RequestMapping("/find")
     public String find() throws Exception{
-        return "p_measure_check_list";
+        return "p_count_check_list";
     }
 
     @RequestMapping("/add")
     public String add() throws Exception{
-        return "p_measure_check_add";
-    }
-
-    @RequestMapping("/edit")
-    public String edit() throws Exception{
-        return "p_measure_check_edit";
+        return "p_count_check_add";
     }
 
     @RequestMapping("/add_judge")
     public String add_judge() throws Exception{
-        return "p_measure_check_add";
+        return "p_count_check_add";
+    }
+
+    @RequestMapping("/edit")
+    public String edit() throws Exception{
+        return "p_count_check_edit";
     }
 
     @RequestMapping("/edit_judge")
     public String edit_judge() throws Exception{
-        return "p_measure_check_edit";
+        return "p_count_check_edit";
     }
+
+
 
     @RequestMapping("/list")
     @ResponseBody
-    public PageResult getList(Integer page, Integer rows, ProcessMeasureCheck processMeasureCheck)
+    public PageResult getList(Integer page, Integer rows, ProcessCountCheck processCountCheck)
             throws Exception{
-        PageResult result = processMeasureService.getList(page, rows, processMeasureCheck);
+
+        PageResult result = processCountCheckService.getList(page, rows, processCountCheck);
         return result;
     }
 
-    /*
-     *此处的method可以取两个值，
-     *一个是RequestMethod.GET，一个是RequestMethod.POST，
-     *就是请求该方法使用的模式，是get还是post，即参数提交的方法
-     *ajax或者form表单提交数据有两种方法，即get和post。
-     */
     @RequestMapping(value="/insert", method= RequestMethod.POST)
     @ResponseBody
-    private CustomResult insert(@Valid ProcessMeasureCheck processMeasureCheck, BindingResult bindingResult)
+    private CustomResult insert(@Valid ProcessCountCheck processCountCheck, BindingResult bindingResult)
             throws Exception {
         CustomResult result;
         if(bindingResult.hasErrors()){
             FieldError fieldError = bindingResult.getFieldError();
             return CustomResult.build(100, fieldError.getDefaultMessage());
         }
-        result = processMeasureService.insert(processMeasureCheck);
+        result = processCountCheckService.insert(processCountCheck);
         return result;
+    }
+
+    @RequestMapping(value="/update")
+    @ResponseBody
+    private CustomResult update(@Valid ProcessCountCheck processCountCheck, BindingResult bindingResult)
+            throws Exception {
+        return null;
     }
 
     @RequestMapping(value="/update_all")
     @ResponseBody
-    private CustomResult updateAll(@Valid ProcessMeasureCheck processMeasureCheck, BindingResult bindingResult)
+    private CustomResult updateAll(@Valid ProcessCountCheck processCountCheck, BindingResult bindingResult)
             throws Exception {
         if(bindingResult.hasErrors()){
             FieldError fieldError = bindingResult.getFieldError();
             return CustomResult.build(100, fieldError.getDefaultMessage());
         }
-        return processMeasureService.updateAll(processMeasureCheck);
+        return processCountCheckService.updateAll(processCountCheck);
     }
 
     @RequestMapping(value="/update_note")
     @ResponseBody
-    private CustomResult updateNote(@Valid ProcessMeasureCheck processMeasureCheck, BindingResult bindingResult)
+    private CustomResult updateNote(@Valid ProcessCountCheck processCountCheck, BindingResult bindingResult)
             throws Exception {
         if(bindingResult.hasErrors()){
             FieldError fieldError = bindingResult.getFieldError();
             return CustomResult.build(100, fieldError.getDefaultMessage());
         }
-        return processMeasureService.updateNote(processMeasureCheck);
+        return processCountCheckService.updateNote(processCountCheck);
+    }
+
+    @RequestMapping(value="/delete")
+    @ResponseBody
+    private CustomResult delete(String id) throws Exception {
+        return null;
+    }
+
+    @RequestMapping(value="/delete_judge")
+    @ResponseBody
+    private CustomResult delete_judge(String id) throws Exception {
+        return null;
     }
 
     @RequestMapping(value="/delete_batch")
     @ResponseBody
     private CustomResult deleteBatch(String[] ids) throws Exception {
         System.out.println(ids);
-        CustomResult result = processMeasureService.deleteBatch(ids);
+        CustomResult result = processCountCheckService.deleteBatch(ids);
         return result;
     }
 
-
-    @RequestMapping(value="/delete_judge")
+    @RequestMapping(value="/change_status")
     @ResponseBody
-    private CustomResult delete_judge(String[] ids) throws Exception {
-        System.out.println(ids);
-        CustomResult result = processMeasureService.deleteBatch(ids);
-        return result;
+    public CustomResult changeStatus(String[] ids) throws Exception{
+        return null;
     }
 
-    //根据工序计量质检id查找
-    @RequestMapping("/search_pMeasureCheck_by_pMeasureCheckId")
+    //根据工序计数质检id查找
+    @RequestMapping("/search_pCountCheck_by_pCountCheckId")
     @ResponseBody
-    public PageResult searchOrderByOrderId(Integer page, Integer rows, String searchValue) throws Exception{
-        PageResult result = processMeasureService
-                .searchPMeasureCheckByPMeasureCheckId(page, rows, searchValue);
+    public PageResult searchpCountCheckBypCountCheckId(Integer page, Integer rows, String searchValue)
+            throws Exception{
+        PageResult result = processCountCheckService.searchPCountCheckByPCountCheckId(page, rows, searchValue);
         return result;
     }
 }

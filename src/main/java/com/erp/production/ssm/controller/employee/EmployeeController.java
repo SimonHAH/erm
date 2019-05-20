@@ -1,12 +1,10 @@
 package com.erp.production.ssm.controller.employee;
 
-import com.erp.production.ssm.bean.DepartmentExample;
 import com.erp.production.ssm.bean.Employee;
-import com.erp.production.ssm.bean.EmployeeExample;
 import com.erp.production.ssm.bean.VO.EmployeeVO;
 import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.PageResult;
-import com.erp.production.ssm.service.EmployeeService;
+import com.erp.production.ssm.service.employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

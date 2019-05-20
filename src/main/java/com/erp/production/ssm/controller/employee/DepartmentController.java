@@ -3,7 +3,7 @@ package com.erp.production.ssm.controller.employee;
 import com.erp.production.ssm.bean.Department;
 import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.PageResult;
-import com.erp.production.ssm.service.DepartmentService;
+import com.erp.production.ssm.service.employee.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

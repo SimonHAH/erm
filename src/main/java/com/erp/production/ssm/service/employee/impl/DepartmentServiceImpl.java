@@ -1,11 +1,11 @@
-package com.erp.production.ssm.service.impl;
+package com.erp.production.ssm.service.employee.impl;
 
 import com.erp.production.ssm.bean.Department;
 import com.erp.production.ssm.bean.DepartmentExample;
 import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.PageResult;
 import com.erp.production.ssm.mapper.DepartmentMapper;
-import com.erp.production.ssm.service.DepartmentService;
+import com.erp.production.ssm.service.employee.DepartmentService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.erp.production.ssm.service;
+package com.erp.production.ssm.service.employee;
 
 import com.erp.production.ssm.bean.Department;
 import com.erp.production.ssm.bean.customize.CustomResult;
