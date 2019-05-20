@@ -43,4 +43,11 @@ public class ProcessServiceImpl implements ProcessService {
 
         return result;
     }
+
+    @Override
+    public List<Process> find() {
+        ProcessExample example = new ProcessExample();
+        List<Process> list = processMapper.selectByExample(example);
+        return list;
+    }
 }

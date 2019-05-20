@@ -2,7 +2,7 @@ package com.erp.production.ssm.controller.device;
 
 import com.erp.production.ssm.bean.DeviceFault;
 import com.erp.production.ssm.bean.customize.ResponseVo;
-import com.erp.production.ssm.service.DeviceFaultService;
+import com.erp.production.ssm.service.device.DeviceFaultService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

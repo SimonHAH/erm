@@ -1,10 +1,10 @@
 package com.erp.production.ssm.service.technology;
 
 import com.erp.production.ssm.bean.customize.PageResult;
+import com.erp.production.ssm.bean.technology.Process;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import com.erp.production.ssm.bean.technology.Process;
 
 /**
  * @author Nemo

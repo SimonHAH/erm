@@ -1,18 +1,16 @@
 package com.erp.production.ssm.service.impl;
 
 import com.erp.production.ssm.bean.Device;
-import com.erp.production.ssm.bean.DeviceType;
 import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.mapper.DeviceMapper;
-import com.erp.production.ssm.service.DeviceService;
+import com.erp.production.ssm.service.device.DeviceService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by HorseXInsect
