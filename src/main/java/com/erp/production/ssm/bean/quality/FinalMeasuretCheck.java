@@ -1,22 +1,13 @@
-package com.erp.production.ssm.bean;
+package com.erp.production.ssm.bean.quality;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
-public class FinalCountCheck {
-    private String fCountCheckId;
+public class FinalMeasuretCheck {
+    private String fMeasureCheckId;
 
     private String orderId;
 
     private String checkItem;
-
-    private Integer sample;
-
-    private Integer checkNumber;
-
-    private Integer unqualify;
-
-    private BigDecimal qualify;
 
     private Date cdate;
 
@@ -28,12 +19,12 @@ public class FinalCountCheck {
 
     private String note;
 
-    public String getfCountCheckId() {
-        return fCountCheckId;
+    public String getfMeasureCheckId() {
+        return fMeasureCheckId;
     }
 
-    public void setfCountCheckId(String fCountCheckId) {
-        this.fCountCheckId = fCountCheckId == null ? null : fCountCheckId.trim();
+    public void setfMeasureCheckId(String fMeasureCheckId) {
+        this.fMeasureCheckId = fMeasureCheckId == null ? null : fMeasureCheckId.trim();
     }
 
     public String getOrderId() {
@@ -50,38 +41,6 @@ public class FinalCountCheck {
 
     public void setCheckItem(String checkItem) {
         this.checkItem = checkItem == null ? null : checkItem.trim();
-    }
-
-    public Integer getSample() {
-        return sample;
-    }
-
-    public void setSample(Integer sample) {
-        this.sample = sample;
-    }
-
-    public Integer getCheckNumber() {
-        return checkNumber;
-    }
-
-    public void setCheckNumber(Integer checkNumber) {
-        this.checkNumber = checkNumber;
-    }
-
-    public Integer getUnqualify() {
-        return unqualify;
-    }
-
-    public void setUnqualify(Integer unqualify) {
-        this.unqualify = unqualify;
-    }
-
-    public BigDecimal getQualify() {
-        return qualify;
-    }
-
-    public void setQualify(BigDecimal qualify) {
-        this.qualify = qualify;
     }
 
     public Date getCdate() {

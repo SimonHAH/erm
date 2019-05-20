@@ -1,12 +1,26 @@
 package com.erp.production.ssm.mapper;
 
-import com.erp.production.ssm.bean.FinalMeasuretCheck;
-import com.erp.production.ssm.bean.FinalMeasuretCheckExample;
+import com.erp.production.ssm.bean.VO.FinalMeasuretCheckVO;
+import com.erp.production.ssm.bean.quality.FinalMeasuretCheck;
+import com.erp.production.ssm.bean.quality.FinalMeasuretCheckExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface FinalMeasuretCheckMapper {
+
+    List<FinalMeasuretCheckVO> find(FinalMeasuretCheck finalMeasuretCheck);
+
+    int updateNote(FinalMeasuretCheck finalMeasuretCheck);
+
+    int deleteBatch(String[] ids);
+
+    List<FinalMeasuretCheckVO> searchFMeasureCheckByOrderId(String orderId);
+
+    List<FinalMeasuretCheckVO> searchFMeasureCheckByFMeasureCheckId(String finalMeasuretCheckId);
+
+
+
     long countByExample(FinalMeasuretCheckExample example);
 
     int deleteByExample(FinalMeasuretCheckExample example);

@@ -1,12 +1,26 @@
 package com.erp.production.ssm.mapper;
 
-import com.erp.production.ssm.bean.FinalCountCheck;
-import com.erp.production.ssm.bean.FinalCountCheckExample;
+import com.erp.production.ssm.bean.VO.FinalCountCheckVO;
+import com.erp.production.ssm.bean.quality.FinalCountCheck;
+import com.erp.production.ssm.bean.quality.FinalCountCheckExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface FinalCountCheckMapper {
+
+    List<FinalCountCheckVO> find(FinalCountCheck finalCountCheck);
+
+    int updateNote(FinalCountCheck finalCountCheck);
+
+    int deleteBatch(String[] ids);
+
+    List<FinalCountCheckVO> searchFCountCheckByFCountCheckId(String fCountCheckId);
+
+    List<FinalCountCheckVO> searchFCountCheckByOrderId(String orderId);
+
+
+
     long countByExample(FinalCountCheckExample example);
 
     int deleteByExample(FinalCountCheckExample example);

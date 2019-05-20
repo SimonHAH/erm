@@ -41,29 +41,29 @@
 
 <div  id="toolbar_unqualify" style=" height: 22px; padding: 3px 11px; background: #fafafa;">  
 	
-	<c:forEach items="${sessionScope.sysPermissionList}" var="per" >
-		<c:if test="${per=='sys:add' }" >
+	<%--<c:forEach items="${sessionScope.sysPermissionList}" var="per" >
+		<c:if test="${per=='sys:add' }" >--%>
 		    <div style="float: left;">  
 		        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-add" onclick="unqualify_add()">
 					新增
 				</a>
 		    </div>  
-		</c:if>
-		<c:if test="${per=='sys:edit' }" >
+		<%--</c:if>
+		<c:if test="${per=='sys:edit' }" >--%>
 		    <div style="float: left;">  
 		        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-edit" onclick="unqualify_edit()">
 					编辑
 				</a>
 		    </div>  
-		</c:if>
-		<c:if test="${per=='sys:delete' }" >
+		<%--</c:if>
+		<c:if test="${per=='sys:delete' }" >--%>
 		    <div style="float: left;">  
 		        <a href="#" class="easyui-linkbutton" plain="true" icon="icon-cancel" onclick="unqualify_delete()">
 					删除
 				</a>
 		    </div>  
-		</c:if>
-	</c:forEach>
+		<%--</c:if>
+	</c:forEach>--%>
 	
 	<div class="datagrid-btn-separator"></div>  
 	
@@ -448,7 +448,7 @@ function doSearch_unqualify(value,name){ //用户输入用户名,点击搜素,�
 	
 	//更新订单要求
 	function updateNote(){
-		$.get("sys/edit_judge",'',function(data){
+		$.get("unqualify/edit_judge",'',function(data){
     		if(data.msg != null){
     			$.messager.alert('提示', data.msg);
     		}else{
@@ -479,7 +479,7 @@ function doSearch_unqualify(value,name){ //用户输入用户名,点击搜素,�
     }
     
     function unqualify_add(){
-    	$.get("sys/add_judge",'',function(data){
+    	$.get("unqualify/add_judge",'',function(data){
        		if(data.msg != null){
        			$.messager.alert('提示', data.msg);
        		}else{
@@ -489,7 +489,7 @@ function doSearch_unqualify(value,name){ //用户输入用户名,点击搜素,�
     }
     
     function unqualify_edit(){
-    	$.get("sys/edit_judge",'',function(data){
+    	$.get("unqualify/edit_judge",'',function(data){
        		if(data.msg != null){
        			$.messager.alert('提示', data.msg);
        		}else{
@@ -519,7 +519,7 @@ function doSearch_unqualify(value,name){ //用户输入用户名,点击搜素,�
     }
     
     function unqualify_delete(){
-    	$.get("sys/delete_judge",'',function(data){
+    	$.get("unqualify/delete_judge",'',function(data){
        		if(data.msg != null){
        			$.messager.alert('提示', data.msg);
        		}else{
@@ -531,7 +531,7 @@ function doSearch_unqualify(value,name){ //用户输入用户名,点击搜素,�
                	$.messager.confirm('确认','确定删除ID为 '+ids+' 的不合格品吗？',function(r){
                	    if (r){
                	    	var params = {"ids":ids};
-                       	$.post("sys/delete_batch",params, function(data){
+                       	$.post("unqualify/delete_batch",params, function(data){
                    			if(data.status == 200){
                    				$.messager.alert('提示','删除不合格品成功!',undefined,function(){
                    					$("#unqualifyList").datagrid("reload");

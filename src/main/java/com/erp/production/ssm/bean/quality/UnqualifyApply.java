@@ -1,4 +1,4 @@
-package com.erp.production.ssm.bean;
+package com.erp.production.ssm.bean.quality;
 
 import java.util.Date;
 
