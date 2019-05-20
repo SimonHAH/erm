@@ -31,4 +31,10 @@ public interface TechnologyPlanMapper {
     int updateByPrimaryKey(TechnologyPlan record);
 
     List<TechnologyPlanVO> find();
+
+    TechnologyPlanVO searchItemById(@Param("id") String searchValue);
+
+    List<TechnologyPlanVO> searchItemByName(@Param("name") String searchValue);
+
+    TechnologyPlan getPlanById(String planId);
 }

@@ -48,4 +48,16 @@ public class ProcessController {
     public Process getItemById(@PathVariable String processId) {
         return processService.getItemById(processId);
     }
+
+    @RequestMapping("/search_process_by_processId")
+    @ResponseBody
+    public PageResult searchItemById(String searchValue, Integer page, Integer rows){
+        return processService.searchItemById(searchValue, page, rows);
+    }
+
+    @RequestMapping("/search_process_by_technologyPlanId")
+    @ResponseBody
+    public PageResult searchItemByPlanId(String searchValue, Integer page, Integer rows){
+        return processService.searchItemByPlanId(searchValue, page, rows);
+    }
 }

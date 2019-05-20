@@ -9,6 +9,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +27,34 @@ public class TechnologyRequirementServiceImpl implements TechnologyRequirementSe
     public PageResult getList(Integer page, Integer rows) {
         PageHelper.startPage(page, rows);
         List<TechnologyRequirementVO> list = technologyRequirementMapper.find();
+
+        PageResult result = new PageResult();
+        result.setRows(list);
+        result.setTotal(list.size());
+
+        return result;
+    }
+
+    @Override
+    public PageResult searchItemById(String searchValue, Integer page, Integer rows) {
+        PageHelper.startPage(page, rows);
+
+        TechnologyRequirementVO technologyRequirementVO = technologyRequirementMapper.searchItemById(searchValue);
+        List<TechnologyRequirementVO> list = new ArrayList<>();
+        list.add(technologyRequirementVO);
+
+        PageResult result = new PageResult();
+        result.setRows(list);
+        result.setTotal(list.size());
+
+        return result;
+    }
+
+    @Override
+    public PageResult searchItemByName(String searchValue, Integer page, Integer rows) {
+        PageHelper.startPage(page, rows);
+
+        List<TechnologyRequirementVO> list = technologyRequirementMapper.searchItemByName(searchValue);
 
         PageResult result = new PageResult();
         result.setRows(list);

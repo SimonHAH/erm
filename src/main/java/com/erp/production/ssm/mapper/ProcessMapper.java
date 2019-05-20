@@ -2,6 +2,7 @@ package com.erp.production.ssm.mapper;
 
 import com.erp.production.ssm.bean.technology.Process;
 import com.erp.production.ssm.bean.technology.ProcessExample;
+import com.erp.production.ssm.bean.technology.TechnologyPlan;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -28,4 +29,6 @@ public interface ProcessMapper {
     int updateByPrimaryKeySelective(Process record);
 
     int updateByPrimaryKey(Process record);
+
+    List<Process> searchItemByPlanId(@Param("planId") String searchValue);
 }

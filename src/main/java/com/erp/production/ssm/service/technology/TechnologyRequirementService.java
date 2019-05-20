@@ -15,4 +15,9 @@ public interface TechnologyRequirementService {
 
 
     PageResult getList(Integer page, Integer rows);
+
+
+    PageResult searchItemById(String searchValue, Integer page, Integer rows);
+
+    PageResult searchItemByName(String searchValue, Integer page, Integer rows);
 }

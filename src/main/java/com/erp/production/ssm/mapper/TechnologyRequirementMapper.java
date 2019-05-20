@@ -20,7 +20,7 @@ public interface TechnologyRequirementMapper {
 
     List<TechnologyRequirement> selectByExample(TechnologyRequirementExample example);
 
-    TechnologyRequirement selectByPrimaryKey(String technologyRequirementId);
+    TechnologyRequirementVO selectByPrimaryKey(String technologyRequirementId);
 
     int updateByExampleSelective(@Param("record") TechnologyRequirement record, @Param("example") TechnologyRequirementExample example);
 
@@ -31,4 +31,8 @@ public interface TechnologyRequirementMapper {
     int updateByPrimaryKey(TechnologyRequirement record);
 
     List<TechnologyRequirementVO> find();
+
+    TechnologyRequirementVO searchItemById(@Param("id") String searchValue);
+
+    List<TechnologyRequirementVO> searchItemByName(@Param("technologyName") String searchValue);
 }

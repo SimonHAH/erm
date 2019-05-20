@@ -36,4 +36,16 @@ public class TechnologyRequirementController {
         return result;
     }
 
+    @RequestMapping("search_technologyRequirement_by_technologyRequirementId")
+    @ResponseBody
+    public PageResult searchItemById(String searchValue, Integer page, Integer rows) {
+        return technologyRequirementService.searchItemById(searchValue, page, rows);
+    }
+
+    @RequestMapping("search_technologyRequirement_by_technologyName")
+    @ResponseBody
+    public PageResult searchItemByName(String searchValue, Integer page, Integer rows) {
+        return technologyRequirementService.searchItemByName(searchValue, page, rows);
+    }
+
 }

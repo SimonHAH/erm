@@ -4,6 +4,7 @@ import com.erp.production.ssm.bean.customize.PageResult;
 import com.erp.production.ssm.bean.technology.Technology;
 import com.erp.production.ssm.service.technology.ProcessService;
 import com.erp.production.ssm.service.technology.TechnologyService;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -66,6 +67,18 @@ public class TechnologyController {
     public Technology getItemById(@PathVariable String technologyId) {
         Technology technology = technologyService.getItemById(technologyId);
         return technology;
+    }
+
+    @RequestMapping("/search_technology_by_technologyId")
+    @ResponseBody
+    public PageResult searchItemById(String searchValue, Integer page, Integer rows) {
+        return technologyService.searchItemById(searchValue, page, rows);
+    }
+
+    @RequestMapping("/search_technology_by_technologyName")
+    @ResponseBody
+    public PageResult searchItemByName(String searchValue, Integer page, Integer rows) {
+        return technologyService.searchItemByName(searchValue, page, rows);
     }
 
 

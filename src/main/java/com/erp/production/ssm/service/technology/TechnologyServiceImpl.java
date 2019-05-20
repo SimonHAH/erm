@@ -10,6 +10,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,5 +51,33 @@ public class TechnologyServiceImpl implements TechnologyService {
     @Override
     public Technology getItemById(String technologyId) {
         return technologyMapper.selectByPrimaryKey(technologyId);
+    }
+
+    @Override
+    public PageResult searchItemById(String searchValue, Integer page, Integer rows) {
+        PageHelper.startPage(page, rows);
+
+        Technology technology = technologyMapper.selectByPrimaryKey(searchValue);
+        List<Technology> list = new ArrayList<>();
+        list.add(technology);
+
+        PageResult result = new PageResult();
+        result.setRows(list);
+        result.setTotal(list.size());
+
+        return result;
+    }
+
+    @Override
+    public PageResult searchItemByName(String searchValue, Integer page, Integer rows) {
+        PageHelper.startPage(page, rows);
+
+        List<Technology> list =  technologyMapper.searchItemByName(searchValue);
+
+        PageResult result = new PageResult();
+        result.setTotal(list.size());
+        result.setRows(list);
+
+        return result;
     }
 }

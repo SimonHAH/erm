@@ -18,4 +18,8 @@ public interface ProcessService {
     List<Process> find();
 
     Process getItemById(String processId);
+
+    PageResult searchItemById(String searchValue, Integer page, Integer rows);
+
+    PageResult searchItemByPlanId(String searchValue, Integer page, Integer rows);
 }

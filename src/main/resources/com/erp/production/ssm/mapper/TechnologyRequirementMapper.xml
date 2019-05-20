@@ -230,4 +230,36 @@
     order by technology_requirement_id asc
   </select>
 
+
+  <select id="searchItemById" resultMap="AddResultMap">
+    select
+        technology_requirement_id,
+        technology_requirement.technology_id,
+        technology_name,
+        requirement,
+        add_time,
+        revise_time
+    from technology_requirement
+    left join technology
+    on technology.technology_id = technology_requirement.technology_id
+    where technology_requirement_id=#{id}
+    order by technology_requirement_id asc
+  </select>
+
+  <select id="searchItemByName" resultMap="AddResultMap">
+    select
+        technology_requirement_id,
+        technology_requirement.technology_id,
+        technology_name,
+        requirement,
+        add_time,
+        revise_time
+    from technology_requirement
+    left join technology
+    on technology.technology_id = technology_requirement.technology_id
+    where technology_name like concat ("%", #{technologyName}, "%")
+    order by technology_requirement_id asc
+
+  </select>
+
 </mapper>

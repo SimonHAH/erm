@@ -9,6 +9,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,5 +47,33 @@ public class ProcessServiceImpl implements ProcessService {
     @Override
     public Process getItemById(String processId) {
         return processMapper.selectByPrimaryKey(processId);
+    }
+
+    @Override
+    public PageResult searchItemById(String searchValue, Integer page, Integer rows) {
+        PageHelper.startPage(page, rows);
+
+        Process process = processMapper.selectByPrimaryKey(searchValue);
+        List<Process> list = new ArrayList<>();
+        list.add(process);
+
+        PageResult result = new PageResult();
+        result.setRows(list);
+        result.setTotal(list.size());
+
+        return result;
+    }
+
+    @Override
+    public PageResult searchItemByPlanId(String searchValue, Integer page, Integer rows) {
+        PageHelper.startPage(page, rows);
+
+        List<Process> list = processMapper.searchItemByPlanId(searchValue);
+
+        PageResult result = new PageResult();
+        result.setTotal(list.size());
+        result.setRows(list);
+
+        return result;
     }
 }
