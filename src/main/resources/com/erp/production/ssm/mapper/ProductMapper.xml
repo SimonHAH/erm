@@ -20,7 +20,7 @@
   <!--批量删除-->
   <delete id="deleteBatch">
     DELETE FROM product WHERE
-    work_id IN
+    product_id IN
     <foreach collection="ids" item="id" separator="," open="(" close=")">
       #{id}
     </foreach>
