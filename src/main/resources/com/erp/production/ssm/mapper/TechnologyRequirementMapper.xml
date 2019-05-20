@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.erp.production.ssm.mapper.TechnologyRequirementMapper">
+
   <resultMap id="BaseResultMap" type="com.erp.production.ssm.bean.technology.TechnologyRequirement">
     <id column="technology_requirement_id" jdbcType="VARCHAR" property="technologyRequirementId" />
     <result column="technology_id" jdbcType="VARCHAR" property="technologyId" />
@@ -8,6 +9,10 @@
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="revise_time" jdbcType="TIMESTAMP" property="reviseTime" />
   </resultMap>
+    <resultMap id="AddResultMap" type="com.erp.production.ssm.bean.VO.TechnologyRequirementVO" extends="BaseResultMap">
+        <result column="technology_name" property="technologyName" jdbcType="VARCHAR" />
+    </resultMap>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -210,4 +215,19 @@
       revise_time = #{reviseTime,jdbcType=TIMESTAMP}
     where technology_requirement_id = #{technologyRequirementId,jdbcType=VARCHAR}
   </update>
+
+  <select id="find" resultMap="AddResultMap">
+    select
+        technology_requirement_id,
+        technology_requirement.technology_id,
+        technology_name,
+        requirement,
+        add_time,
+        revise_time
+    from technology_requirement
+    left join technology
+    on technology.technology_id = technology_requirement.technology_id
+    order by technology_requirement_id asc
+  </select>
+
 </mapper>

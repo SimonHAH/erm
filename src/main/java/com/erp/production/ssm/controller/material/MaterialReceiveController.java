@@ -35,4 +35,13 @@ public class MaterialReceiveController {
         PageResult pageResult = materialReceiveService.searchMaterialReceiveByReceiveId(page, rows, searchValue);
         return pageResult;
     }
+
+    @RequestMapping("/search_materialReceive_by_materialId")
+    @ResponseBody
+    public PageResult searchMaterialReceiveByMaterialId(Integer page,Integer rows,String searchValue)
+            throws Exception {
+        //searchValue=SJ&page=1&rows=10
+        PageResult pageResult = materialReceiveService.searchMaterialReceiveByMaterialId(page, rows, searchValue);
+        return pageResult;
+    }
 }

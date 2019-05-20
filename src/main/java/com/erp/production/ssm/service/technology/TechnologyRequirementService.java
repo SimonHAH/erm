@@ -1,6 +1,9 @@
 package com.erp.production.ssm.service.technology;
 
+import com.erp.production.ssm.bean.VO.TechnologyRequirementVO;
 import com.erp.production.ssm.bean.customize.PageResult;
+import com.erp.production.ssm.bean.technology.TechnologyRequirement;
+
 import java.util.List;
 
 /**

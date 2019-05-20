@@ -26,10 +26,11 @@ public interface DeviceService {
     // 根据设备各类查找
     ResponseVo searchDeviceByDeviceTypeName(int page, int rows, String deviceTypeName);
 
+    Device get(String deviceId);
 
 
     CustomResult insert(Device device);
-    CustomResult deleteBatch(String[] device);
+    CustomResult deleteBatch(String[] deviceIds);
     CustomResult update(Device device);
     CustomResult updateNote(Device device);
 

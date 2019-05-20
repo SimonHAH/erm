@@ -1,5 +1,6 @@
 package com.erp.production.ssm.service.technology;
 
+import com.erp.production.ssm.bean.VO.TechnologyRequirementVO;
 import com.erp.production.ssm.bean.customize.PageResult;
 import com.erp.production.ssm.bean.technology.TechnologyRequirement;
 import com.erp.production.ssm.bean.technology.TechnologyRequirementExample;
@@ -23,10 +24,8 @@ public class TechnologyRequirementServiceImpl implements TechnologyRequirementSe
 
     @Override
     public PageResult getList(Integer page, Integer rows) {
-        TechnologyRequirementExample example = new TechnologyRequirementExample();
-
         PageHelper.startPage(page, rows);
-        List<TechnologyRequirement> list = technologyRequirementMapper.selectByExample(example);
+        List<TechnologyRequirementVO> list = technologyRequirementMapper.find();
 
         PageResult result = new PageResult();
         result.setRows(list);

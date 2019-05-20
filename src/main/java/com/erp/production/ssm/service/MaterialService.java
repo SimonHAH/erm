@@ -1,6 +1,7 @@
 package com.erp.production.ssm.service;
 
 import com.erp.production.ssm.bean.Material;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.PageResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
 
@@ -15,4 +16,6 @@ public interface MaterialService {
     PageResult searchMaterialByMaterialId(Integer page, Integer rows, String materialId);
 
     PageResult searchMaterialByMaterialType(Integer page, Integer rows, String materialType);
+
+    CustomResult updateNote(Material material);
 }

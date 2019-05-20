@@ -43,4 +43,37 @@ public class MaterialConsumeServiceImpl implements MaterialConsumeService {
 		return result;
 	}
 
+	@Override
+	public PageResult searchMaterialConsumeByConsumeId(Integer page, Integer rows, String searchValue) {
+		PageHelper.startPage(page,rows);
+		List<MaterialConsumeVO> list = materialConsumeMapper.searchMaterialConsumeByConsumeId(searchValue);
+		PageResult pageResult = new PageResult();
+		pageResult.setRows(list);
+		PageInfo<MaterialConsumeVO> pageInfo = new PageInfo<>(list);
+		pageResult.setTotal(pageInfo.getTotal());
+		return pageResult;
+	}
+
+	@Override
+	public PageResult searchMaterialConsumeByMaterialId(Integer page, Integer rows, String searchValue) {
+		PageHelper.startPage(page,rows);
+		List<MaterialConsumeVO> list = materialConsumeMapper.searchMaterialConsumeByMaterialId(searchValue);
+		PageResult pageResult = new PageResult();
+		pageResult.setRows(list);
+		PageInfo<MaterialConsumeVO> pageInfo = new PageInfo<>(list);
+		pageResult.setTotal(pageInfo.getTotal());
+		return pageResult;
+	}
+
+	@Override
+	public PageResult searchMaterialConsumeByWorkId(Integer page, Integer rows, String searchValue) {
+		PageHelper.startPage(page,rows);
+		List<MaterialConsumeVO> list = materialConsumeMapper.searchMaterialConsumeByWorkId(searchValue);
+		PageResult pageResult = new PageResult();
+		pageResult.setRows(list);
+		PageInfo<MaterialConsumeVO> pageInfo = new PageInfo<>(list);
+		pageResult.setTotal(pageInfo.getTotal());
+		return pageResult;
+	}
+
 }

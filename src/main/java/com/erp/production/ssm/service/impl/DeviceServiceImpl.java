@@ -85,15 +85,30 @@ public class DeviceServiceImpl implements DeviceService {
         return responseVo;
     }
 
+    @Override
+    public Device get(String deviceId) {
+        return deviceMapper.selectByPrimaryKey(deviceId);
+    }
+
 
     @Override
     public CustomResult insert(Device device) {
-        return null;
+        int i = deviceMapper.insert(device);
+        if(i>=0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "新增设备信息失败");
+        }
     }
 
     @Override
-    public CustomResult deleteBatch(String[] device) {
-        return null;
+    public CustomResult deleteBatch(String[] deviceIds) {
+        int i = deviceMapper.deleteBatch(deviceIds);
+        if(i>=0){
+            return CustomResult.ok();
+        }else{
+            return null;
+        }
     }
 
     @Override
