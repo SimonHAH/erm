@@ -3,6 +3,7 @@ package com.erp.production.ssm.service.technology.impl;
 import com.erp.production.ssm.bean.customize.PageResult;
 import com.erp.production.ssm.bean.technology.Process;
 import com.erp.production.ssm.bean.technology.ProcessExample;
+import com.erp.production.ssm.bean.technology.Technology;
 import com.erp.production.ssm.mapper.ProcessMapper;
 import com.erp.production.ssm.service.technology.ProcessService;
 import com.github.pagehelper.PageHelper;
@@ -21,6 +22,13 @@ public class ProcessServiceImpl implements ProcessService {
 
     @Autowired
     private ProcessMapper processMapper;
+
+    @Override
+    public List<Process> find(){
+        ProcessExample example = new ProcessExample();
+        List<Process> processes = processMapper.selectByExample(example);
+        return processes;
+    }
 
     @Override
     public PageResult getList(Integer page, Integer rows) {

@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+import com.erp.production.ssm.bean.technology.Process;
+
 /**
  * @author Nemo
  * @version 1.0
@@ -30,4 +33,12 @@ public class ProcessController {
     public PageResult list(Integer page, Integer rows) {
         return processService.getList(page, rows);
     }
+
+    @RequestMapping("/get_data")
+    @ResponseBody
+    public List<Process> getData() throws Exception{
+        List<Process> list = processService.find();
+        return list;
+    }
+
 }
