@@ -16,4 +16,6 @@ public interface ProcessService {
     PageResult getList(Integer page, Integer rows);
 
     List<Process> find();
+
+    Process getItemById(String processId);
 }
