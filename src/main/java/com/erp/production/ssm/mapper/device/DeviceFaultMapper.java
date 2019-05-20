@@ -1,4 +1,4 @@
-package com.erp.production.ssm.mapper;
+package com.erp.production.ssm.mapper.device;
 
 import com.erp.production.ssm.bean.DeviceFault;
 import com.erp.production.ssm.bean.DeviceFaultExample;
@@ -32,4 +32,6 @@ public interface DeviceFaultMapper {
 
     // 自定义接口
     List<DeviceFaultVO> find(DeviceFault deviceFault);
+
+    int deleteBatch(String[] deviceFaultId);
 }

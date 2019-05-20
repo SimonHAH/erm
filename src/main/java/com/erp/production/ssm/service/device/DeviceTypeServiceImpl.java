@@ -1,10 +1,9 @@
-package com.erp.production.ssm.service.impl;
+package com.erp.production.ssm.service.device;
 
-import com.erp.production.ssm.bean.Device;
 import com.erp.production.ssm.bean.DeviceType;
 import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
-import com.erp.production.ssm.mapper.DeviceTypeMapper;
+import com.erp.production.ssm.mapper.device.DeviceTypeMapper;
 import com.erp.production.ssm.service.device.DeviceTypeService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -85,7 +84,22 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
 
     @Override
     public CustomResult deleteBatch(String[] ids) {
-        return null;
+        int i = deviceTypeMapper.deleteBatch(ids);
+        if(i>=0){
+            return CustomResult.ok();
+        }else{
+            return null;
+        }
+    }
+
+    @Override
+    public CustomResult update(DeviceType deviceType) {
+        int i = deviceTypeMapper.updateByPrimaryKeySelective(deviceType);
+        if(i>=0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "修改设备信息失败");
+        }
     }
 
 

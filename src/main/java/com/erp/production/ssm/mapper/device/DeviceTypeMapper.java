@@ -1,4 +1,4 @@
-package com.erp.production.ssm.mapper;
+package com.erp.production.ssm.mapper.device;
 
 import com.erp.production.ssm.bean.DeviceType;
 import com.erp.production.ssm.bean.DeviceTypeExample;
@@ -39,4 +39,6 @@ public interface DeviceTypeMapper {
     List<DeviceType> searchDeviceTypeByDeviceTypeId(@Param("deviceTypeId") String deviceTypeId);
 
     List<DeviceType> searchDeviceByDeviceTypeName(@Param("deviceTypeName") String deviceTypeName);
+
+    int deleteBatch(String[] ids);
 }

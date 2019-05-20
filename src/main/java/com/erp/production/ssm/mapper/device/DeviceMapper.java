@@ -1,4 +1,4 @@
-package com.erp.production.ssm.mapper;
+package com.erp.production.ssm.mapper.device;
 
 import com.erp.production.ssm.bean.Device;
 import com.erp.production.ssm.bean.DeviceExample;
