@@ -1,13 +1,18 @@
 package com.erp.production.ssm.controller.device;
 
 import com.erp.production.ssm.bean.Device;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.service.device.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -73,5 +78,46 @@ public class DeviceListController{
         return responseVo;
     }
 
+    // 新增
+    @RequestMapping(value="/insert", method=RequestMethod.POST)
+    @ResponseBody
+    private CustomResult insert(@Valid Device device, BindingResult bindingResult) {
+        CustomResult result;
+        if(bindingResult.hasErrors()){
+            FieldError fieldError = bindingResult.getFieldError();
+            return CustomResult.build(100, fieldError.getDefaultMessage());
+        }
+        if(deviceService.get(device.getDeviceId()) != null){
+            result = new CustomResult(0, "该设备编号已经存在，请更换设备编号！", null);
+        }else{
+            result = deviceService.insert(device);
+        }
+        return result;
+    }
+
+    @RequestMapping(value="/delete_judge")
+    @ResponseBody
+    private CustomResult deleteJudge() {
+        return null;
+    }
+
+    @RequestMapping(value="/delete_batch")
+    @ResponseBody
+    private CustomResult deleteBatch(String[] ids) {
+        CustomResult result = deviceService.deleteBatch(ids);
+        return result;
+    }
+
+    /*@RequestMapping(value="/edit_judge")
+    @ResponseBody
+    private CustomResult editJudge() {
+        return null;
+    }*/
+
+    @RequestMapping(value="/edit")
+    @ResponseBody
+    private String edit() {
+        return "deviceList_edit";
+    }
 
 }
