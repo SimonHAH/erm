@@ -2,12 +2,27 @@ package com.erp.production.ssm.mapper;
 
 import com.erp.production.ssm.bean.Employee;
 import com.erp.production.ssm.bean.EmployeeExample;
+import com.erp.production.ssm.bean.VO.EmployeeVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface EmployeeMapper {
-    long countByExample(EmployeeExample example);
+    //扩展的mapper接口方法
+    int deleteBatch(String[] ids);
+
+    List<EmployeeVO> find();
+
+    List<EmployeeVO> searchEmployeeByEmployeeId(String employeeId);
+
+    List<EmployeeVO> searchEmployeeByEmployeeName(String employeeName);
+
+    List<EmployeeVO> searchEmployeeByDepartmentName(String departmentName);
+
+    //逆向工程生成的mapper接口
+    EmployeeVO selectSingleEmployee(String empId);
+
+    int countByExample(EmployeeExample example);
 
     int deleteByExample(EmployeeExample example);
 
