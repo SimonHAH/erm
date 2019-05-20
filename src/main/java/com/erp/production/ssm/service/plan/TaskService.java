@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface TaskService {
 
-    Task queryTaskById(String id);
+    Task get(String id);
 
     CommonResult getList(int page, int rows);
 

@@ -1,6 +1,7 @@
 package com.erp.production.ssm.mapper;
 
 import com.erp.production.ssm.bean.plan.Order;
+import com.erp.production.ssm.bean.plan.OrderExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -17,13 +18,23 @@ public interface OrderMapper {
     List<Order> searchOrderByProductName(@Param("productName") String productName);
 
     //逆向工程生产的方法
+    long countByExample(OrderExample example);
+
+    int deleteByExample(OrderExample example);
+
     int deleteByPrimaryKey(String orderId);
 
     int insert(Order record);
 
     int insertSelective(Order record);
 
+    List<Order> selectByExample(OrderExample example);
+
     Order selectByPrimaryKey(String orderId);
+
+    int updateByExampleSelective(@Param("record") Order record, @Param("example") OrderExample example);
+
+    int updateByExample(@Param("record") Order record, @Param("example") OrderExample example);
 
     int updateByPrimaryKeySelective(Order record);
 
