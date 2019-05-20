@@ -4,7 +4,7 @@ import com.erp.production.ssm.bean.Material;
 import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.PageResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
-import com.erp.production.ssm.service.MaterialService;
+import com.erp.production.ssm.service.material.MaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

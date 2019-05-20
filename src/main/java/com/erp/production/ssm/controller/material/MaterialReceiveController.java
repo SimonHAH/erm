@@ -3,7 +3,7 @@ package com.erp.production.ssm.controller.material;
 import com.erp.production.ssm.bean.MaterialReceive;
 import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.PageResult;
-import com.erp.production.ssm.service.MaterialReceiveService;
+import com.erp.production.ssm.service.material.MaterialReceiveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

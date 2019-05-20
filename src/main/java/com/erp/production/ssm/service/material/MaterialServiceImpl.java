@@ -1,11 +1,11 @@
-package com.erp.production.ssm.service.impl;
+package com.erp.production.ssm.service.material;
 import com.erp.production.ssm.bean.Material;
 import com.erp.production.ssm.bean.MaterialExample;
 import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.customize.PageResult;
 import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.mapper.MaterialMapper;
-import com.erp.production.ssm.service.MaterialService;
+import com.erp.production.ssm.service.material.MaterialService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.erp.production.ssm.service;
+package com.erp.production.ssm.service.material;
 
 import com.erp.production.ssm.bean.MaterialConsume;
 import com.erp.production.ssm.bean.customize.CustomResult;
