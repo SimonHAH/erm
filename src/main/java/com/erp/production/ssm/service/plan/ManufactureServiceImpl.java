@@ -1,6 +1,7 @@
 package com.erp.production.ssm.service.plan;
 
 import com.erp.production.ssm.bean.common.CommonResult;
+import com.erp.production.ssm.bean.customize.CustomResult;
 import com.erp.production.ssm.bean.plan.Manufacture;
 import com.erp.production.ssm.bean.plan.ManufactureExample;
 import com.erp.production.ssm.mapper.ManufactureMapper;
@@ -46,6 +47,16 @@ public class ManufactureServiceImpl implements ManufactureService {
     public List<Manufacture> find() {
         ManufactureExample example = new ManufactureExample();
         return manufactureMapper.selectByExample(example);
+    }
+
+    @Override
+    public CustomResult insert(Manufacture manufacture) {
+        int insert = manufactureMapper.insert(manufacture);
+        if(insert>0){
+            return CustomResult.ok();
+        }else{
+            return CustomResult.build(101, "新增生成生产计划信息失败");
+        }
     }
 
 

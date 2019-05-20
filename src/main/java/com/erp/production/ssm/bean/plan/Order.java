@@ -1,5 +1,8 @@
 package com.erp.production.ssm.bean.plan;
 
+import com.erp.production.ssm.bean.plan.Custom;
+import com.erp.production.ssm.bean.plan.Product;
+
 import java.math.BigDecimal;
 import java.util.Date;
 

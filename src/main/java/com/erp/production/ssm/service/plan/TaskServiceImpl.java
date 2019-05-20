@@ -19,7 +19,7 @@ public class TaskServiceImpl implements TaskService {
     TaskMapper taskMapper;
 
     @Override
-    public Task queryTaskById(String id) {
+    public Task get(String id) {
         Task task = taskMapper.selectByPrimaryKey(id);
         return task;
     }
