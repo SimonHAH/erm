@@ -1,4 +1,4 @@
-package com.erp.production.ssm.service.technology.impl;
+package com.erp.production.ssm.service.technology;
 
 import com.erp.production.ssm.bean.customize.PageResult;
 import com.erp.production.ssm.bean.technology.Process;
@@ -34,5 +34,12 @@ public class ProcessServiceImpl implements ProcessService {
         result.setTotal(list.size());
 
         return result;
+    }
+
+    @Override
+    public List<Process> find() {
+        ProcessExample example = new ProcessExample();
+        List<Process> list = processMapper.selectByExample(example);
+        return list;
     }
 }

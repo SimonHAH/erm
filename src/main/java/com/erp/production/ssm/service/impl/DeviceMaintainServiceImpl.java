@@ -3,7 +3,7 @@ package com.erp.production.ssm.service.impl;
 import com.erp.production.ssm.bean.DeviceMaintain;
 import com.erp.production.ssm.bean.customize.ResponseVo;
 import com.erp.production.ssm.mapper.DeviceMaintainMapper;
-import com.erp.production.ssm.service.DeviceMaintainService;
+import com.erp.production.ssm.service.device.DeviceMaintainService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
